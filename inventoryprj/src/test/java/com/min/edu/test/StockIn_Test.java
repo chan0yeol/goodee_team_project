@@ -7,9 +7,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.min.edu.dto.StockDto;
-import com.min.edu.model.IStockInDao;
-import com.min.edu.model.StockInDaoImpl;
 import com.min.edu.mybatis.SqlSessionFactoryManager;
+import com.min.edu.repository.IStockInDao;
+import com.min.edu.repository.StockInDaoImpl;
 
 public class StockIn_Test {
 	SqlSessionFactory manager;

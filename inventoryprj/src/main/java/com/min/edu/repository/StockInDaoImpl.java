@@ -1,4 +1,4 @@
-package com.min.edu.model;
+package com.min.edu.repository;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import com.min.edu.mybatis.SqlSessionFactoryManager;
 public class StockInDaoImpl implements IStockInDao {
 
 	private SqlSessionFactory manager = SqlSessionFactoryManager.getFactory();
-	private String NS = "com.min.edu.model.StockInDaoImpl.";
+	private String NS = "com.min.edu.repository.StockInDaoImpl.";
 	@Override
 	public List<StockDto> selectAll() {
 		SqlSession session = manager.openSession();
