@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.min.edu.model.StockInDaoImpl">
+	<sql id="allColumn">
+		SELECT STOCK_ID, GUBUN, STOCK_DATE,
+            STOCK_AMOUNT, STOCK_MGR, STOCK_COST,
+            IS_ACCEPTED ,PRODUCT_ID
+  			FROM STOCK
+  			WHERE GUBUN = 'I'
+	</sql>
+	<select id="selectStockInAll" resultType="StockDto">
+		SELECT STOCK_ID, GUBUN, STOCK_DATE,
+            STOCK_AMOUNT, STOCK_MGR, STOCK_COST,
+            IS_ACCEPTED ,PRODUCT_ID
+        FROM STOCK
+        WHERE GUBUN = 'I' AND IS_ACCEPTED = 'Y'
+	</select>
+	
+	<insert id="insertOne" parameterType="StockDto">
+  		INSERT INTO STOCK( STOCK_ID, GUBUN, STOCK_DATE,
+						STOCK_AMOUNT, STOCK_MGR, STOCK_COST,
+						IS_ACCEPTED ,PRODUCT_ID)
+		VALUES (TO_CHAR(SYSDATE,'YYYY')||LPAD(STOCK_SEQ.NEXTVAL,3,'0'),'I',SYSTIMESTAMP, #{stock_amount}, #{stock_mgr},'0','Y',#{product_id})
+  	</insert>
+  	
+  	<select id="selectDynamicDate" resultType="StockDto" parameterType="Map">
+  		<include refid="allColumn"/>
+		  <where>
+		 	<choose>
+		 		<when test="start != null and end = null">
+		 			TRUNC(S_IN_DATE) BETWEEN TO_DATE(#{start}, 'YYYY-MM-DD') AND TRUNC(SYSDATE)
+		 		</when>
+		 		<when test="start != null and end != null">
+		 			TRUNC(S_IN_DATE) BETWEEN TO_DATE(#{start}, 'YYYY-MM-DD') AND TO_DATE(#{end}, 'YYYY-MM-DD')
+		 		</when>
+		 	
+		 	</choose>
+		  </where>
+  	</select>
+  	
+  
+  	
+  	<delete id="stockInDelete" parameterType="StockDto">
+  		DELETE FROM STOCK
+  		WHERE STOCK_ID = #{stock_id}
+  	</delete>
+  	
+</mapper>
