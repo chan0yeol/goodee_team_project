@@ -16,7 +16,7 @@
         WHERE GUBUN = 'I' AND IS_ACCEPTED = 'Y'
 	</select>
 	
-	<insert id="insertOne" parameterType="StockDto">
+	<insert id="insert" parameterType="StockDto">
   		INSERT INTO STOCK( STOCK_ID, GUBUN, STOCK_DATE,
 						STOCK_AMOUNT, STOCK_MGR, STOCK_COST,
 						IS_ACCEPTED ,PRODUCT_ID)

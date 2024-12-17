@@ -1,5 +1,8 @@
 package com.min.edu.test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -13,18 +16,26 @@ import com.min.edu.repository.StockInDaoImpl;
 
 public class StockIn_Test {
 	SqlSessionFactory manager;
-	
+	IStockInDao dao;
 	@Before
 	public void createSes() {
 		manager = SqlSessionFactoryManager.getFactory();
+		dao = new StockInDaoImpl();
 	}
 	@Test
 	public void selectAll_test() {
-		IStockInDao dao = new StockInDaoImpl();
 		List<StockDto> lists = dao.selectAll();	
-		for (StockDto d : lists) {
-			System.out.println(d);
-		}
+		assertNotEquals(0, lists.size());
+	}
+	@Test
+	public void insert_test() {
+		StockDto dto = StockDto.builder()
+				.stock_amount(3)
+				.stock_mgr(7369)
+				.product_id("P23")
+				.build();
+		int row = dao.insert(dto);
+		assertEquals(1, row);
 	}
 	
 
