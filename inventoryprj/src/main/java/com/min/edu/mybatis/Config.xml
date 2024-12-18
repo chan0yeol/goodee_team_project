@@ -3,7 +3,11 @@
 <configuration>
 	<properties resource="oracle.properties" />
 	<typeAliases>
+
 		<typeAlias type="com.min.edu.dto.ProductInfoDto" alias="ProductInfoDto"/>
+
+		<typeAlias type="com.min.edu.dto.StockDto" alias="StockDto"/>
+
 	</typeAliases>
 	<environments default="dev">
 		<environment id="dev">
@@ -17,6 +21,10 @@
 		</environment>
 	</environments>
 	<mappers>
+
 		<mapper resource="sqls/Product_Info.xml"/>
+
+		<mapper resource="sqls/StockInMapper.xml"/>
+
 	</mappers>
 </configuration>
