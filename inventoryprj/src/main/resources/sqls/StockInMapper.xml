@@ -23,6 +23,15 @@
 		VALUES (TO_CHAR(SYSDATE,'YYYY')||LPAD(STOCK_SEQ.NEXTVAL,3,'0'),'I',SYSTIMESTAMP, #{stock_amount}, #{stock_mgr},'0','Y',#{product_id})
   	</insert>
   	
+  	<select id="selectDate" resultType="StockDto" parameterType="Map">
+  		 SELECT STOCK_ID, GUBUN, STOCK_DATE,
+            STOCK_AMOUNT, STOCK_MGR, STOCK_COST,
+            IS_ACCEPTED ,PRODUCT_ID 
+        FROM STOCK 
+        WHERE TRUNC(STOCK_DATE) BETWEEN TO_DATE(#{start}, 'YYYY-MM-DD')AND TO_DATE(#{end}, 'YYYY-MM-DD')
+        
+  	</select>
+  	
   	<select id="selectDynamicDate" resultType="StockDto" parameterType="Map">
   		<include refid="allColumn"/>
 		  <where>

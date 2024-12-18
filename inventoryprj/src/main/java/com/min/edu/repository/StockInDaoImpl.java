@@ -1,6 +1,8 @@
 package com.min.edu.repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -22,6 +24,15 @@ public class StockInDaoImpl implements IStockInDao {
 		SqlSession session = manager.openSession(true);
 		int row = session.insert(NS+"insert",dto);
 		return row;
+	}
+	@Override
+	public List<StockDto> selectDate(String start, String end) {
+		Map<String, String> obj = new HashMap();
+		obj.put("start", start);
+		obj.put("end", end);
+		System.out.println(obj.get(start)+"+"+obj.get(end));
+		SqlSession session = manager.openSession();
+		return session.selectList(NS+"selectDate",obj);
 	}
 	
 

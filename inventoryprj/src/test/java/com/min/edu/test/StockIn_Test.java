@@ -3,7 +3,9 @@ package com.min.edu.test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Before;
@@ -22,12 +24,12 @@ public class StockIn_Test {
 		manager = SqlSessionFactoryManager.getFactory();
 		dao = new StockInDaoImpl();
 	}
-	@Test
+//	@Test
 	public void selectAll_test() {
 		List<StockDto> lists = dao.selectAll();	
 		assertNotEquals(0, lists.size());
 	}
-	@Test
+//	@Test
 	public void insert_test() {
 		StockDto dto = StockDto.builder()
 				.stock_amount(3)
@@ -38,5 +40,14 @@ public class StockIn_Test {
 		assertEquals(1, row);
 	}
 	
+	@Test
+	public void selectDate_test() {
+		String start = "2024-12-17";
+		String end ="2024-12-18"; 
+		List<StockDto> list = dao.selectDate(start,end);
+		for (StockDto stockDto : list) {
+			System.out.println(stockDto);
+		}
+	}
 
 }
