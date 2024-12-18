@@ -1,0 +1,41 @@
+[2024-12-17 17:14:56] [LogFactory] [DEBUG] Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[2024-12-17 17:14:56] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:14:56] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:14:56] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:14:56] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:48:50] [LogFactory] [DEBUG] Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[2024-12-17 17:48:50] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:48:50] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:48:50] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:48:50] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:51:13] [LogFactory] [DEBUG] Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[2024-12-17 17:51:13] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:51:13] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:51:13] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:51:13] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:55:24] [LogFactory] [DEBUG] Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[2024-12-17 17:55:24] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:55:24] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:55:24] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:55:24] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:56:59] [LogFactory] [DEBUG] Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[2024-12-17 17:56:59] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:56:59] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:56:59] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:56:59] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:57:43] [LogFactory] [DEBUG] Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[2024-12-17 17:57:43] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:57:43] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:57:43] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:57:43] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:58:18] [LogFactory] [DEBUG] Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[2024-12-17 17:58:18] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:58:18] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:58:18] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:58:18] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:58:27] [LogFactory] [DEBUG] Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[2024-12-17 17:58:27] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:58:27] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:58:27] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:58:27] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-17 17:58:27] [JdbcTransaction] [DEBUG] Opening JDBC Connection
