@@ -4,8 +4,8 @@
 
 	<insert id="product_insert" parameterType="com.min.edu.dto.ProductInfoDto">
 	<![CDATA[
-	INSERT INTO PRODUCT_INFO(PRODUCT_ID,PRODUCT_NAME,PRODUCT_MAKER,ORIGINAL_COST,PRODUCT_AMOUNT,IS_ACCEPTED)
-        VALUES ('P'||LPAD(INFO_SEQ.NEXTVAL,2,'0'),#{product_name},#{product_maker},#{original_cost},#{product_amount},#{is_accepted})]]>
+	INSERT INTO PRODUCT_INFO(PRODUCT_ID,PRODUCT_NAME,PRODUCT_MAKER,ORIGINAL_COST,PRODUCT_AMOUNT)
+        VALUES ('P'||LPAD(INFO_SEQ.NEXTVAL,2,'0'),#{product_name},#{product_maker},#{original_cost},#{product_amount})]]>
 		
 	</insert>
 	
