@@ -26,7 +26,6 @@ public class Product_Info_Test {
 					.product_maker("APPLE")
 					.original_cost(1000000)
 					.product_amount(0)
-					.is_accepted("N")
 				.build();
 		int cnt = dao.product_insert(dto);
 		System.out.println(dao);
