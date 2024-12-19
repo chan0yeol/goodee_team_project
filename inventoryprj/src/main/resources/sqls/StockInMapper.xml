@@ -32,6 +32,14 @@
         
   	</select>
   	
+  	<select id="selectByMgr" resultType="StockDto" parameterType="int">
+  		SELECT STOCK_ID, GUBUN, STOCK_DATE,
+            STOCK_AMOUNT, STOCK_MGR, STOCK_COST,
+            IS_ACCEPTED ,PRODUCT_ID 
+        FROM STOCK 
+        WHERE GUBUN = 'I' AND IS_ACCEPTED = 'Y'
+        AND STOCK_MGR = #{x}
+  	</select>
   	<select id="selectDynamicDate" resultType="StockDto" parameterType="Map">
   		<include refid="allColumn"/>
 		  <where>

@@ -27,12 +27,17 @@ public class StockInDaoImpl implements IStockInDao {
 	}
 	@Override
 	public List<StockDto> selectDate(String start, String end) {
+		SqlSession session = manager.openSession();
 		Map<String, String> obj = new HashMap();
 		obj.put("start", start);
 		obj.put("end", end);
 		System.out.println(obj.get(start)+"+"+obj.get(end));
-		SqlSession session = manager.openSession();
 		return session.selectList(NS+"selectDate",obj);
+	}
+	@Override
+	public List<StockDto> selectByMgr(int i) {
+		SqlSession session = manager.openSession();
+		return session.selectList(NS+"selectByMgr",i);
 	}
 	
 
