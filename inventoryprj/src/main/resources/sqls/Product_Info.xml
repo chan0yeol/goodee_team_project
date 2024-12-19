@@ -4,9 +4,39 @@
 
 	<insert id="product_insert" parameterType="com.min.edu.dto.ProductInfoDto">
 	<![CDATA[
-	INSERT INTO PRODUCT_INFO(PRODUCT_ID,PRODUCT_NAME,PRODUCT_MAKER,ORIGINAL_COST,PRODUCT_AMOUNT)
-        VALUES ('P'||LPAD(INFO_SEQ.NEXTVAL,2,'0'),#{product_name},#{product_maker},#{original_cost},#{product_amount})]]>
-		
+		INSERT INTO PRODUCT_INFO(PRODUCT_ID,PRODUCT_NAME,PRODUCT_MAKER,ORIGINAL_COST,PRODUCT_AMOUNT)
+	        VALUES ('P'||LPAD(INFO_SEQ.NEXTVAL,2,'0'),#{product_name},#{product_maker},#{original_cost},#{product_amount})]]>
 	</insert>
+	
+	<insert id="product_insert2" parameterType="com.min.edu.dto.ProductInfoDto">
+	<![CDATA[
+		INSERT INTO PRODUCT_INFO(PRODUCT_ID,PRODUCT_NAME,PRODUCT_MAKER,ORIGINAL_COST,PRODUCT_AMOUNT,IS_ACCEPTED)
+        	VALUES ('P'||LPAD(INFO_SEQ.NEXTVAL,2,'0'),#{product_name},#{product_maker},#{original_cost},#{product_amount},#{is_accepted})]]>
+	</insert>
+	
+	<select id="product_select" resultType="com.min.edu.dto.ProductInfoDto">
+		SELECT PRODUCT_ID, PRODUCT_NAME , PRODUCT_MAKER , ORIGINAL_COST , PRODUCT_AMOUNT , IS_ACCEPTED 
+			FROM PRODUCT_INFO 
+	</select>
+	
+	<select id="product_select2" resultType="com.min.edu.dto.ProductInfoDto">
+		SELECT PRODUCT_ID, PRODUCT_NAME , PRODUCT_MAKER , ORIGINAL_COST , PRODUCT_AMOUNT , IS_ACCEPTED 
+                FROM PRODUCT_INFO
+                WHERE PRODUCT_ID = #{product_id}
+	</select>
+	
+	<select id="product_select3" resultType="com.min.edu.dto.ProductInfoDto">
+		SELECT PRODUCT_ID, PRODUCT_NAME , PRODUCT_MAKER , ORIGINAL_COST , PRODUCT_AMOUNT , IS_ACCEPTED 
+			FROM PRODUCT_INFO
+			WHERE PRODUCT_MAKER = #{product_maker}
+	</select>
+	
+	<select id="product_select4" resultType="com.min.edu.dto.ProductInfoDto">
+		SELECT PRODUCT_ID, PRODUCT_NAME , PRODUCT_MAKER , ORIGINAL_COST , PRODUCT_AMOUNT , IS_ACCEPTED 
+                FROM PRODUCT_INFO
+                WHERE PRODUCT_NAME LIKE '%#{value}%'      
+	</select>
+	
+	
 	
 </mapper>
