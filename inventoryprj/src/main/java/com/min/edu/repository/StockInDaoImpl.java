@@ -26,18 +26,18 @@ public class StockInDaoImpl implements IStockInDao {
 		return row;
 	}
 	@Override
-	public List<StockDto> selectDate(String start, String end) {
+	public List<StockDto> selectDateRange(String start, String end) {
 		SqlSession session = manager.openSession();
 		Map<String, String> obj = new HashMap();
 		obj.put("start", start);
 		obj.put("end", end);
 		System.out.println(obj.get(start)+"+"+obj.get(end));
-		return session.selectList(NS+"selectDate",obj);
+		return session.selectList(NS+"selectDateRange",obj);
 	}
 	@Override
-	public List<StockDto> selectByMgr(int i) {
+	public List<StockDto> selectStockInByMgr(int i) {
 		SqlSession session = manager.openSession();
-		return session.selectList(NS+"selectByMgr",i);
+		return session.selectList(NS+"selectStockInByMgr",i);
 	}
 	
 
