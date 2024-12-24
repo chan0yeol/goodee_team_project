@@ -62,4 +62,13 @@
   		WHERE STOCK_ID = #{stock_id}
   	</delete>
   	
+  	<!-- 입고수정 추가(지원) -->
+  	<update id="updateStockInAmount">
+  		UPDATE STOCK
+           SET STOCK_AMOUNT = #{stock_amount}
+           WHERE GUBUN = 'I'
+           AND STOCK_ID = #{stock_id}
+  	</update>
+  	
+  	
 </mapper>

@@ -40,5 +40,11 @@ public class StockInDaoImpl implements IStockInDao {
 		return session.selectList(NS+"selectStockInByMgr",i);
 	}
 	
+	// 입고수정 추가(지원)
+	@Override
+	public int updateStockInAmount(StockDto dto) {
+		SqlSession session = manager.openSession(true);
+		return session.update(NS+"updateStockInAmount",dto);
+	}
 
 }

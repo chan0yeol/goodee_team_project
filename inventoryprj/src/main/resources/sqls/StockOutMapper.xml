@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.min.edu.repository.StockOutDaoImpl">
+
+	<!-- 	insertStockOut -->
+	<insert id="insertStockOut" parameterType="StockDto">
+		 INSERT INTO STOCK( STOCK_ID, GUBUN, STOCK_DATE,
+		 					STOCK_AMOUNT, STOCK_MGR, STOCK_COST,
+                            IS_ACCEPTED ,PRODUCT_ID)
+         VALUES (TO_CHAR(SYSDATE,'YYYY')||LPAD(STOCK_SEQ.NEXTVAL,3,'0'),'O',SYSTIMESTAMP, #{stock_amount}, #{stock_mgr},#{stock_cost},'Y',#{product_id})
+	</insert>
+	
+	<!-- 	selectStockOutAll -->
+	<select id="selectStockOutAll" resultType="StockDto">
+		SELECT STOCK_ID, GUBUN, STOCK_DATE,
+               STOCK_AMOUNT, STOCK_MGR, STOCK_COST,
+               IS_ACCEPTED ,PRODUCT_ID, DEL_ID 배송ID ,STOCK_ADDR 
+        FROM STOCK JOIN STOCK_DELIVERY 
+        USING(STOCK_ID) 
+        WHERE GUBUN = 'O'
+	</select>
+	
+	<!-- 	selectOutDateRange -->
+	<select id="selectOutDateRange" resultType="StockDto" parameterType="Map">
+		SELECT STOCK_ID, GUBUN, STOCK_DATE,
+               STOCK_AMOUNT, STOCK_MGR, STOCK_COST,
+               IS_ACCEPTED ,PRODUCT_ID 
+        FROM STOCK 
+        WHERE TRUNC(STOCK_DATE) BETWEEN TO_DATE(#{start}, 'YYYY-MM-DD')AND TO_DATE(#{end}, 'YYYY-MM-DD')
+	</select>
+	
+	<!-- 	selectStockOutByMgr -->
+	<select id="selectStockOutByMgr" resultType="StockDto" parameterType="int">
+		SELECT STOCK_ID, GUBUN, STOCK_DATE,
+               STOCK_AMOUNT, STOCK_MGR, STOCK_COST,
+               IS_ACCEPTED ,PRODUCT_ID 
+        FROM STOCK 
+        WHERE GUBUN = 'O' AND IS_ACCEPTED = 'Y'
+        AND STOCK_MGR = #{stock_mgr}
+	</select>
+	
+	<!-- updateStockOutAmount -->
+	<update id="updateStockOutAmount">
+		UPDATE STOCK
+        SET STOCK_AMOUNT = #{stock_amount}
+        WHERE GUBUN = 'O' AND STOCK_ID = #{stock_id}
+	</update>
+	<update id="updateStockOutDelivery">
+        UPDATE STOCK_DELIVERY 
+        SET STOCK_ADDR = #{stock_addr}
+        WHERE STOCK_DELIVERY.STOCK_ID = #{stock_id}
+	</update>
+	
+
+</mapper>

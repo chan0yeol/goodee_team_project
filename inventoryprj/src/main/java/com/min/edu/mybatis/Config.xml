@@ -25,6 +25,10 @@
 		<mapper resource="sqls/Product_Info.xml"/>
 
 		<mapper resource="sqls/StockInMapper.xml"/>
+		
+		<mapper resource="sqls/StockOutMapper.xml"/>
+		
+		<mapper resource="sqls/ManagerMapper.xml"/>
 
 	</mappers>
 </configuration>
