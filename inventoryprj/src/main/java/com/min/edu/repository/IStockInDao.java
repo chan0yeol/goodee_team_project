@@ -12,4 +12,6 @@ public interface IStockInDao {
 	
 	// 입고수정 추가(지원)
 	public int updateStockInAmount(StockDto dto);
+	public List<StockDto> selectDateRange(String start, String end);
+	public List<StockDto> selectStockInByMgr(int i);
 }

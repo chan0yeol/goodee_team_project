@@ -23,7 +23,7 @@
 		VALUES (TO_CHAR(SYSDATE,'YYYY')||LPAD(STOCK_SEQ.NEXTVAL,3,'0'),'I',SYSTIMESTAMP, #{stock_amount}, #{stock_mgr},'0','Y',#{product_id})
   	</insert>
   	
-  	<select id="selectDate" resultType="StockDto" parameterType="Map">
+  	<select id="selectDateRange" resultType="StockDto" parameterType="Map">
   		 SELECT STOCK_ID, GUBUN, STOCK_DATE,
             STOCK_AMOUNT, STOCK_MGR, STOCK_COST,
             IS_ACCEPTED ,PRODUCT_ID 
@@ -32,7 +32,7 @@
         
   	</select>
   	
-  	<select id="selectByMgr" resultType="StockDto" parameterType="int">
+  	<select id="selectStockInByMgr" resultType="StockDto" parameterType="int">
   		SELECT STOCK_ID, GUBUN, STOCK_DATE,
             STOCK_AMOUNT, STOCK_MGR, STOCK_COST,
             IS_ACCEPTED ,PRODUCT_ID 
