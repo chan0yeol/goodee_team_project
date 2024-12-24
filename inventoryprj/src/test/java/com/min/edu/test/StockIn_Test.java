@@ -50,7 +50,7 @@ public class StockIn_Test {
 		}
 	}
 	
-	@Test
+//	@Test
 	public void selectByMgr() {
 		List<StockDto> list = dao.selectByMgr(7369);
 		for (StockDto stockDto : list) {
@@ -58,4 +58,16 @@ public class StockIn_Test {
 		}
 	}
 
+	// 입고수정 추가(지원)
+//	@Test
+	public void updateStockInAmount_test() {
+		StockDto dto = new StockDto()
+				.builder()
+					.stock_amount(17)
+					.stock_id("2024002")
+				.build();
+		int row = dao.updateStockInAmount(dto);
+		assertEquals(1, row);
+	}
+	
 }

@@ -18,7 +18,9 @@ public class StockDto {
 	gubun,
 	stock_date,
 	is_accepted,
-	product_id;
+	product_id,
+	del_id,
+	stock_addr;
 	private int stock_amount,
 	stock_mgr,
 	stock_cost;
