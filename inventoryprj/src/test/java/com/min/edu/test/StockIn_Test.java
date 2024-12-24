@@ -44,15 +44,15 @@ public class StockIn_Test {
 	public void selectDate_test() {
 		String start = "2024-12-17";
 		String end ="2024-12-18"; 
-		List<StockDto> list = dao.selectDate(start,end);
+		List<StockDto> list = dao.selectDateRange(start,end);
 		for (StockDto stockDto : list) {
 			System.out.println(stockDto);
 		}
 	}
 	
 //	@Test
-	public void selectByMgr() {
-		List<StockDto> list = dao.selectByMgr(7369);
+	public void selectStockByMgr_test() {
+		List<StockDto> list = dao.selectStockInByMgr(7369);
 		for (StockDto stockDto : list) {
 			System.out.println(stockDto);
 		}

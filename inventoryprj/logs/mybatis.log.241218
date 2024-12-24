@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [2024-12-18 12:38:25] [LogFactory] [DEBUG] Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
 [2024-12-18 12:38:25] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
 [2024-12-18 12:38:25] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
@@ -62,3 +63,94 @@
 [2024-12-18 18:50:36] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
 [2024-12-18 18:50:36] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
 [2024-12-18 18:50:37] [JdbcTransaction] [DEBUG] Opening JDBC Connection
+=======
+[2024-12-18 11:06:05] [LogFactory] [DEBUG] Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[2024-12-18 11:06:05] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-18 11:06:05] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-18 11:06:05] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-18 11:06:05] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-18 11:06:05] [JdbcTransaction] [DEBUG] Opening JDBC Connection
+[2024-12-18 11:06:05] [PooledDataSource] [DEBUG] Created connection 698741991.
+[2024-12-18 11:06:05] [JdbcTransaction] [DEBUG] Setting autocommit to false on JDBC Connection [oracle.jdbc.driver.T4CConnection@29a5f4e7]
+[2024-12-18 11:06:05] [product_insert] [DEBUG] ==>  Preparing: INSERT INTO PRODUCT_INFO(PRODUCT_ID,PRODUCT_NAME,PRODUCT_MAKER,ORIGINAL_COST,PRODUCT_AMOUNT,IS_ACCEPTED) VALUES ('P'||LPAD(INFO_SEQ.NEXTVAL,2,'0'),?,?,?,?,?)
+[2024-12-18 11:06:06] [product_insert] [DEBUG] ==> Parameters: 아이폰(String), APPLE(String), 1000000(Integer), 0(Integer), N(String)
+[2024-12-18 11:06:06] [product_insert] [DEBUG] <==    Updates: 1
+[2024-12-18 11:06:06] [JdbcTransaction] [DEBUG] Committing JDBC Connection [oracle.jdbc.driver.T4CConnection@29a5f4e7]
+[2024-12-18 11:06:22] [LogFactory] [DEBUG] Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[2024-12-18 11:06:22] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-18 11:06:22] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-18 11:06:22] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-18 11:06:22] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-18 11:06:22] [JdbcTransaction] [DEBUG] Opening JDBC Connection
+[2024-12-18 11:06:22] [PooledDataSource] [DEBUG] Created connection 1037854997.
+[2024-12-18 11:06:22] [JdbcTransaction] [DEBUG] Setting autocommit to false on JDBC Connection [oracle.jdbc.driver.T4CConnection@3ddc6915]
+[2024-12-18 11:06:22] [selectStockInAll] [DEBUG] ==>  Preparing: SELECT STOCK_ID, GUBUN, STOCK_DATE, STOCK_AMOUNT, STOCK_MGR, STOCK_COST, IS_ACCEPTED ,PRODUCT_ID FROM STOCK WHERE GUBUN = 'I' AND IS_ACCEPTED = 'Y'
+[2024-12-18 11:06:22] [selectStockInAll] [DEBUG] ==> Parameters: 
+[2024-12-18 11:06:22] [selectStockInAll] [TRACE] <==    Columns: STOCK_ID, GUBUN, STOCK_DATE, STOCK_AMOUNT, STOCK_MGR, STOCK_COST, IS_ACCEPTED, PRODUCT_ID
+[2024-12-18 11:06:22] [selectStockInAll] [TRACE] <==        Row: 2024009, I, 2024-12-16 17:29:20, 5, 7369, 0, Y, P24
+[2024-12-18 11:06:22] [selectStockInAll] [TRACE] <==        Row: 2024002, I, 2024-12-16 16:17:40, 7, 7369, null, Y, P25
+[2024-12-18 11:06:22] [selectStockInAll] [TRACE] <==        Row: 2024003, I, 2024-12-16 16:19:45, 3, 7369, null, Y, P25
+[2024-12-18 11:06:22] [selectStockInAll] [TRACE] <==        Row: 2024004, I, 2024-12-16 16:19:47, 6, 7369, null, Y, P25
+[2024-12-18 11:06:22] [selectStockInAll] [TRACE] <==        Row: 2024005, I, 2024-12-16 16:19:48, 1, 7369, null, Y, P25
+[2024-12-18 11:06:22] [selectStockInAll] [TRACE] <==        Row: 2024006, I, 2024-12-16 16:23:24, 1, 7369, null, Y, P24
+[2024-12-18 11:06:22] [selectStockInAll] [TRACE] <==        Row: 2024010, I, 2024-12-16 17:29:53, 8, 7369, 0, Y, P25
+[2024-12-18 11:06:22] [selectStockInAll] [TRACE] <==        Row: 2024011, I, 2024-12-16 17:36:49, 20, 7369, 0, Y, P22
+[2024-12-18 11:06:22] [selectStockInAll] [TRACE] <==        Row: 2024012, I, 2024-12-16 17:38:53, 6, 7934, 0, Y, P23
+[2024-12-18 11:06:22] [selectStockInAll] [TRACE] <==        Row: 2024021, I, 2024-12-17 17:49:41, 3, 7369, 0, Y, P23
+[2024-12-18 11:06:22] [selectStockInAll] [DEBUG] <==      Total: 10
+[2024-12-18 11:06:22] [JdbcTransaction] [DEBUG] Opening JDBC Connection
+[2024-12-18 11:06:22] [PooledDataSource] [DEBUG] Created connection 1693003105.
+[2024-12-18 11:06:22] [insert] [DEBUG] ==>  Preparing: INSERT INTO STOCK( STOCK_ID, GUBUN, STOCK_DATE, STOCK_AMOUNT, STOCK_MGR, STOCK_COST, IS_ACCEPTED ,PRODUCT_ID) VALUES (TO_CHAR(SYSDATE,'YYYY')||LPAD(STOCK_SEQ.NEXTVAL,3,'0'),'I',SYSTIMESTAMP, ?, ?,'0','Y',?)
+[2024-12-18 11:06:22] [insert] [DEBUG] ==> Parameters: 3(Integer), 7369(Integer), P23(String)
+[2024-12-18 11:06:22] [insert] [DEBUG] <==    Updates: 1
+[2024-12-18 13:34:39] [LogFactory] [DEBUG] Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[2024-12-18 13:34:39] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-18 13:34:39] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-18 13:34:39] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-18 13:34:39] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-18 13:34:39] [JdbcTransaction] [DEBUG] Opening JDBC Connection
+[2024-12-18 13:34:40] [PooledDataSource] [DEBUG] Created connection 932582590.
+[2024-12-18 13:34:40] [JdbcTransaction] [DEBUG] Setting autocommit to false on JDBC Connection [oracle.jdbc.driver.T4CConnection@379614be]
+[2024-12-18 13:34:40] [selectDate] [DEBUG] ==>  Preparing: SELECT STOCK_ID, GUBUN, STOCK_DATE, STOCK_AMOUNT, STOCK_MGR, STOCK_COST, IS_ACCEPTED ,PRODUCT_ID FROM STOCK WHERE TRUNC(STOCK_DATE) BETWEEN TO_DATE(?, 'YYYY-MM-DD')AND TO_DATE(?, 'YYYY-MM-DD')
+[2024-12-18 13:35:49] [LogFactory] [DEBUG] Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[2024-12-18 13:35:49] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-18 13:35:49] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-18 13:35:49] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-18 13:35:49] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-18 13:35:49] [JdbcTransaction] [DEBUG] Opening JDBC Connection
+[2024-12-18 13:35:50] [PooledDataSource] [DEBUG] Created connection 932582590.
+[2024-12-18 13:35:50] [JdbcTransaction] [DEBUG] Setting autocommit to false on JDBC Connection [oracle.jdbc.driver.T4CConnection@379614be]
+[2024-12-18 13:35:50] [selectDate] [DEBUG] ==>  Preparing: SELECT STOCK_ID, GUBUN, STOCK_DATE, STOCK_AMOUNT, STOCK_MGR, STOCK_COST, IS_ACCEPTED ,PRODUCT_ID FROM STOCK WHERE TRUNC(STOCK_DATE) BETWEEN TO_DATE(?, 'YYYY-MM-DD')AND TO_DATE(?, 'YYYY-MM-DD')
+[2024-12-18 13:35:50] [selectDate] [DEBUG] ==> Parameters: 2024-12-05(String), 2024-12-18(String)
+[2024-12-18 13:35:50] [selectDate] [TRACE] <==    Columns: STOCK_ID, GUBUN, STOCK_DATE, STOCK_AMOUNT, STOCK_MGR, STOCK_COST, IS_ACCEPTED, PRODUCT_ID
+[2024-12-18 13:35:50] [selectDate] [TRACE] <==        Row: 2024009, I, 2024-12-16 17:29:20, 5, 7369, 0, Y, P24
+[2024-12-18 13:35:50] [selectDate] [TRACE] <==        Row: 2024023, I, 2024-12-18 12:48:14, 3, 7369, 0, Y, P23
+[2024-12-18 13:35:50] [selectDate] [TRACE] <==        Row: 2024002, I, 2024-12-16 16:17:40, 7, 7369, null, Y, P25
+[2024-12-18 13:35:50] [selectDate] [TRACE] <==        Row: 2024003, I, 2024-12-16 16:19:45, 3, 7369, null, Y, P25
+[2024-12-18 13:35:50] [selectDate] [TRACE] <==        Row: 2024004, I, 2024-12-16 16:19:47, 6, 7369, null, Y, P25
+[2024-12-18 13:35:50] [selectDate] [TRACE] <==        Row: 2024005, I, 2024-12-16 16:19:48, 1, 7369, null, Y, P25
+[2024-12-18 13:35:50] [selectDate] [TRACE] <==        Row: 2024006, I, 2024-12-16 16:23:24, 1, 7369, null, Y, P24
+[2024-12-18 13:35:50] [selectDate] [TRACE] <==        Row: 2024007, O, 2024-12-16 16:26:16, 15, 7369, 1500000, Y, P25
+[2024-12-18 13:35:50] [selectDate] [TRACE] <==        Row: 2024008, O, 2024-12-16 16:32:41, 1, 7369, 1500000, Y, P24
+[2024-12-18 13:35:50] [selectDate] [TRACE] <==        Row: 2024010, I, 2024-12-16 17:29:53, 8, 7369, 0, Y, P25
+[2024-12-18 13:35:50] [selectDate] [TRACE] <==        Row: 2024011, I, 2024-12-16 17:36:49, 20, 7369, 0, Y, P22
+[2024-12-18 13:35:50] [selectDate] [TRACE] <==        Row: 2024012, I, 2024-12-16 17:38:53, 6, 7934, 0, Y, P23
+[2024-12-18 13:35:50] [selectDate] [TRACE] <==        Row: 2024021, I, 2024-12-17 17:49:41, 3, 7369, 0, Y, P23
+[2024-12-18 13:35:50] [selectDate] [TRACE] <==        Row: 2024022, I, 2024-12-18 11:06:22, 3, 7369, 0, Y, P23
+[2024-12-18 13:35:50] [selectDate] [DEBUG] <==      Total: 14
+[2024-12-18 13:36:28] [LogFactory] [DEBUG] Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[2024-12-18 13:36:28] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-18 13:36:28] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-18 13:36:28] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-18 13:36:28] [PooledDataSource] [DEBUG] PooledDataSource forcefully closed/removed all connections.
+[2024-12-18 13:36:28] [JdbcTransaction] [DEBUG] Opening JDBC Connection
+[2024-12-18 13:36:29] [PooledDataSource] [DEBUG] Created connection 932582590.
+[2024-12-18 13:36:29] [JdbcTransaction] [DEBUG] Setting autocommit to false on JDBC Connection [oracle.jdbc.driver.T4CConnection@379614be]
+[2024-12-18 13:36:29] [selectDate] [DEBUG] ==>  Preparing: SELECT STOCK_ID, GUBUN, STOCK_DATE, STOCK_AMOUNT, STOCK_MGR, STOCK_COST, IS_ACCEPTED ,PRODUCT_ID FROM STOCK WHERE TRUNC(STOCK_DATE) BETWEEN TO_DATE(?, 'YYYY-MM-DD')AND TO_DATE(?, 'YYYY-MM-DD')
+[2024-12-18 13:36:29] [selectDate] [DEBUG] ==> Parameters: 2024-12-17(String), 2024-12-18(String)
+[2024-12-18 13:36:29] [selectDate] [TRACE] <==    Columns: STOCK_ID, GUBUN, STOCK_DATE, STOCK_AMOUNT, STOCK_MGR, STOCK_COST, IS_ACCEPTED, PRODUCT_ID
+[2024-12-18 13:36:29] [selectDate] [TRACE] <==        Row: 2024023, I, 2024-12-18 12:48:14, 3, 7369, 0, Y, P23
+[2024-12-18 13:36:29] [selectDate] [TRACE] <==        Row: 2024021, I, 2024-12-17 17:49:41, 3, 7369, 0, Y, P23
+[2024-12-18 13:36:29] [selectDate] [TRACE] <==        Row: 2024022, I, 2024-12-18 11:06:22, 3, 7369, 0, Y, P23
+[2024-12-18 13:36:29] [selectDate] [DEBUG] <==      Total: 3
+>>>>>>> branch 'main' of https://github.com/chan0yeol/goodee_team_project.git
