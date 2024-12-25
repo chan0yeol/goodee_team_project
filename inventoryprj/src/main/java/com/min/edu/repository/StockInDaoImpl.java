@@ -46,5 +46,15 @@ public class StockInDaoImpl implements IStockInDao {
 		SqlSession session = manager.openSession(true);
 		return session.update(NS+"updateStockInAmount",dto);
 	}
+	@Override
+	public List<StockDto> selectDate(String start, String end) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<StockDto> selectByMgr(int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

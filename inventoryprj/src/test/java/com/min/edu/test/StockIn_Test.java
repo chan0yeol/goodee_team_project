@@ -50,6 +50,7 @@ public class StockIn_Test {
 		}
 	}
 	
+
 	@Test
 	public void selectStockByMgr_test() {
 		List<StockDto> list = dao.selectStockInByMgr(7369);
