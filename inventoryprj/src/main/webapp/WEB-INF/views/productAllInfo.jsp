@@ -2,10 +2,17 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<jsp:include page="header.jsp"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<style type="text/css">
+	.field {
+		justify-content: center;
+		
+	}
+</style>
 <title>제품 정보전체조회</title>
 </head>
 <%
@@ -13,7 +20,7 @@
 %>
 <body>
 <form method="post" action="./productInfo.do">
-	<div>
+	<div class="field">
 		<input type="text" id="id" name="id" placeholder="조회할 제품코드 입력">
 		<input type="submit" value="조회">
 	</div>
