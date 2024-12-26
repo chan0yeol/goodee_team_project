@@ -61,5 +61,10 @@ public class StockInDaoImpl implements IStockInDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public StockDto stockInDetail(int stock_id) {
+		SqlSession session = manager.openSession();
+		return session.selectOne(NS+"stockInDetail",stock_id);
+	}
 
 }

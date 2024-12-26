@@ -10,6 +10,7 @@ public interface IStockInDao {
 	public int insert(StockDto dto);
 	public List<StockDto> selectDate(String start, String end);
 	public List<StockDto> selectByMgr(int i);
+	public StockDto stockInDetail(int stockid);
 	
 	// 입고수정 추가(지원)
 	public int updateStockInAmount(StockDto dto);

@@ -55,7 +55,7 @@
 		  </where>
   	</select>
   	
-  
+  	
   	
   	<delete id="stockInDelete" parameterType="StockDto">
   		DELETE FROM STOCK
@@ -70,5 +70,12 @@
            AND STOCK_ID = #{stock_id}
   	</update>
   	
-  	
+  	<select id="stockInDetail" resultType="StockDto" parameterType="int">
+  		SELECT STOCK_ID, CASE GUBUN 
+						WHEN 'I' THEN '입고' 
+					END AS GUBUN , STOCK_DATE, STOCK_AMOUNT, STOCK_MGR, STOCK_COST,
+					PRODUCT_ID
+			FROM STOCK 
+			WHERE STOCK_ID = #{stock_id} 
+  	</select>
 </mapper>

@@ -70,7 +70,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>stockInInfo</servlet-name>
-		<url-pattern>/stockInInfo.do </url-pattern>
+		<url-pattern>/stockInInfo.do</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>stockInServlet</servlet-name>

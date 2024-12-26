@@ -50,14 +50,14 @@
 					%> <tr>
 						<td>
 							<input type="checkbox" name="" id="">
-						</td>
-						<td><%= dto.getStock_id()%></td>
+						</td><a href="./stockInInfo.do?id=<%= dto.getStock_id()%>"></a>
+						<td onclick="location.href='./stockInInfo.do?id='+<%= dto.getStock_id()%>"><%= dto.getStock_id()%></td>
 						<td><%= dto.getProduct_id()%></td>
 						<td><%= dto.getStock_mgr()%></td>
 						<td><%= dto.getStock_amount()%></td>
 						<td><%= dto.getStock_date() %></td>
 						<td>
-							<form action="./stockInDelete" method="DELETE">
+							<form action="./stockInDelete" method="get">
 								<input type="submit" value="<%=dto.getStock_id()%>">
 							</form>
 						</td>
