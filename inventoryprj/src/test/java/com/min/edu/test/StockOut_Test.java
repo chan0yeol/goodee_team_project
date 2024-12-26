@@ -65,7 +65,7 @@ public class StockOut_Test {
 	}
 	
 //	담당자이거나 관리자인경우 출고수량과 배송지를 수정하는 기능
-//	출고수량 수정
+//	- 1)출고수량 수정
 //	@Test
 	public void updateStockOutAmount_test() {
 		StockDto dto = new StockDto()
@@ -76,7 +76,7 @@ public class StockOut_Test {
 		int row = dao.updateStockOutAmount(dto);
 		assertEquals(1, row);
 	}
-//	배송지 수정
+//	- 2)배송지 수정
 //	@Test
 	public void updateStockOutDelivery_test() {
 		StockDto dto = new StockDto()
@@ -88,4 +88,26 @@ public class StockOut_Test {
 		assertEquals(1, row);
 	}
 
+//	입출고 재고조회
+//	@Test
+	public void selectStockInventory_test() {
+		List<StockDto> lists = dao.selectStockInventory();
+		assertNotEquals(0, lists.size());
+	}
+	
+// 출고수량 순 목록조회
+//	@Test
+	public void selectStockAmount_test() {
+		List<StockDto> lists = dao.selectStockAmount();
+		assertNotEquals(0, lists.size());
+	}
+	
+	
+// 매출액 순 목록조회
+//	@Test
+	public void selectStockSales_test() {
+		List<StockDto> lists = dao.selectStockSales();
+		assertNotEquals(0, lists.size());
+	}
+	
 }

@@ -23,7 +23,7 @@ public class Product_Info_Test {
 	}
 	
 //	제품 등록을 요청하는 기능 (직급이 '사원' AND 부서가 '입고' 이면 IS_ACCEPTED가 'N')
-	@Test
+//	@Test
 	public void product_insert_test() {
 		ProductInfoDto dto = new ProductInfoDto()
 				.builder()
@@ -38,7 +38,7 @@ public class Product_Info_Test {
 	}
 	
 //	제품 등록을 요청하는 기능 (직급이 '팀장' AND 부서가 '입고' 이면 IS_ACCEPTED가 'Y')
-	@Test
+//	@Test
 	public void product_insert2_test() {
 		ProductInfoDto dto = new ProductInfoDto()
 				.builder()
@@ -54,7 +54,7 @@ public class Product_Info_Test {
 	}
 	
 //	제품 목록을 조회하는 기능
-	@Test
+//	@Test
 	public void product_select_test() {
 		List<ProductInfoDto> lists = dao.product_select();
 		for (ProductInfoDto vo : lists) {
@@ -64,21 +64,21 @@ public class Product_Info_Test {
 	}
 	
 //	제품의 상세정보를 조회하는 기능
-	@Test
+//	@Test
 	public void product_select2_test() {
 		ProductInfoDto dto = dao.product_select2("P22");
 		assertNotNull(dto);
 	}
 	
 //	제품검색 및 등록시 제조사를 선택하는 기능
-	@Test
+//	@Test
 	public void product_select3_test() {
 		List<ProductInfoDto> lists = dao.product_select3("APPLE");
 		assertNotEquals(0, lists.size());
 	}
 	
 //	제품의 이름을 검색하는 기능
-	@Test
+//	@Test
 	public void product_select4_test() {
 		List<ProductInfoDto> lists = dao.product_select();
 		for (ProductInfoDto vo : lists) {

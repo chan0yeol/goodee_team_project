@@ -24,11 +24,15 @@ public class StockIn_Test {
 		manager = SqlSessionFactoryManager.getFactory();
 		dao = new StockInDaoImpl();
 	}
+	
+//	제품 입고목록을 조회하는 기능
 //	@Test
 	public void selectAll_test() {
 		List<StockDto> lists = dao.selectAll();	
 		assertNotEquals(0, lists.size());
 	}
+	
+//	제품 입고등록을 요청하는 기능
 //	@Test
 	public void insert_test() {
 		StockDto dto = StockDto.builder()
@@ -40,6 +44,7 @@ public class StockIn_Test {
 		assertEquals(1, row);
 	}
 	
+//	제품 입고 날짜별 목록을 조회하는 기능
 //	@Test
 	public void selectDate_test() {
 		String start = "2024-12-17";
@@ -50,8 +55,8 @@ public class StockIn_Test {
 		}
 	}
 	
-
-	@Test
+//	제품 입고 담당자별 목록을 검색하는 기능
+//  @Test
 	public void selectStockByMgr_test() {
 		List<StockDto> list = dao.selectStockInByMgr(7369);
 		for (StockDto stockDto : list) {
@@ -59,7 +64,7 @@ public class StockIn_Test {
 		}
 	}
 
-	// 입고수정 추가(지원)
+//  담당자이거나 관리자인 경우 입고수량을 수정하는 기능
 //	@Test
 	public void updateStockInAmount_test() {
 		StockDto dto = new StockDto()

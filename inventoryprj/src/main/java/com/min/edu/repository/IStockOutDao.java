@@ -16,4 +16,13 @@ public interface IStockOutDao {
 	
 	public int updateStockOutAmount(StockDto dto);
 	public int updateStockOutDelivery(StockDto dto);
+	
+	// 입출고 재고조회
+	public List<StockDto> selectStockInventory();
+	
+	// 출고수량 순 목록조회
+	public List<StockDto> selectStockAmount();
+	
+	// 매출액 순 목록조회
+	public List<StockDto> selectStockSales();
 }
