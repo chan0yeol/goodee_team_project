@@ -53,5 +53,26 @@ public class StockOutDaoImpl implements IStockOutDao {
 		SqlSession session = manager.openSession(true);
 		return session.update(NS+"updateStockOutDelivery",dto);
 	}
+	
+	// 입출고 재고조회
+	@Override
+	public List<StockDto> selectStockInventory() {
+		SqlSession session = manager.openSession();
+		return session.selectList(NS+"selectStockInventory");
+	}
 
+	// 출고수량 순 목록조회
+	@Override
+	public List<StockDto> selectStockAmount() {
+		SqlSession session = manager.openSession();
+		return session.selectList(NS+"selectStockAmount");
+	}	
+	
+	// 매출액 순 목록조회
+	@Override
+	public List<StockDto> selectStockSales() {
+		SqlSession session = manager.openSession();
+		return session.selectList(NS+"selectStockSales");
+	}
+	
 }

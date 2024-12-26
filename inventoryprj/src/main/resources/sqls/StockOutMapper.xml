@@ -51,5 +51,42 @@
         WHERE STOCK_DELIVERY.STOCK_ID = #{stock_id}
 	</update>
 	
+	<!-- 입출고 재고조회 -->
+	<!-- selectStockInventory -->
+	<select id="selectStockInventory" resultType="StockDto">
+		SELECT PRODUCT_ID, 입고수량, 출고수량, 입고수량-출고수량 AS 재고
+		FROM (SELECT PRODUCT_ID , SUM(STOCK_AMOUNT) AS 입고수량 
+		      FROM STOCK
+		      WHERE IS_ACCEPTED = 'Y' AND GUBUN = 'I'
+		      GROUP BY PRODUCT_ID) t1 
+		      JOIN (SELECT PRODUCT_ID , SUM(STOCK_AMOUNT) AS 출고수량 
+		            FROM STOCK s 
+		            WHERE IS_ACCEPTED = 'Y' AND GUBUN = 'O'
+		            GROUP BY PRODUCT_ID) t2
+		      USING (PRODUCT_ID)	
+	</select>
+	
+	<!-- 출고수량 순 목록조회 -->
+	<!-- selectStockAmount -->
+	<select id="selectStockAmount" resultType="StockDto">
+		SELECT STOCK_ID, GUBUN, STOCK_DATE, STOCK_MGR, STOCK_COST, IS_ACCEPTED, PRODUCT_ID,
+               "출고수량", DENSE_RANK() OVER(ORDER BY "출고수량" DESC) AS "수량순위"
+        FROM(SELECT STOCK_ID, GUBUN, STOCK_DATE, STOCK_MGR, STOCK_COST, IS_ACCEPTED, PRODUCT_ID,
+                    SUM(STOCK_AMOUNT) OVER(PARTITION BY PRODUCT_ID) AS "출고수량"
+             FROM STOCK
+             WHERE GUBUN = 'O')
+	</select>
+	
+	<!-- 매출액 순 목록조회 -->
+	<!-- selectStockSales -->
+	<select id="selectStockSales" resultType="StockDto">
+		SELECT STOCK_ID, GUBUN, STOCK_DATE, STOCK_MGR, STOCK_COST, IS_ACCEPTED, PRODUCT_ID,
+               "출고매출", DENSE_RANK() OVER(ORDER BY "출고매출" DESC) AS "매출순위"
+        FROM(SELECT STOCK_ID, GUBUN, STOCK_DATE, STOCK_MGR, STOCK_COST, IS_ACCEPTED, PRODUCT_ID,
+                    SUM(STOCK_AMOUNT*STOCK_COST) OVER(PARTITION BY PRODUCT_ID) AS "출고매출"
+             FROM STOCK
+             WHERE GUBUN = 'O')
+	</select>
+	
 
 </mapper>
