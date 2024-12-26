@@ -78,7 +78,7 @@ public class Product_Info_Test {
 	}
 	
 //	제품의 이름을 검색하는 기능
-//	@Test
+	@Test
 	public void product_select4_test() {
 		List<ProductInfoDto> lists = dao.product_select();
 		for (ProductInfoDto vo : lists) {

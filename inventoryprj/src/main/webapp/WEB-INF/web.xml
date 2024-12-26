@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="4.0"
-	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee                       http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+<web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee                       http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+	<!-- 로그인 -->
 	<servlet>
 		<servlet-name>loginServlet</servlet-name>
 		<servlet-class>com.min.edu.ctrl.LoginServlet</servlet-class>
@@ -11,6 +9,7 @@
 		<servlet-name>loginServlet</servlet-name>
 		<url-pattern>/loginServlet.do</url-pattern>
 	</servlet-mapping>
+	<!-- 제품 -->
 	<servlet>
 		<servlet-name>productAllInfoServlet</servlet-name>
 		<servlet-class>com.min.edu.ctrl.productAllInfoServlet</servlet-class>
@@ -28,6 +27,22 @@
 		<url-pattern>/productInfo.do</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>productMaker</servlet-name>
+		<servlet-class>com.min.edu.ctrl.productMakerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>productMaker</servlet-name>
+		<url-pattern>/productMaker.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>productName</servlet-name>
+		<servlet-class>com.min.edu.ctrl.productNameServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>productName</servlet-name>
+		<url-pattern>/productName.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>productInsertServlet</servlet-name>
 		<servlet-class>com.min.edu.ctrl.productInsertServlet</servlet-class>
 	</servlet>
@@ -35,6 +50,7 @@
 		<servlet-name>productInsertServlet</servlet-name>
 		<url-pattern>/productInsertServlet.do</url-pattern>
 	</servlet-mapping>
+	<!-- 입고 -->
 	<servlet>
 		<servlet-name>stockAllInfo</servlet-name>
 		<servlet-class>com.min.edu.ctrl.stockAllInfoServlet</servlet-class>
@@ -75,6 +91,7 @@
 		<servlet-name>stockInUpdate</servlet-name>
 		<url-pattern>/stockInUpdate.do</url-pattern>
 	</servlet-mapping>
+	<!-- 출고 -->
 	<servlet>
 		<servlet-name>stockOutAllInfo</servlet-name>
 		<servlet-class>com.min.edu.ctrl.stockOutAllInfoServlet</servlet-class>
@@ -123,6 +140,7 @@
 		<servlet-name>stockSales</servlet-name>
 		<url-pattern>/stockSales.do</url-pattern>
 	</servlet-mapping>
+	<!-- 관리자 -->
 	<servlet>
 		<servlet-name>ManagerProduct</servlet-name>
 		<servlet-class>com.min.edu.ctrl.ManagerProductServlet</servlet-class>
