@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee                       http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
-	<!-- 로그인 -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
 	<servlet>
 		<servlet-name>loginServlet</servlet-name>
 		<servlet-class>com.min.edu.ctrl.LoginServlet</servlet-class>
@@ -73,7 +75,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>stockInInfo</servlet-name>
-		<url-pattern>/stockInInfo.do </url-pattern>
+		<url-pattern>/stockInInfo.do</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>stockInServlet</servlet-name>
@@ -82,6 +84,14 @@
 	<servlet-mapping>
 		<servlet-name>stockInServlet</servlet-name>
 		<url-pattern>/stockInServlet.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>stockInMgr</servlet-name>
+		<servlet-class>com.min.edu.ctrl.stockInMgr</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>stockInMgr</servlet-name>
+		<url-pattern>/stockInMgr.do</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>stockInUpdate</servlet-name>
@@ -173,4 +183,17 @@
 		<servlet-name>ManagerAccept</servlet-name>
 		<url-pattern>/ManagerAccept.do</url-pattern>
 	</servlet-mapping>
+	<!-- Filter (로그인 없이 접근 가능한 페이지) -->
+	<filter>
+		<filter-name>accessFilter</filter-name>
+		<filter-class>com.min.edu.filter.AccessFilter</filter-class>
+		<init-param>
+			<param-name>excludeURL</param-name>
+			<param-value>/,/loginServlet.do</param-value>			
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>accessFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 </web-app>
