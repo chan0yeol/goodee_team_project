@@ -34,7 +34,7 @@
 	<select id="product_select4" resultType="com.min.edu.dto.ProductInfoDto">
 		SELECT PRODUCT_ID, PRODUCT_NAME , PRODUCT_MAKER , ORIGINAL_COST , PRODUCT_AMOUNT , IS_ACCEPTED 
                 FROM PRODUCT_INFO
-                WHERE PRODUCT_NAME LIKE '%#{value}%'      
+                WHERE PRODUCT_NAME LIKE CONCAT('%', #{value}, '%')      
 	</select>
 	
 	
