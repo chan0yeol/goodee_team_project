@@ -24,6 +24,7 @@ public class stockInServlet extends HttpServlet {
 	private	ProductInfoDao productDao = new ProductInfoDaoImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
 		List<ProductInfoDto> lists = productDao.product_select();
 		req.setAttribute("productList", lists);
 		req.getRequestDispatcher("/WEB-INF/views/stockInServlet.jsp").forward(req, resp);

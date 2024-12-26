@@ -6,6 +6,7 @@ import com.min.edu.dto.StockDto;
 
 public interface IStockInDao {
 	public List<StockDto> selectAll();
+	public List<StockDto> selectAll(int mgr);
 	public int insert(StockDto dto);
 	public List<StockDto> selectDate(String start, String end);
 	public List<StockDto> selectByMgr(int i);

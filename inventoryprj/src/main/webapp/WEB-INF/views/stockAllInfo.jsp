@@ -14,27 +14,37 @@
 <h1><%= s.getEname() %></h1>
 <main>
 	<div class="container">
+		<div class="position-absolute top-0 end-0">
 		<%
 			if(s.getDeptno() == 60) {
 				%> 
-					<div class="position-absolute top-0 end-0">
 						<a href="./stockInServlet.do" class="btn btn-danger">제품 등록</a>
-					</div>
 				<%
 			}
 		%>
+				<input type="number" name="mgr" id="mgr" placeholder="사원번호입력" required="required">
+				<button>검색</button>
+			
+		</div>
+		<% 
+			if(lists.size() == 0) {
+			%> <h2>정보가 없습니다.</h2><%		
+			} else{
+				%><h2>StockInAll</h2>
+					<table>
+						<tr>	
+							<th></th>
+							<th>ID</th>
+							<th>제품아이디</th>
+							<th>담당자</th>
+							<th>수량</th>
+							<th>날짜</th>
+							<th></th>
+						</tr> 
+				<%
+			}
+		%>		
 		
-		<h2>StockInAll</h2>
-		<table>
-			<tr>	
-				<th></th>
-				<th>ID</th>
-				<th>제품아이디</th>
-				<th>담당자</th>
-				<th>수량</th>
-				<th>날짜</th>
-				<th></th>
-			</tr>
 			<%
 				for(StockDto dto : lists) {
 					%> <tr>
@@ -55,17 +65,21 @@
 				}
 			%>
 		</table>
-		<fieldset>
-			<legend>입고 insert form</legend>
-			<form method="post" action="./stockInSave">
-				<input type="text" name="product_id" placeholder="제품번호"> <br />
-				<!--  <input type="text" name="stock_mgr" placeholder="담당자사원번호"> <br /> -->
-				<input type="text" name="stock_amount" placeholder="수량"><br />
-				
-				<input type="submit" value="insert">
-			</form>
-		</fieldset>
 	</div>
 </main>
 </body>
+<script type="text/javascript">
+	
+	document.querySelector("div.position-absolute>button").addEventListener('click', () => {
+		var mgr = document.getElementById("mgr").value;
+		console.log(mgr);
+		//alert(mgr);
+		if(mgr == '') {
+			alert('사원번호 입력하세요');
+		}else{
+			location.href='./stockAllInfo.do?mgr='+mgr;	
+		}
+		
+	})
+</script>
 </html>

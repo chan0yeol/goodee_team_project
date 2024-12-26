@@ -81,6 +81,14 @@
 		<url-pattern>/stockInServlet.do</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>stockInMgr</servlet-name>
+		<servlet-class>com.min.edu.ctrl.stockInMgr</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>stockInMgr</servlet-name>
+		<url-pattern>/stockInMgr.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>stockInUpdate</servlet-name>
 		<servlet-class>com.min.edu.ctrl.stockInUpdateServlet</servlet-class>
 	</servlet>

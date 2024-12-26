@@ -19,9 +19,15 @@ public class stockAllInfoServlet extends HttpServlet {
 	private IStockInDao dao = new StockInDaoImpl(); 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String mgr = req.getParameter("mgr");
+		List<StockDto> lists;
+		if(mgr == null) {
+			lists = dao.selectAll();
+		} else {
+			lists = dao.selectAll(Integer.parseInt(mgr));
+		}
 		
-		List<StockDto> list = dao.selectAll();
-		req.setAttribute("StockInList", list);
+		req.setAttribute("StockInList", lists);
 		req.getRequestDispatcher("/WEB-INF/views/stockAllInfo.jsp").forward(req, resp);
 	}
 }
