@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>home jsp</h2>
+	<h2>물류관리 홈페이지</h2>
 </body>
 </html>
