@@ -2,6 +2,7 @@ package com.min.edu.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.HashMap;
 import java.util.List;
@@ -74,6 +75,13 @@ public class StockIn_Test {
 				.build();
 		int row = dao.updateStockInAmount(dto);
 		assertEquals(1, row);
+	}
+	
+	// I106 입고정보 상세조회
+	@Test
+	public void stockInDetail_test() {
+		StockDto dto = dao.stockInDetail(Integer.parseInt("2024010"));
+		assertNotNull(dto);
 	}
 	
 }

@@ -6,9 +6,11 @@ import com.min.edu.dto.StockDto;
 
 public interface IStockInDao {
 	public List<StockDto> selectAll();
+	public List<StockDto> selectAll(int mgr);
 	public int insert(StockDto dto);
 	public List<StockDto> selectDate(String start, String end);
 	public List<StockDto> selectByMgr(int i);
+	public StockDto stockInDetail(int stockid);
 	
 	// 입고수정 추가(지원)
 	public int updateStockInAmount(StockDto dto);

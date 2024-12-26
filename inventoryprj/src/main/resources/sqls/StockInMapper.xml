@@ -20,7 +20,7 @@
   		INSERT INTO STOCK( STOCK_ID, GUBUN, STOCK_DATE,
 						STOCK_AMOUNT, STOCK_MGR, STOCK_COST,
 						IS_ACCEPTED ,PRODUCT_ID)
-		VALUES (TO_CHAR(SYSDATE,'YYYY')||LPAD(STOCK_SEQ.NEXTVAL,3,'0'),'I',SYSTIMESTAMP, #{stock_amount}, #{stock_mgr},'0','Y',#{product_id})
+		VALUES (TO_CHAR(SYSDATE,'YYYY')||LPAD(STOCK_SEQ.NEXTVAL,3,'0'),'I',SYSTIMESTAMP, #{stock_amount}, #{stock_mgr},'0',#{is_accepted},#{product_id})
   	</insert>
   	
   	<select id="selectDateRange" resultType="StockDto" parameterType="Map">
@@ -55,7 +55,7 @@
 		  </where>
   	</select>
   	
-  
+  	
   	
   	<delete id="stockInDelete" parameterType="StockDto">
   		DELETE FROM STOCK
@@ -70,5 +70,12 @@
            AND STOCK_ID = #{stock_id}
   	</update>
   	
-  	
+  	<select id="stockInDetail" resultType="StockDto" parameterType="int">
+  		SELECT STOCK_ID, CASE GUBUN 
+						WHEN 'I' THEN '입고' 
+					END AS GUBUN , STOCK_DATE, STOCK_AMOUNT, STOCK_MGR, STOCK_COST,
+					PRODUCT_ID
+			FROM STOCK 
+			WHERE STOCK_ID = #{stock_id} 
+  	</select>
 </mapper>

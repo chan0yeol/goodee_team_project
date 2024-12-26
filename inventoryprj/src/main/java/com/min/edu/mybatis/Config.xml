@@ -7,6 +7,8 @@
 		<typeAlias type="com.min.edu.dto.ProductInfoDto" alias="ProductInfoDto"/>
 
 		<typeAlias type="com.min.edu.dto.StockDto" alias="StockDto"/>
+		
+		<typeAlias type="com.min.edu.dto.EmpDto" alias="EmpDto"/>
 
 	</typeAliases>
 	<environments default="dev">
@@ -29,6 +31,8 @@
 		<mapper resource="sqls/StockOutMapper.xml"/>
 		
 		<mapper resource="sqls/ManagerMapper.xml"/>
+		
+		<mapper resource="sqls/EmpMapper.xml"/>
 
 	</mappers>
 </configuration>

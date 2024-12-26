@@ -20,6 +20,11 @@ public class StockInDaoImpl implements IStockInDao {
 		return session.selectList(NS+"selectStockInAll");
 	}
 	@Override
+	public List<StockDto> selectAll(int mgr) {
+		SqlSession session = manager.openSession();
+		return session.selectList(NS+"selectStockInByMgr",mgr);
+	}
+	@Override
 	public int insert(StockDto dto) {
 		SqlSession session = manager.openSession(true);
 		int row = session.insert(NS+"insert",dto);
@@ -55,6 +60,11 @@ public class StockInDaoImpl implements IStockInDao {
 	public List<StockDto> selectByMgr(int i) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	@Override
+	public StockDto stockInDetail(int stock_id) {
+		SqlSession session = manager.openSession();
+		return session.selectOne(NS+"stockInDetail",stock_id);
 	}
 
 }
