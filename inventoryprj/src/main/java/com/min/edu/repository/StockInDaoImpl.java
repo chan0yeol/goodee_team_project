@@ -66,5 +66,10 @@ public class StockInDaoImpl implements IStockInDao {
 		SqlSession session = manager.openSession();
 		return session.selectOne(NS+"stockInDetail",stock_id);
 	}
+	@Override
+	public StockDto selectById(int id) {
+		SqlSession session = manager.openSession();
+		return session.selectOne(NS+"selectById",id);
+	}
 
 }

@@ -24,7 +24,6 @@
 							<%
 						}
 					%>
-					<option value=""></option>
 				</select>
 				<!--  <input type="text" name="stock_mgr" placeholder="담당자사원번호"> <br /> -->
 				<input class="form-control" type="number" name="stock_amount" placeholder="수량" required="required"><br />
