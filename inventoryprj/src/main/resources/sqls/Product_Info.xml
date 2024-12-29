@@ -31,10 +31,10 @@
 			WHERE PRODUCT_MAKER = #{product_maker}
 	</select>
 	
-	<select id="product_select4" resultType="com.min.edu.dto.ProductInfoDto">
+	<select id="product_select4" parameterType="java.lang.String" resultType="com.min.edu.dto.ProductInfoDto">
 		SELECT PRODUCT_ID, PRODUCT_NAME , PRODUCT_MAKER , ORIGINAL_COST , PRODUCT_AMOUNT , IS_ACCEPTED 
                 FROM PRODUCT_INFO
-                WHERE PRODUCT_NAME LIKE CONCAT('%', #{value}, '%')      
+                WHERE PRODUCT_NAME LIKE '%' || #{val} || '%'      
 	</select>
 	
 	

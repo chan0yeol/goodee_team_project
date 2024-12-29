@@ -9,16 +9,24 @@
 <meta charset="UTF-8">
 <style type="text/css">
 	.field {
-		justify-content: center;
-		
+	    display: flex;
+	    justify-content: center;
+	    margin-right: 30px;
+	    margin-bottom: 10px;
 	}
 </style>
-<title>제품 정보전체조회</title>
+<title>제품게시판</title>
 </head>
-<%
-	List<ProductInfoDto> productInfo = (List<ProductInfoDto>)request.getAttribute("productInfo");
-%>
 <body>
+<div class="field">
+	<input class="btn btn-success btn-lg" type="button" value="제품등록">
+</div>
+<div class="field">
+<form method="post" action="./productAllInfo.do">
+	<div class="field">
+		<button type="submit" id="all" name="all">전체조회</button>
+	</div>
+</form>
 <form method="post" action="./productInfo.do">
 	<div class="field">
 		<input type="text" id="id" name="id" placeholder="조회할 제품코드 입력">
@@ -26,51 +34,23 @@
 	</div>
 </form>
 <form method="post" action="./productMaker.do">
-	<div>
+	<div class="field">
 		<input type="text" id="maker" name="maker" placeholder="조회할 제품제조사 입력">
 		<input type="submit" value="조회">
 	</div>
 </form>
-<form method="post" action="./productMaker.do">
-	<div>
+<form method="post" action="./productName.do">
+	<div class="field">
 		<input type="text" id="name" name="name" placeholder="조회할 제품이름 입력">
 		<input type="submit" value="조회">
 	</div>
 </form>
-
-
-<div class="container">
-	<table class="table table-striped">
-		<thead class="table-warning">
-			<tr>
-				<th>제품코드</th>
-				<th>이름</th>
-				<th>제조사</th>
-				<th>원가</th>
-				<th>수량</th>
-				<th>승인여부</th>
-			</tr>
-		</thead>
-		<tbody>
-			<%
-				for(ProductInfoDto dto : productInfo) {
-					%>
-						<tr>
-							<td><%=dto.getProduct_id()%></td>
-							<td><%=dto.getProduct_name()%></td>
-							<td><%=dto.getProduct_maker()%></td>
-							<td><%=dto.getOriginal_cost()%></td>
-							<td><%=dto.getProduct_amount()%></td>
-							<td><%=dto.getIs_accepted()%></td>
-						</tr>
-					<%
-				}
-			%>
-		</tbody>
-		<tfoot>
-		</tfoot>
-	</table>
 </div>
-
 </body>
+<script type="text/javascript">
+	document.querySelector("input[type=button]").onclick=function()  {
+		console.log("수정화면 이동");
+		location.href="./productInsertServlet.do";
+	}
+</script>
 </html>
