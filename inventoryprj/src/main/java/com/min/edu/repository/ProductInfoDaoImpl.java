@@ -53,7 +53,7 @@ public class ProductInfoDaoImpl implements ProductInfoDao {
 	}
 	
 	@Override
-	public List<ProductInfoDto> product_select4() {
+	public List<ProductInfoDto> product_select4(Map<String, Object> map) {
 		SqlSession session = manager.openSession();
 		return session.selectList(NS+"product_select4");
 	}

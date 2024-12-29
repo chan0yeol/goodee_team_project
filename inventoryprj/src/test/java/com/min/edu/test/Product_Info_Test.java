@@ -80,10 +80,10 @@ public class Product_Info_Test {
 //	제품의 이름을 검색하는 기능
 	@Test
 	public void product_select4_test() {
-		List<ProductInfoDto> lists = dao.product_select();
-		for (ProductInfoDto vo : lists) {
-			System.out.println(vo.toString());
-		}
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("val", "아이폰");
+		ProductInfoDao dao = new ProductInfoDaoImpl();
+		List<ProductInfoDto> lists = dao.product_select4(map);
 		assertNotEquals(0, lists.size());
 	}
 	

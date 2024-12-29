@@ -7,32 +7,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>제품 정보전체조회</title>
+<title>제품 이름검색</title>
 </head>
 <%
-	List<ProductInfoDto> productInfo = (List<ProductInfoDto>)request.getAttribute("productInfo");
+	List<ProductInfoDto> productInfo = (List<ProductInfoDto>)request.getAttribute("productDto");
 %>
 <body>
-<form method="post" action="./productInfo.do">
-	<div>
-		<input type="text" id="id" name="id" placeholder="조회할 제품코드 입력">
-		<input type="submit" value="조회">
-	</div>
-</form>
-<form method="post" action="./productMaker.do">
-	<div>
-		<input type="text" id="maker" name="maker" placeholder="조회할 제품제조사 입력">
-		<input type="submit" value="조회">
-	</div>
-</form>
-<form method="post" action="./productName.do">
-	<div>
-		<input type="text" id="name" name="name" placeholder="조회할 제품이름 입력">
-		<input type="submit" value="조회">
-	</div>
-</form>
-
-
 <div class="container">
 	<table class="table table-striped">
 		<thead class="table-warning">
@@ -65,11 +45,5 @@
 		</tfoot>
 	</table>
 </div>
-<form method="post" action="./productInsertServlet.do">
-	<div>
-		<button type="submit" id="insert" name="insert">등록</button>
-	</div>
-</form>
-
 </body>
 </html>

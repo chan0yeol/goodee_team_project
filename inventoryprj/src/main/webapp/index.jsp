@@ -2,12 +2,13 @@
     pageEncoding="UTF-8"%>
 <jsp:include page="WEB-INF/views/header.jsp"/>
 <!DOCTYPE html>
-<html>
+<html> 
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+	
 
 </body>
 </html>
