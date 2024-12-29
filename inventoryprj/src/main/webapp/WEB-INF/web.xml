@@ -52,6 +52,16 @@
 		<servlet-name>productInsertServlet</servlet-name>
 		<url-pattern>/productInsertServlet.do</url-pattern>
 	</servlet-mapping>
+	<!-- 재고조회 -->
+	<servlet>
+		<servlet-name>stockInAllInfo</servlet-name>
+		<servlet-class>com.min.edu.ctrl.stockInAllInfoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>stockInAllInfo</servlet-name>
+		<url-pattern>/stockInAllInfo.do</url-pattern>
+	</servlet-mapping>
+	
 	<!-- 입고 -->
 	<servlet>
 		<servlet-name>stockAllInfo</servlet-name>
@@ -60,14 +70,6 @@
 	<servlet-mapping>
 		<servlet-name>stockAllInfo</servlet-name>
 		<url-pattern>/stockAllInfo.do</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>stockInAllInfo</servlet-name>
-		<servlet-class>com.min.edu.ctrl.stockInAllInfoServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>stockInAllInfo</servlet-name>
-		<url-pattern>/stockInAllInfo.do</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>stockInInfo</servlet-name>

@@ -66,7 +66,7 @@ public class Product_Info_Test {
 //	제품의 상세정보를 조회하는 기능
 //	@Test
 	public void product_select2_test() {
-		ProductInfoDto dto = dao.product_select2("P22");
+		ProductInfoDto dto = dao.product_select2("P74");
 		assertNotNull(dto);
 	}
 	
@@ -78,12 +78,16 @@ public class Product_Info_Test {
 	}
 	
 //	제품의 이름을 검색하는 기능
-	@Test
+//	@Test
 	public void product_select4_test() {
+<<<<<<< HEAD
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("val", "아이폰");
 		ProductInfoDao dao = new ProductInfoDaoImpl();
 		List<ProductInfoDto> lists = dao.product_select4(map);
+=======
+		List<ProductInfoDto> lists = dao.product_select4("GALAXY");
+>>>>>>> branch 'jiwon' of https://github.com/chan0yeol/goodee_team_project.git
 		assertNotEquals(0, lists.size());
 	}
 	

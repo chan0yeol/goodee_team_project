@@ -31,10 +31,18 @@
 			WHERE PRODUCT_MAKER = #{product_maker}
 	</select>
 	
+<<<<<<< HEAD
 	<select id="product_select4" parameterType="java.util.Map" resultType="com.min.edu.dto.ProductInfoDto">
+=======
+	<select id="product_select4" parameterType="java.lang.String" resultType="com.min.edu.dto.ProductInfoDto">
+>>>>>>> branch 'jiwon' of https://github.com/chan0yeol/goodee_team_project.git
 		SELECT PRODUCT_ID, PRODUCT_NAME , PRODUCT_MAKER , ORIGINAL_COST , PRODUCT_AMOUNT , IS_ACCEPTED 
                 FROM PRODUCT_INFO
+<<<<<<< HEAD
                 WHERE PRODUCT_NAME LIKE '%' || #{val, jdbcType=VARCHAR}
+=======
+                WHERE PRODUCT_NAME LIKE '%' || #{val} || '%'      
+>>>>>>> branch 'jiwon' of https://github.com/chan0yeol/goodee_team_project.git
 	</select>
 	
 	
