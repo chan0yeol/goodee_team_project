@@ -53,11 +53,7 @@ public class ProductInfoDaoImpl implements ProductInfoDao {
 	}
 	
 	@Override
-<<<<<<< HEAD
-	public List<ProductInfoDto> product_select4(Map<String, Object> map) {
-=======
 	public List<ProductInfoDto> product_select4(String string) {
->>>>>>> branch 'jiwon' of https://github.com/chan0yeol/goodee_team_project.git
 		SqlSession session = manager.openSession();
 		return session.selectList(NS+"product_select4", string);
 	}

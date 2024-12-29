@@ -17,9 +17,5 @@ public interface ProductInfoDao {
 	
 	public List<ProductInfoDto> product_select3(String string);
 	
-<<<<<<< HEAD
-	public List<ProductInfoDto> product_select4(Map<String, Object> map);
-=======
 	public List<ProductInfoDto> product_select4(String string);
->>>>>>> branch 'jiwon' of https://github.com/chan0yeol/goodee_team_project.git
 }

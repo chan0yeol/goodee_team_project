@@ -19,29 +19,12 @@ public class productInsertServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-<<<<<<< HEAD
-		
-		SString name = req.getParameter("name");
-		HttpSession session = req.getSession();
-		ProductInfoDto productDto =(ProductInfoDto)session.getAttribute("productDto");
-		ProductInfoDao dao = new ProductInfoDaoImpl();
-		List<ProductInfoDto> dto = dao.product_select();
-		
-		if(dto.equals(name)) {
-			req.setAttribute("dto", dto);
-			req.getRequestDispatcher("/WEB-INF/views/productInsertServlet.jsp").forward(req, resp);
-		}
-		else {
-			resp.sendRedirect("./productAllInfo.do");
-		}
-=======
 		HttpSession session = req.getSession();
 		ProductInfoDao dao = new ProductInfoDaoImpl();
 		List<ProductInfoDto> dto = dao.product_select();
 		
 		req.setAttribute("productInfo", dto);
 		req.getRequestDispatcher("/WEB-INF/views/productInsertServlet.jsp").forward(req, resp);
->>>>>>> branch 'jiwon' of https://github.com/chan0yeol/goodee_team_project.git
 	}
 	
 	@Override
