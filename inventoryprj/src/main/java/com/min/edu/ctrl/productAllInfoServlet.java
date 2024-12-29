@@ -22,13 +22,27 @@ public class productAllInfoServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
-		ProductInfoDto productDto =(ProductInfoDto)session.getAttribute("productDto");
+		ProductInfoDto productDto =(ProductInfoDto)session.getAttribute("productInfo");
 		ProductInfoDao dao = new ProductInfoDaoImpl();
 		List<ProductInfoDto> dto = dao.product_select();
 		
 		req.setAttribute("productInfo", dto);
 		req.getRequestDispatcher("/WEB-INF/views/productAllInfo.jsp").forward(req, resp); 
 		
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String all = req.getParameter("all");
+		ProductInfoDao dao = new ProductInfoDaoImpl();
+		List<ProductInfoDto> dto = dao.product_select();
 		
+		if(all != null) {
+			req.setAttribute("productInfo", dto);
+			req.getRequestDispatcher("/WEB-INF/views/productAll.jsp").forward(req, resp);
+		}
+		else {
+			resp.getWriter().write("조회안됨");
+		}
 	}
 }
