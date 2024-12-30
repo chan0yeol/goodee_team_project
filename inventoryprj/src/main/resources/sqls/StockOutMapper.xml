@@ -59,7 +59,7 @@
 		      FROM STOCK
 		      WHERE IS_ACCEPTED = 'Y' AND GUBUN = 'I'
 		      GROUP BY PRODUCT_ID) t1 
-		      JOIN (SELECT PRODUCT_ID , SUM(STOCK_AMOUNT) AS 출고수량 
+		      FULL OUTER JOIN (SELECT PRODUCT_ID , SUM(STOCK_AMOUNT) AS 출고수량 
 		            FROM STOCK s 
 		            WHERE IS_ACCEPTED = 'Y' AND GUBUN = 'O'
 		            GROUP BY PRODUCT_ID) t2

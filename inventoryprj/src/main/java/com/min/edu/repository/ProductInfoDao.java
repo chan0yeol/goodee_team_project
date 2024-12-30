@@ -17,5 +17,5 @@ public interface ProductInfoDao {
 	
 	public List<ProductInfoDto> product_select3(String string);
 	
-	public List<ProductInfoDto> product_select4();
+	public List<ProductInfoDto> product_select4(String string);
 }
