@@ -22,13 +22,7 @@
 		%>
 		
 		<div class="position-absolute top-0 end-0">
-		<%
-			if(s.getDeptno() == 60) {
-				%> 
-						<a href="./stockInServlet.do" class="btn btn-danger">제품 등록</a>
-				<%
-			}
-		%>
+		
 				<input type="number" name="mgr" id="mgr" placeholder="사원번호입력" required="required">
 				<button>검색</button>
 			
@@ -37,7 +31,7 @@
 			if(lists.size() == 0) {
 			%> <h2>정보가 없습니다.</h2><%		
 			} else{
-				%><h2>StockInAll</h2>
+				%><h2>승인대기목록</h2>
 					<table>
 						<tr>	
 							<th></th>
@@ -54,39 +48,30 @@
 		
 			<%
 				for(StockDto dto : lists) {
-					%> <tr>
-						<td>
-							<input type="checkbox" name="" id="">
-						</td><a href="./stockInInfo.do?id=<%= dto.getStock_id()%>"></a>
-						<td onclick="location.href='./stockInInfo.do?id='+<%= dto.getStock_id()%>"><%= dto.getStock_id()%></td>
-						<td><%= dto.getProduct_id()%></td>
-						<td><%= dto.getStock_mgr()%></td>
-						<td><%= dto.getStock_amount()%></td>
-						<td><%= dto.getStock_date() %></td>
-						<td>
-							<form action="./stockInDelete" method="get">
-								<input type="submit" value="<%=dto.getStock_id()%>">
-							</form>
-						</td>
-					</tr> <%
+					%>
+					
+						<tr>
+							<td>
+								<input type="checkbox" name="" id="">
+							</td><a href="./stockInInfo.do?id=<%= dto.getStock_id()%>"></a>
+							<td onclick="location.href='./stockInInfo.do?id='+<%= dto.getStock_id()%>"><%= dto.getStock_id()%></td>
+							<td><%= dto.getProduct_id()%></td>
+							<td><%= dto.getStock_mgr()%></td>
+							<td><%= dto.getStock_amount()%></td>
+							<td><%= dto.getStock_date() %></td>
+							<td>
+								<form action="./ManagerAccept.do" method="post">
+									<input type="hidden" value="<%=dto.getStock_id()%>" name="id">
+									<button type="submit" value="<%=dto.getStock_id()%>">승인</button>
+								</form>
+							</td>
+						</tr>
+					
+					 <%
 				}
 			%>
 		</table>
 	</div>
 </main>
 </body>
-<script type="text/javascript">
-	
-	document.querySelector("div.position-absolute>button").addEventListener('click', () => {
-		var mgr = document.getElementById("mgr").value;
-		console.log(mgr);
-		//alert(mgr);
-		if(mgr == '') {
-			alert('사원번호 입력하세요');
-		}else{
-			location.href='./stockAllInfo.do?mgr='+mgr;	
-		}
-		
-	})
-</script>
 </html>

@@ -36,7 +36,7 @@
 			if(lists.size() == 0) {
 			%> <h2>정보가 없습니다.</h2><%		
 			} else{
-				%><h2>StockInAll</h2>
+				%><h2>입고목록</h2>
 					<table>
 						<tr>	
 							<th></th>
