@@ -24,7 +24,7 @@
 		<%
 			if(s.getDeptno() == 60) {
 				%> 
-						<a href="./stockInServlet.do" class="btn btn-danger">제품 등록</a>
+						<a href="./stockInServlet.do" class="btn btn-danger">입고 등록</a>
 				<%
 			}
 		%>
@@ -36,10 +36,10 @@
 			if(lists.size() == 0) {
 			%> <h2>정보가 없습니다.</h2><%		
 			} else{
-				%><h2>StockInAll</h2>
+				%><h2>입고목록</h2>
 					<table>
 						<tr>	
-							<th></th>
+							<!--  <th></th>-->
 							<th>ID</th>
 							<th>제품아이디</th>
 							<th>담당자</th>
@@ -54,10 +54,13 @@
 			<%
 				for(StockDto dto : lists) {
 					%> <tr>
+						<!-- 
 						<td>
 							<input type="checkbox" name="" id="">
-						</td><a href="./stockInInfo.do?id=<%= dto.getStock_id()%>"></a>
-						<td onclick="location.href='./stockInInfo.do?id='+<%= dto.getStock_id()%>"><%= dto.getStock_id()%></td>
+						</td>
+						<a href="./stockInInfo.do?id=<%= dto.getStock_id()%>"></a> -->
+						
+						<td><a href="./stockInInfo.do?id=<%= dto.getStock_id()%>"><%= dto.getStock_id()%></a></td>
 						<td><%= dto.getProduct_id()%></td>
 						<td><%= dto.getStock_mgr()%></td>
 						<td><%= dto.getStock_amount()%></td>

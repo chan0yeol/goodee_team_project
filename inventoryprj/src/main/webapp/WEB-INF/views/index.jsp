@@ -5,12 +5,16 @@
 		Object obj = request.getAttribute("fail");
 		String fail = (String) obj;
 	%>
-    	<h1><%
+    	<h1>
+    		<%
     		if(fail != null) {
-    			%><%=fail%>
+    			%>
+    				<%=fail%>
     			<%
     		}
-    	%></h1>
+    		%>
+    		
+    	</h1>
         <main class="form-signin w-100 m-auto">
             <div class="container">
                 <form action="./loginServlet.do" method="post">

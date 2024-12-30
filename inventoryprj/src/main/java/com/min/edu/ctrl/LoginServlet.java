@@ -61,7 +61,7 @@ public class LoginServlet extends HttpServlet {
 		} else {
 			String fail = "로그인 실패";
 			req.setAttribute("fail", fail);
-			req.getRequestDispatcher("./").forward(req, resp);
+			req.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(req, resp);
 		}
 	}
 }
