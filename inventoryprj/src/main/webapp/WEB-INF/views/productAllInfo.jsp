@@ -7,9 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<<<<<<< HEAD
 <title>제품 정보전체조회</title>
-=======
 <style type="text/css">
 	.field {
 	    display: flex;
@@ -19,7 +17,6 @@
 	}
 </style>
 <title>제품게시판</title>
->>>>>>> branch 'jiwon' of https://github.com/chan0yeol/goodee_team_project.git
 </head>
 <body>
 <div class="field">
@@ -44,25 +41,12 @@
 	</div>
 </form>
 <form method="post" action="./productName.do">
-<<<<<<< HEAD
-	<div>
-=======
 	<div class="field">
->>>>>>> branch 'jiwon' of https://github.com/chan0yeol/goodee_team_project.git
 		<input type="text" id="name" name="name" placeholder="조회할 제품이름 입력">
 		<input type="submit" value="조회">
 	</div>
 </form>
 </div>
-<<<<<<< HEAD
-<form method="post" action="./productInsertServlet.do">
-	<div>
-		<button type="submit" id="insert" name="insert">등록</button>
-	</div>
-</form>
-
-=======
->>>>>>> branch 'jiwon' of https://github.com/chan0yeol/goodee_team_project.git
 </body>
 <script type="text/javascript">
 	document.querySelector("input[type=button]").onclick=function()  {

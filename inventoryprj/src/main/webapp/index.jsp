@@ -12,11 +12,6 @@
 %>
 </head>
 <body>
-<<<<<<< HEAD
-	
-
-=======
 	<h1 style="text-align: center;">'<%= s.getEname() %>'님 환영합니다.</h1>
->>>>>>> branch 'jiwon' of https://github.com/chan0yeol/goodee_team_project.git
 </body>
 </html>
