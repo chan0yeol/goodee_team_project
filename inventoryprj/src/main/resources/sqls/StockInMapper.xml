@@ -14,6 +14,7 @@
             IS_ACCEPTED ,PRODUCT_ID
         FROM STOCK
         WHERE GUBUN = 'I' AND IS_ACCEPTED = 'Y'
+        ORDER BY STOCK_DATE DESC
 	</select>
 	
 	<insert id="insert" parameterType="StockDto">
