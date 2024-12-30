@@ -39,7 +39,7 @@
 			<tr>
 				<%
 					if(stock.getStock_mgr() == s.getEmpno() || s.getJob().equals("팀장")){
-						%><button>수정</button><%
+						%><button onclick="location.href='./stockInUpdate.do?id='+<%=stock.getStock_id() %>">수정</button><%
 					}
 				%>
 				

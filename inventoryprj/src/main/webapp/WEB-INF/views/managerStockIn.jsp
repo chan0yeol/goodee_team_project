@@ -14,6 +14,7 @@
 <h1><%= s.getEname() %></h1>
 <main>
 	<div class="container">
+	<h1>관리자페이지</h1>
 		<%
 			if(s.getEmpno() == 60 && s.getJob().equals("팀장")) {
 				%> <h2><a href="./ManagerStockIn.do">관리자페이지 이동</a> </h2><%

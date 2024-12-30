@@ -78,4 +78,7 @@
 			FROM STOCK 
 			WHERE STOCK_ID = #{stock_id} 
   	</select>
+  	<select id="selectById" resultType="StockDto" parameterType="int">
+  		SELECT * FROM STOCK WHERE STOCK_ID = #{stock_id}
+  	</select>
 </mapper>
