@@ -16,7 +16,6 @@
         WHERE GUBUN = 'I' AND IS_ACCEPTED = 'Y'
         ORDER BY STOCK_DATE DESC
 	</select>
-	
 	<insert id="insert" parameterType="StockDto">
   		INSERT INTO STOCK( STOCK_ID, GUBUN, STOCK_DATE,
 						STOCK_AMOUNT, STOCK_MGR, STOCK_COST,
