@@ -1,25 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>입고정보</title>
+<title>출고정보</title>
 <%@ include file="./header.jsp" %>
 </head>
 <body>
-	<h1>${emp.ename }</h1>
+	<h1>${emp.ename}</h1>
 	<main>
 		<div class="container">
-			<c:if test="${emp.detpno eq 60 && emp.job eq '팀장' }">
+			<c:if test="${emp.detpno eq 70 && emp.job eq '팀장' }">
 				<h2>
 					<a href="./ManagerStockIn.do">관리자페이지 이동</a>
 				</h2>
 			</c:if>
-
-
 			<div class="position-absolute top-0 end-0">
-				<c:if test="${emp.deptno eq 60}">
+				<c:if test="${emp.deptno eq 70}">
 					<a href="./stockInServlet.do" class="btn btn-danger">입고 등록</a>
 				</c:if>
 
@@ -29,7 +27,7 @@
 
 			</div>
 			<c:choose>
-				<c:when test="${fn:length(StockInList) eq 0 }">
+				<c:when test="${fn:length(StockOutList) eq 0 }">
 					<h2>정보가 없습니다.</h2>
 				</c:when>
 				<c:otherwise>
@@ -44,7 +42,7 @@
 							<th>날짜</th>
 							<th></th>
 						</tr>
-						<c:forEach items="${StockInList}" var="dto" varStatus="vs">
+						<c:forEach items="${StockOutList}" var="dto" varStatus="vs">
 							<tr>
 								<td><a href="./stockInInfo.do?id=${dto.stock_id}">${dto.stock_id}</a></td>
 								<td>${dto.product_id}</td>
@@ -74,7 +72,7 @@
 		if(mgr == '') {
 			alert('사원번호 입력하세요');
 		}else{
-			location.href='./stockAllInfo.do?mgr='+mgr;	
+			location.href='./stockOutInfo.do?mgr='+mgr;	
 		}
 		
 	})
