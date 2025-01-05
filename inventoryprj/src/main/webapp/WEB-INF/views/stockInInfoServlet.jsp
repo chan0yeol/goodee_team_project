@@ -1,14 +1,17 @@
-<%@page import="com.min.edu.dto.EmpDto"%>
-<%@page import="com.min.edu.dto.ProductInfoDto"%>
-<%@page import="com.min.edu.dto.StockDto"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:include page="header.jsp"/>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<%@ include file="./header.jsp" %>
+<body>
 <%
-	StockDto stock = (StockDto)request.getAttribute("stockIn");
-	ProductInfoDto product = (ProductInfoDto)request.getAttribute("product");
-	EmpDto s = (EmpDto)session.getAttribute("emp");
+// 	StockDto stock = (StockDto)request.getAttribute("stockIn");
+// 	ProductInfoDto product = (ProductInfoDto)request.getAttribute("product");
+// 	EmpDto s = (EmpDto)session.getAttribute("emp");
 %>
 <main>
 	<div class="container">
@@ -26,23 +29,20 @@
 				<th>브랜드</th>
 			</tr>
 			<tr>
-				<td><%= product.getProduct_id() %></td>
-				<td><%= product.getProduct_name()%></td>
-				<td><%= stock.getStock_id()%></td>
-				<td><%= stock.getGubun()%></td>
-				<td><%= stock.getStock_date()%></td>
-				<td><%= stock.getStock_amount()%></td>
-				<td><%= stock.getStock_mgr()%></td>
-				<td><%= stock.getStock_cost()%></td>
-				<td><%= product.getProduct_maker()%></td>
+				<td>${product.product_id}</td>
+				<td>${product.product_name}</td>
+				<td>${stock.stock_id}</td>
+				<td>${stock.gubun}</td>
+				<td>${stock.stock_date}</td>
+				<td>${stock.stock_amount}</td>
+				<td>${stock.stock_mgr}</td>
+				<td>${stock.stock_cost}</td>
+				<td>${product.product_maker}</td>
 			</tr>
 			<tr>
-				<%
-					if(stock.getStock_mgr() == s.getEmpno() || s.getJob().equals("팀장")){
-						%><button onclick="location.href='./stockInUpdate.do?id='+<%=stock.getStock_id() %>">수정</button><%
-					}
-				%>
-				
+				<c:if test="${stock.stock_mgr eq emp.empno || emp.job eq '팀장' }">
+					<button onclick="location.href='./stockInUpdate.do?id='+${stock.stock_id}">수정</button>
+				</c:if>
 				<button onclick="history.back()">뒤로가기</button>
 			</tr>
 		</table>
@@ -50,4 +50,4 @@
 	
 </main>
 </body>
-</html> 
+</html>
