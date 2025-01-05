@@ -26,6 +26,11 @@ public class StockOutDaoImpl implements IStockOutDao {
 		SqlSession session = manager.openSession();
 		return session.selectList(NS+"selectStockOutAll");
 	}
+	@Override
+	public List<StockDto> selectStockOutAll(int i) {
+		SqlSession session = manager.openSession();
+		return session.selectList(NS+"selectStockOutByMgr",i);
+	}
 
 	@Override
 	public List<StockDto> selectOutDateRange(String start, String end) {
@@ -74,5 +79,9 @@ public class StockOutDaoImpl implements IStockOutDao {
 		SqlSession session = manager.openSession();
 		return session.selectList(NS+"selectStockSales");
 	}
-	
+	@Override
+	public StockDto selectStockOutDetail(int stock_id) {
+		SqlSession s = manager.openSession();
+		return s.selectOne(NS+"stockOutDetail", stock_id);
+	}
 }

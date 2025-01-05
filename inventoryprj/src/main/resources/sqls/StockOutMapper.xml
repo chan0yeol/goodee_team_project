@@ -87,6 +87,14 @@
              FROM STOCK
              WHERE GUBUN = 'O')
 	</select>
-	
+	<!-- 출고 상세정보 -->
+	<select id="stockOutDetail" resultType="StockDto" parameterType="int">
+  		SELECT STOCK_ID, CASE GUBUN 
+						WHEN 'O' THEN '출고' 
+					END AS GUBUN , STOCK_DATE, STOCK_AMOUNT, STOCK_MGR, STOCK_COST,
+					PRODUCT_ID
+			FROM STOCK 
+			WHERE STOCK_ID = #{stock_id} 
+  	</select>
 
 </mapper>

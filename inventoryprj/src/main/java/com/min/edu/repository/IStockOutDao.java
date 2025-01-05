@@ -9,6 +9,7 @@ public interface IStockOutDao {
 	public int insertStockOut(StockDto dto);
 
 	public List<StockDto> selectStockOutAll();
+	public List<StockDto> selectStockOutAll(int mgr);
 
 	public List<StockDto> selectOutDateRange(String start, String end);
 
@@ -25,4 +26,7 @@ public interface IStockOutDao {
 	
 	// 매출액 순 목록조회
 	public List<StockDto> selectStockSales();
+	
+	//출고 상세정보
+	public StockDto selectStockOutDetail(int stock_id);
 }
