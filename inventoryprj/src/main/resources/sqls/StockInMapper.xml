@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.min.edu.repository.StockInDaoImpl">
+
 	<sql id="allColumn">
 		SELECT STOCK_ID, GUBUN, STOCK_DATE,
             STOCK_AMOUNT, STOCK_MGR, STOCK_COST,
@@ -8,6 +9,7 @@
   			FROM STOCK
   			WHERE GUBUN = 'I'
 	</sql>
+	
 	<select id="selectStockInAll" resultType="StockDto">
 		SELECT STOCK_ID, GUBUN, STOCK_DATE,
             STOCK_AMOUNT, STOCK_MGR, STOCK_COST,
@@ -41,6 +43,7 @@
         WHERE GUBUN = 'I' AND IS_ACCEPTED = 'Y'
         AND STOCK_MGR = #{x}
   	</select>
+  	
   	<select id="selectDynamicDate" resultType="StockDto" parameterType="Map">
   		<include refid="allColumn"/>
 		  <where>

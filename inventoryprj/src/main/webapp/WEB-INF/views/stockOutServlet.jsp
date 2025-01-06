@@ -15,9 +15,9 @@
 <main>
 	<div class="container">
 		이름 : ${emp.ename} 사원번호 : ${emp.empno} 직급 : ${emp.job}
-		<h3>입고 insert form</h3>
+		<h3>출고 insert form</h3>
 		 <div>
-			<form method="post" action="./stockInServlet.do">
+			<form method="post" action="./stockOutServlet.do">
 				<!-- <input class="form-control" type="text" name="product_id" placeholder="제품번호" required="required"> <br /> -->
 				<select name="product_id" class="form-select mb-3">
 					<c:forEach items="${productList}" var="dto" varStatus="vs">
