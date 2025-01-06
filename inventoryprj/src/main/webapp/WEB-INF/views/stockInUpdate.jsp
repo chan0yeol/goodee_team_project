@@ -22,7 +22,7 @@
 			<label for="mgr">담당자</label>
 			<input class="form-control mb-3" type="text" id="mgr" readonly="readonly" disabled value="${stock.stock_mgr}">
 			<label for="cost">판매가</label>
-			<input class="form-control mb-3" type="text" id="cost" readonly="readonly" disabled value="${stock.stock_cost">
+			<input class="form-control mb-3" type="text" id="cost" readonly="readonly" disabled value="${stock.stock_cost}">
 			<label for="amount">수량</label>
 			<input class="form-control mb-3" type="text" id="amount" required="required" name="amount" value="${stock.stock_amount}">
 			<button type="submit">수정</button>

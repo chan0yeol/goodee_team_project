@@ -1,19 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 <%@ include file="./header.jsp" %>
+</head>
+<body>
 	<%
-		Object obj = request.getAttribute("fail");
-		String fail = (String) obj;
+// 		Object obj = request.getAttribute("fail");
+// 		String fail = (String) obj;
 	%>
     	<h1>
-    		<%
-    		if(fail != null) {
-    			%>
-    				<%=fail%>
-    			<%
-    		}
-    		%>
-    		
+    		<c:if test="${fail eq null }">
+    			${fail}
+    		</c:if>
     	</h1>
         <main class="form-signin w-100 m-auto">
             <div class="container">
@@ -33,5 +36,5 @@
                 </form>
             </div>
         </main>
-    </body>
-    
+</body>
+</html>

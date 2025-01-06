@@ -11,7 +11,7 @@
 	<h1>${emp.ename }</h1>
 	<main>
 		<div class="container">
-			<c:if test="${emp.detpno eq 60 && emp.job eq '팀장' }">
+			<c:if test="${emp.deptno eq 60 && emp.job eq '팀장'}">
 				<h2>
 					<a href="./ManagerStockIn.do">관리자페이지 이동</a>
 				</h2>

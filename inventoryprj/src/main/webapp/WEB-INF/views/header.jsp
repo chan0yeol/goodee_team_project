@@ -161,7 +161,7 @@ td {
                     </svg> <br /> 출고
 				</a>
 			</div>
-			<c:if test="${emp ne null && {emp.job eq '팀장' }">
+			<c:if test="${emp ne null && emp.job eq '팀장' }">
 				<div class="link">
 					<c:choose>
 						<c:when test="${emp.deptno eq 50 }">
@@ -173,7 +173,8 @@ td {
 						<c:when test="${emp.deptno eq 70 }">
 							<a href="./ManagerStockOut.do">
 						</c:when>
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+					</c:choose>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
 						fill="currentColor" class="bi bi-box-arrow-right"
 						viewBox="0 0 16 16">
 	                        <path fill-rule="evenodd"
@@ -182,7 +183,6 @@ td {
 							d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
 	                    </svg>
 						<br /> 관리자 </a>
-					</c:choose>
 				</div>
 			</c:if>
 
