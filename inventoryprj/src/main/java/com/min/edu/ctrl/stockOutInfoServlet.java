@@ -23,10 +23,10 @@ public class stockOutInfoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		HttpSession session = req.getSession();
-		int id = Integer.parseInt(req.getParameter("id")); 
+		String id = req.getParameter("id"); 
 		
 		IStockOutDao dao = new StockOutDaoImpl();
-		StockDto dto = dao.selectStockOutDetail(id);
+		StockDto dto = dao.selectStockOutDetail(Integer.parseInt(id));
 		
 		ProductInfoDao productDao = new ProductInfoDaoImpl();
 		ProductInfoDto product = productDao.product_select2(dto.getProduct_id());

@@ -11,14 +11,14 @@
 	<h1>${emp.ename}</h1>
 	<main>
 		<div class="container">
-			<c:if test="${emp.detpno eq 70 && emp.job eq '팀장' }">
+			<c:if test="${emp.deptno eq 70 && emp.job eq '팀장' }">
 				<h2>
-					<a href="./ManagerStockIn.do">관리자페이지 이동</a>
+					<a href="./ManagerStockOut.do">관리자페이지 이동</a>
 				</h2>
 			</c:if>
 			<div class="position-absolute top-0 end-0">
 				<c:if test="${emp.deptno eq 70}">
-					<a href="./stockInServlet.do" class="btn btn-danger">입고 등록</a>
+					<a href="./stockOutServlet.do" class="btn btn-danger">출고 등록</a>
 				</c:if>
 
 				<input type="number" name="mgr" id="mgr" placeholder="사원번호입력"
@@ -31,7 +31,7 @@
 					<h2>정보가 없습니다.</h2>
 				</c:when>
 				<c:otherwise>
-					<h2>입고목록</h2>
+					<h2>출고목록</h2>
 					<table>
 						<tr>
 							<!--  <th></th>-->

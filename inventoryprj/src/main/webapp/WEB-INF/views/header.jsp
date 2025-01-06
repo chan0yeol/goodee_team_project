@@ -151,7 +151,7 @@ td {
 				</a>
 			</div>
 			<div class="link">
-				<a href="./stockInAll"> <svg xmlns="http://www.w3.org/2000/svg"
+				<a href="./stockOutAllInfo.do"> <svg xmlns="http://www.w3.org/2000/svg"
 						width="24" height="24" fill="currentColor"
 						class="bi bi-box-arrow-right" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"

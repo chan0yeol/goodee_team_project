@@ -17,7 +17,7 @@ public class StockOutDaoImpl implements IStockOutDao {
 	
 	@Override
 	public int insertStockOut(StockDto dto) {
-		SqlSession session = manager.openSession();
+		SqlSession session = manager.openSession(true);
 		return session.insert(NS+"insertStockOut",dto);
 	}
 
