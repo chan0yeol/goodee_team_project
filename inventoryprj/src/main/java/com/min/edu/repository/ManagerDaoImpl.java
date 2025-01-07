@@ -49,7 +49,13 @@ public class ManagerDaoImpl implements IManagerDao {
 	@Override
 	public int updateStockOutRequest(StockDto dto) {
 		SqlSession session = manager.openSession(true);
-		return session.update(NS+"updateStockOutRequest",dto);
+		return session.update(NS+"updateStockRequest",dto);
+	}
+
+	@Override
+	public StockDto findByStockId(String id) {
+		SqlSession session = manager.openSession();
+		return session.selectOne(NS+"findByStockId",id);
 	}
 
 }

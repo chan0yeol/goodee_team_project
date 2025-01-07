@@ -18,4 +18,6 @@ public interface IManagerDao {
 	public List<StockDto> selectStockOutList();
 
 	public int updateStockOutRequest(StockDto dto);
+	
+	public StockDto findByStockId(String id);
 }

@@ -24,10 +24,13 @@ public class ManagerAcceptServlet extends HttpServlet {
 		resp.setContentType("text/html;charset=UTF-8");
 		String id = req.getParameter("id");
 		IManagerDao dao = new ManagerDaoImpl();
-		StockDto dto = StockDto.builder().stock_id(id).is_accepted("Y").build();
-		int row = dao.updateStockInRequest(dto);
+		StockDto updateDto = dao.findByStockId(id);
+		updateDto.setIs_accepted("Y");
+		
+//		StockDto dto = StockDto.builder().stock_id(id).is_accepted("Y").build();
+//		int row = dao.updateStockInRequest(dto);
+		int row = dao.updateStockOutRequest(updateDto);
 		if(row == 1) {
-			
 			resp.getWriter().print("<script>alert('성공'); location.href='./ManagerStockIn.do'</script>");
 		} else {
 			resp.getWriter().print("<script>alert('실패'); location.href='./ManagerStockIn.do'</script>");

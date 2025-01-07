@@ -46,11 +46,15 @@
 	</select>
 	
 	<!-- 	updateStockOutRequest -->
-	<update id="updateStockOutRequest">
+	<update id="updateStockRequest">
 		UPDATE STOCK 
         SET IS_ACCEPTED = #{is_accepted}
-        WHERE GUBUN = 'O' 
-        AND STOCK_ID = #{stock_id}
+        WHERE STOCK_ID = #{stock_id}
 	</update>
 	
+	<select id="findByStockId" resultType="StockDto">
+		SELECT *
+	     FROM STOCK 
+	     WHERE stock_id = #{id}
+	</select>
 </mapper>
