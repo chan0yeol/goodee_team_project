@@ -2,6 +2,7 @@ package com.min.edu.repository;
 
 import java.util.List;
 
+import com.min.edu.dto.ProductInfoDto;
 import com.min.edu.dto.StockDto;
 
 public interface IStockOutDao {
@@ -22,7 +23,8 @@ public interface IStockOutDao {
 	public List<StockDto> selectStockInventory();
 	
 	// 출고수량 순 목록조회
-	public List<StockDto> selectStockAmount();
+//	public List<StockDto> selectStockAmount();
+	public List<ProductInfoDto> selectStockAmount();
 	
 	// 매출액 순 목록조회
 	public List<StockDto> selectStockSales();

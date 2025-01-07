@@ -15,9 +15,9 @@
 		SELECT STOCK_ID, GUBUN, STOCK_DATE,
                STOCK_AMOUNT, STOCK_MGR, STOCK_COST,
                IS_ACCEPTED ,PRODUCT_ID, DEL_ID 배송ID ,STOCK_ADDR 
-        FROM STOCK JOIN STOCK_DELIVERY 
+        FROM STOCK LEFT JOIN STOCK_DELIVERY 
         USING(STOCK_ID) 
-        WHERE GUBUN = 'O'
+        WHERE GUBUN = 'O' AND IS_ACCEPTED = 'Y'
 	</select>
 	
 	<!-- 	selectOutDateRange -->
@@ -68,13 +68,24 @@
 	
 	<!-- 출고수량 순 목록조회 -->
 	<!-- selectStockAmount -->
-	<select id="selectStockAmount" resultType="StockDto">
+	<select id="selectStockAmount" resultType="ProductInfoDto" >
+		<!--  
 		SELECT STOCK_ID, GUBUN, STOCK_DATE, STOCK_MGR, STOCK_COST, IS_ACCEPTED, PRODUCT_ID,
                "출고수량", DENSE_RANK() OVER(ORDER BY "출고수량" DESC) AS "수량순위"
         FROM(SELECT STOCK_ID, GUBUN, STOCK_DATE, STOCK_MGR, STOCK_COST, IS_ACCEPTED, PRODUCT_ID,
                     SUM(STOCK_AMOUNT) OVER(PARTITION BY PRODUCT_ID) AS "출고수량"
              FROM STOCK
              WHERE GUBUN = 'O')
+         -->
+	SELECT DENSE_RANK() OVER(ORDER BY "총출고량" DESC) AS ORIGINAL_COST ,"총출고량" AS PRODUCT_AMOUNT, PRODUCT_ID, PRODUCT_NAME , PRODUCT_MAKER 
+	FROM PRODUCT_INFO t1 
+	LEFT JOIN (SELECT PRODUCT_ID ,SUM(STOCK_AMOUNT) AS "총출고량"
+							FROM STOCK
+							WHERE GUBUN = 'O' AND IS_ACCEPTED = 'Y'
+							GROUP BY PRODUCT_ID
+							ORDER BY "총출고량") t2
+	USING(PRODUCT_ID)
+	WHERE IS_ACCEPTED ='Y' AND "총출고량" IS NOT NULL
 	</select>
 	
 	<!-- 매출액 순 목록조회 -->

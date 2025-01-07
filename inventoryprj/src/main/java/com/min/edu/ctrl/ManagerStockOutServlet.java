@@ -20,6 +20,6 @@ public class ManagerStockOutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<StockDto> lists =  dao.selectStockOutList();
 		req.setAttribute("StockOutList", lists);
-		req.getRequestDispatcher("/WEB-INF/views/managerStockIn.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/managerStockOut.jsp").forward(req, resp);
 	}
 }

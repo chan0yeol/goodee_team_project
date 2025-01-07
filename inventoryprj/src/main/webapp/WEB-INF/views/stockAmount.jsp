@@ -17,7 +17,7 @@
 				</h2>
 			</c:if>
 			<div class="position-absolute top-0 end-0">
-				<c:if test="${emp.deptno eq 70}">
+				<c:if test="${emp.deptno eq 170}">
 					<a href="./stockOutServlet.do" class="btn btn-danger">출고 등록</a>
 				</c:if>
 
@@ -35,25 +35,19 @@
 					<table>
 						<tr>
 							<!--  <th></th>-->
-							<th>ID</th>
+							<th>순위</th>
 							<th>제품아이디</th>
-							<th>담당자</th>
-							<th>수량</th>
-							<th>날짜</th>
-							<th></th>
+							<th>총출고량</th>
+							<th>제품이름</th>
+							<th>제조사</th>
 						</tr>
-						<c:forEach items="${StockOutList}" var="dto" varStatus="vs">
+						<c:forEach items="${lists}" var="dto" varStatus="vs">
 							<tr>
-								<td><a href="./stockOutInfo.do?id=${dto.stock_id}">${dto.stock_id}</a></td>
+								<td>${dto.original_cost}</td>
+								<td>${dto.product_amount}</td>
 								<td>${dto.product_id}</td>
-								<td>${dto.stock_mgr}</td>
-								<td>${dto.stock_amount}</td>
-								<td>${dto.stock_date}</td>
-								<td>
-									<form action="./stockOutDelete" method="get">
-										<input type="submit" value="${dto.stock_id}">
-									</form>
-								</td>
+								<td>${dto.product_name}</td>
+								<td>${dto.product_maker}</td>
 							</tr>
 						</c:forEach>
 					</table>

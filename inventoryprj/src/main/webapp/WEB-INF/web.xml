@@ -130,7 +130,7 @@
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>stockOutUpdate</servlet-name>
-		<servlet-class>com.min.edu.ctrl.stockOutServlet</servlet-class>
+		<servlet-class>com.min.edu.ctrl.stockOutUpdateServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>stockOutUpdate</servlet-name>
