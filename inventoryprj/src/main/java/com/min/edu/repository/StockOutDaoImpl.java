@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.min.edu.dto.ProductInfoDto;
 import com.min.edu.dto.StockDto;
 import com.min.edu.mybatis.SqlSessionFactoryManager;
 
@@ -68,7 +69,7 @@ public class StockOutDaoImpl implements IStockOutDao {
 
 	// 출고수량 순 목록조회
 	@Override
-	public List<StockDto> selectStockAmount() {
+	public List<ProductInfoDto> selectStockAmount() {
 		SqlSession session = manager.openSession();
 		return session.selectList(NS+"selectStockAmount");
 	}	
