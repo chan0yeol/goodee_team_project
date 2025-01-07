@@ -23,7 +23,7 @@
 
 				<input type="number" name="mgr" id="mgr" placeholder="사원번호입력"
 					required="required">
-				<button>검색</button>
+				<button id="mgrSearch">검색</button>
 
 			</div>
 			<c:choose>
@@ -44,13 +44,13 @@
 						</tr>
 						<c:forEach items="${StockOutList}" var="dto" varStatus="vs">
 							<tr>
-								<td><a href="./stockInInfo.do?id=${dto.stock_id}">${dto.stock_id}</a></td>
+								<td><a href="./stockOutInfo.do?id=${dto.stock_id}">${dto.stock_id}</a></td>
 								<td>${dto.product_id}</td>
 								<td>${dto.stock_mgr}</td>
 								<td>${dto.stock_amount}</td>
 								<td>${dto.stock_date}</td>
 								<td>
-									<form action="./stockInDelete" method="get">
+									<form action="./stockOutDelete" method="get">
 										<input type="submit" value="${dto.stock_id}">
 									</form>
 								</td>
@@ -72,7 +72,7 @@
 		if(mgr == '') {
 			alert('사원번호 입력하세요');
 		}else{
-			location.href='./stockOutInfo.do?mgr='+mgr;	
+			location.href='./stockOutAllInfo.do?mgr='+mgr;	
 		}
 		
 	})

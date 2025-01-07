@@ -20,10 +20,18 @@ public class stockOutAllInfoServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		String mgr = req.getParameter("mgr");
 		HttpSession session = req.getSession();
 		EmpDto loginDto = (EmpDto) session.getAttribute("emp");
 		IStockOutDao dao = new StockOutDaoImpl();
-		List<StockDto> lists = dao.selectStockOutAll();
+		List<StockDto> lists;
+		if(mgr != null) {
+			lists = dao.selectStockOutByMgr(Integer.parseInt(mgr));
+		} else {
+			lists = dao.selectStockOutAll();
+			
+		}
 		req.setAttribute("StockOutList", lists);
 		req.getRequestDispatcher("/WEB-INF/views/stockOutAllInfo.jsp").forward(req, resp);
 	}

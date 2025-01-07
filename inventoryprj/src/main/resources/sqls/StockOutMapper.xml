@@ -15,9 +15,9 @@
 		SELECT STOCK_ID, GUBUN, STOCK_DATE,
                STOCK_AMOUNT, STOCK_MGR, STOCK_COST,
                IS_ACCEPTED ,PRODUCT_ID, DEL_ID 배송ID ,STOCK_ADDR 
-        FROM STOCK JOIN STOCK_DELIVERY 
+        FROM STOCK LEFT JOIN STOCK_DELIVERY 
         USING(STOCK_ID) 
-        WHERE GUBUN = 'O'
+        WHERE GUBUN = 'O' AND IS_ACCEPTED = 'Y'
 	</select>
 	
 	<!-- 	selectOutDateRange -->
