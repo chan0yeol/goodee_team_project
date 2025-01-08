@@ -2,12 +2,13 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:include page="header.jsp"/>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>재고조회 게시판</title>
+<%@ include file="./header.jsp" %>
 </head>
 <%
 	List<StockDto> stockDto = (List<StockDto>)request.getAttribute("stockDto");
@@ -24,30 +25,14 @@
 			</tr>
 		</thead>
 		<tbody>
-			<%
-				for(StockDto dto : stockDto) {
-					int 입고수량=0;
-					int 출고수량=0;
-					
-					if("I".equals(dto.getGubun())) {
-						입고수량 = dto.getStock_amount();
-					}
-					else if("O".equals(dto.getGubun())) {
-						출고수량 = dto.getStock_amount();
-					}
-					
-					int 재고 = 입고수량-출고수량;
-					
-					%>
-						<tr>
-							<td><%=dto.getProduct_id()%></td>
-							<td><%=입고수량%></td>
-							<td><%=출고수량%></td>
-							<td><%=재고%></td>
-						</tr>
-					<%
-				}
-			%>
+			<c:forEach items="${stockDto}" var="dto" varStatus="vs">
+				<tr>
+					<td>${dto.product_id}</td>
+					<td>${dto.stock_amount}</td>
+					<td>${dto.stock_mgr}</td>
+					<td>${dto.stock_cost}</td>
+				</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 </div>
