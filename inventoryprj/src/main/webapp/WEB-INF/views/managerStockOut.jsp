@@ -13,17 +13,11 @@
 	<main>
 		<div class="container">
 			<h1>관리자페이지</h1>
-			<c:if test="${emp.deptno eq 70 && emp.job eq '팀장' }">
-				<h2>
-					<a href="./ManagerStockIn.do">관리자페이지 이동</a>
-				</h2>
-			</c:if>
 			<div class="position-absolute top-0 end-0">
 
 				<input type="number" name="mgr" id="mgr" placeholder="사원번호입력"
 					required="required">
 				<button>검색</button>
-
 			</div>
 			<c:choose>
 				<c:when test="${fn:length(StockOutList) eq 0 }">

@@ -76,7 +76,7 @@ public class StockOutDaoImpl implements IStockOutDao {
 	
 	// 매출액 순 목록조회
 	@Override
-	public List<StockDto> selectStockSales() {
+	public List<ProductInfoDto> selectStockSales() {
 		SqlSession session = manager.openSession();
 		return session.selectList(NS+"selectStockSales");
 	}

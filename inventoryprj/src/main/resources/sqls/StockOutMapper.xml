@@ -90,13 +90,22 @@
 	
 	<!-- 매출액 순 목록조회 -->
 	<!-- selectStockSales -->
-	<select id="selectStockSales" resultType="StockDto">
-		SELECT STOCK_ID, GUBUN, STOCK_DATE, STOCK_MGR, STOCK_COST, IS_ACCEPTED, PRODUCT_ID,
-               "출고매출", DENSE_RANK() OVER(ORDER BY "출고매출" DESC) AS "매출순위"
-        FROM(SELECT STOCK_ID, GUBUN, STOCK_DATE, STOCK_MGR, STOCK_COST, IS_ACCEPTED, PRODUCT_ID,
-                    SUM(STOCK_AMOUNT*STOCK_COST) OVER(PARTITION BY PRODUCT_ID) AS "출고매출"
-             FROM STOCK
-             WHERE GUBUN = 'O')
+	<select id="selectStockSales" resultType="ProductInfoDto">
+<!-- 		SELECT STOCK_ID, GUBUN, STOCK_DATE, STOCK_MGR, STOCK_COST, IS_ACCEPTED, PRODUCT_ID, -->
+<!--                "출고매출", DENSE_RANK() OVER(ORDER BY "출고매출" DESC) AS "매출순위" -->
+<!--         FROM(SELECT STOCK_ID, GUBUN, STOCK_DATE, STOCK_MGR, STOCK_COST, IS_ACCEPTED, PRODUCT_ID, -->
+<!--                     SUM(STOCK_AMOUNT*STOCK_COST) OVER(PARTITION BY PRODUCT_ID) AS "출고매출" -->
+<!--              FROM STOCK -->
+<!--              WHERE GUBUN = 'O') -->
+	SELECT DENSE_RANK() OVER(ORDER BY "출고금액" DESC) AS ORIGINAL_COST ,"출고금액" AS PRODUCT_AMOUNT, PRODUCT_ID, PRODUCT_NAME , PRODUCT_MAKER 
+	FROM PRODUCT_INFO t1 
+	LEFT JOIN (SELECT PRODUCT_ID ,SUM(STOCK_AMOUNT*STOCK_COST) AS "출고금액" 
+							FROM STOCK
+							WHERE GUBUN = 'O' AND IS_ACCEPTED = 'Y'
+							GROUP BY PRODUCT_ID
+							ORDER BY "출고금액") t2
+	USING(PRODUCT_ID)
+	WHERE IS_ACCEPTED ='Y' AND "출고금액" IS NOT NULL
 	</select>
 	<!-- 출고 상세정보 -->
 	<select id="stockOutDetail" resultType="StockDto" parameterType="int">
