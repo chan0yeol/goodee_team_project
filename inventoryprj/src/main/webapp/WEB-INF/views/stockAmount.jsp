@@ -16,18 +16,8 @@
 					<a href="./ManagerStockOut.do">관리자페이지 이동</a>
 				</h2>
 			</c:if>
-			<div class="position-absolute top-0 end-0">
-				<c:if test="${emp.deptno eq 170}">
-					<a href="./stockOutServlet.do" class="btn btn-danger">출고 등록</a>
-				</c:if>
-
-				<input type="number" name="mgr" id="mgr" placeholder="사원번호입력"
-					required="required">
-				<button id="mgrSearch">검색</button>
-
-			</div>
 			<c:choose>
-				<c:when test="${fn:length(StockOutList) eq 0 }">
+				<c:when test="${fn:length(lists) eq 0 }">
 					<h2>정보가 없습니다.</h2>
 				</c:when>
 				<c:otherwise>
@@ -44,8 +34,8 @@
 						<c:forEach items="${lists}" var="dto" varStatus="vs">
 							<tr>
 								<td>${dto.original_cost}</td>
-								<td>${dto.product_amount}</td>
 								<td>${dto.product_id}</td>
+								<td>${dto.product_amount}</td>
 								<td>${dto.product_name}</td>
 								<td>${dto.product_maker}</td>
 							</tr>
