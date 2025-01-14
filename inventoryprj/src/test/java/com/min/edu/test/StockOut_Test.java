@@ -105,9 +105,9 @@ public class StockOut_Test {
 	
 // 매출액 순 목록조회
 //	@Test
-	public void selectStockSales_test() {
-		List<StockDto> lists = dao.selectStockSales();
-		assertNotEquals(0, lists.size());
-	}
+//	public void selectStockSales_test() {
+//		List<StockDto> lists = dao.selectStockSales();
+//		assertNotEquals(0, lists.size());
+//	}
 	
 }

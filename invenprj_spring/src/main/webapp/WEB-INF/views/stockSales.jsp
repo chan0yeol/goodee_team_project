@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>출고정보</title>
+<title>Insert title here</title>
 <%@ include file="./header.jsp" %>
 </head>
 <body>
-	<h1>${emp.ename}</h1>
+<h1>${emp.ename}</h1>
 	<main>
 		<div class="container">
 			<c:if test="${emp.deptno eq 70 && emp.job eq '팀장' }">
@@ -27,7 +27,7 @@
 							<!--  <th></th>-->
 							<th>순위</th>
 							<th>제품아이디</th>
-							<th>총출고량</th>
+							<th>총매출액</th>
 							<th>제품이름</th>
 							<th>제조사</th>
 						</tr>
@@ -43,22 +43,7 @@
 					</table>
 				</c:otherwise>
 			</c:choose>
-
 		</div>
 	</main>
 </body>
-<script type="text/javascript">
-	
-	document.querySelector("div.position-absolute>button").addEventListener('click', () => {
-		var mgr = document.getElementById("mgr").value;
-		console.log(mgr);
-		//alert(mgr);
-		if(mgr == '') {
-			alert('사원번호 입력하세요');
-		}else{
-			location.href='./stockOutAllInfo.do?mgr='+mgr;	
-		}
-		
-	})
-</script>
 </html>

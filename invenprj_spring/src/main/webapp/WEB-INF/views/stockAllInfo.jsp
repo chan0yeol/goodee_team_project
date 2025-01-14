@@ -1,40 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>출고정보</title>
+<title>입고정보</title>
 <%@ include file="./header.jsp" %>
 </head>
 <body>
-	<h1>${emp.ename}</h1>
+	<h1>${emp.ename }</h1>
 	<main>
 		<div class="container">
-			<c:if test="${emp.deptno eq 70 && emp.job eq '팀장' }">
+			<c:if test="${emp.deptno eq 60 && emp.job eq '팀장'}">
 				<h2>
-					<a href="./ManagerStockOut.do">관리자페이지 이동</a>
+					<a href="./ManagerStockIn.do">관리자페이지 이동</a>
 				</h2>
 			</c:if>
-			
-				<a href="./stockAmount.do">출고량순위</a>
-				<a href="./stockSales.do">매출순위</a>
+
+
 			<div class="position-absolute top-0 end-0">
-				<c:if test="${emp.deptno eq 70}">
-					<a href="./stockOutServlet.do" class="btn btn-danger">출고 등록</a>
+				<c:if test="${emp.deptno eq 60}">
+					<a href="./stockInServlet.do" class="btn btn-danger">입고 등록</a>
 				</c:if>
 
 				<input type="number" name="mgr" id="mgr" placeholder="사원번호입력"
 					required="required">
-				<button id="mgrSearch">검색</button>
+				<button>검색</button>
 
 			</div>
 			<c:choose>
-				<c:when test="${fn:length(StockOutList) eq 0 }">
+				<c:when test="${fn:length(StockInList) eq 0 }">
 					<h2>정보가 없습니다.</h2>
 				</c:when>
 				<c:otherwise>
-					<h2>출고목록</h2>
+					<h2>입고목록</h2>
 					<table>
 						<tr>
 							<!--  <th></th>-->
@@ -45,15 +44,15 @@
 							<th>날짜</th>
 							<th></th>
 						</tr>
-						<c:forEach items="${StockOutList}" var="dto" varStatus="vs">
+						<c:forEach items="${StockInList}" var="dto" varStatus="vs">
 							<tr>
-								<td><a href="./stockOutInfo.do?id=${dto.stock_id}">${dto.stock_id}</a></td>
+								<td><a href="./stockInInfo.do?id=${dto.stock_id}">${dto.stock_id}</a></td>
 								<td>${dto.product_id}</td>
 								<td>${dto.stock_mgr}</td>
 								<td>${dto.stock_amount}</td>
 								<td>${dto.stock_date}</td>
 								<td>
-									<form action="./stockOutDelete" method="get">
+									<form action="./stockInDelete" method="get">
 										<input type="submit" value="${dto.stock_id}">
 									</form>
 								</td>
@@ -75,7 +74,7 @@
 		if(mgr == '') {
 			alert('사원번호 입력하세요');
 		}else{
-			location.href='./stockOutAllInfo.do?mgr='+mgr;	
+			location.href='./stockAllInfo.do?mgr='+mgr;	
 		}
 		
 	})

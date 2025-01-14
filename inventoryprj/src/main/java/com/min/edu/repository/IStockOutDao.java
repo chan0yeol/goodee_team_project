@@ -27,7 +27,7 @@ public interface IStockOutDao {
 	public List<ProductInfoDto> selectStockAmount();
 	
 	// 매출액 순 목록조회
-	public List<StockDto> selectStockSales();
+	public List<ProductInfoDto> selectStockSales();
 	
 	//출고 상세정보
 	public StockDto selectStockOutDetail(int stock_id);

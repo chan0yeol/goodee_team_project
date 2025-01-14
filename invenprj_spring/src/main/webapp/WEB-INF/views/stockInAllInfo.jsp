@@ -10,9 +10,7 @@
 <title>재고조회 게시판</title>
 <%@ include file="./header.jsp" %>
 </head>
-<%
-	List<StockDto> stockDto = (List<StockDto>)request.getAttribute("stockDto");
-%>
+
 <body>
 <div class="container">
 	<table>

@@ -8,19 +8,30 @@
 <%@ include file="./header.jsp"%>
 </head>
 <body>
-123123
+	<%
+	//Object obj = request.getAttribute("StockInList");
+	// List<StockInDto> lists = (List<StockInDto>)obj;
+	//List<StockDto> lists = (List<StockDto>) obj;
+	//EmpDto s = (EmpDto) session.getAttribute("emp");
+	%>
 	<h1>${emp.ename}</h1>
 	<main>
 		<div class="container">
 			<h1>관리자페이지</h1>
+			<c:if test="${emp.deptno eq 60 && emp.job eq '팀장' }">
+				<h2>
+					<a href="./ManagerStockIn.do">관리자페이지 이동</a>
+				</h2>
+			</c:if>
 			<div class="position-absolute top-0 end-0">
 
 				<input type="number" name="mgr" id="mgr" placeholder="사원번호입력"
 					required="required">
 				<button>검색</button>
+
 			</div>
 			<c:choose>
-				<c:when test="${fn:length(StockOutList) eq 0 }">
+				<c:when test="${fn:length(StockInList) eq 0 }">
 					<h2>정보가 없습니다.</h2>
 				</c:when>
 				<c:otherwise>
@@ -35,12 +46,12 @@
 							<th>날짜</th>
 							<th></th>
 						</tr>
-						<c:forEach var="dto" items="${StockOutList}" varStatus="vs">
+						<c:forEach var="dto" items="${StockInList}" varStatus="vs">
 							<tr>
 								<td><input type="checkbox" name="" id=""></td>
-									<a href="./stockOutInfo.do?id=${dto.stock_id}">l</a>
+								<a href="./stockInInfo.do?id=${dto.stock_id}">l</a>
 								<td
-									onclick="location.href='./stockOutInfo.do?id='+${dto.stock_id}">${dto.stock_id}</td>
+									onclick="location.href='./stockInInfo.do?id='+${dto.stock_id}">${dto.stock_id}</td>
 								<td>${dto.product_id}</td>
 								<td>${dto.stock_mgr}</td>
 								<td>${dto.stock_amount}</td>
