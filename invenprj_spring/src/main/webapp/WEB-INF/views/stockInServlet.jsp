@@ -34,12 +34,14 @@
 </main>
 </body>
 <script type="text/javascript">
+	console.log(document.forms[0]);
 	document.forms[0].addEventListener('submit', (event) => {
 		event.preventDefault();
-		let amount = document.getElementsByName('stock_amount')[0].value; 
+		let amount = document.getElementsByName('stock_amount')[0].value;
+		Number(amount);
 		console.log(isNaN(amount));
 		
-		if(isNaN(amount) || amount='') {
+		if(isNaN(amount) || amount==='') {
 			Swal.fire('수량에는 숫자만 입력 가능합니다.');
 		} else{
 			if(amount < 0) {
@@ -50,7 +52,6 @@
 				document.forms[0].submit();
 			}
 		}
-	})
-	
+	});
 </script>
 </html>
