@@ -1,7 +1,9 @@
 package com.min.edu.ctrl;
 
+import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -62,7 +64,8 @@ public class StockInController {
 	}
 
 	@PostMapping("/stockInServlet.do")
-	public String stockInInsert(int stock_amount, String product_id, Model model, HttpSession session) {
+	public String stockInInsert(int stock_amount, String product_id, Model model, HttpSession session,HttpServletResponse response) throws IOException {
+		response.setContentType("text/html;charset=UTF-8");
 		EmpDto loginDto = (EmpDto) session.getAttribute("emp");
 		int row;
 		if (loginDto.getJob().equals("팀장")) {
@@ -77,9 +80,9 @@ public class StockInController {
 		if (row == 1) {
 			return "redirect:/stockInAllInfo.do";
 		} else {
-			return "redirect:/stockInServlet.do";
+			response.getWriter().print("<script>swal.fire('정확한 값을 입력')</script>");
 		}
-//		return "";
+		return "";
 	}
 	
 	// 업데이트 폼

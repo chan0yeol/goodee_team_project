@@ -1,5 +1,7 @@
 package com.min.edu.service;
 
+import java.util.Map;
+
 import org.springframework.stereotype.Service;
 
 import com.min.edu.dto.EmpDto;
@@ -15,8 +17,8 @@ public class EmpServiceImpl implements IEmpService {
 	private final IEmpDao dao;
 
 	@Override
-	public EmpDto login(EmpDto dto) {
-		return dao.login(dto);
+	public EmpDto login(Map<String, Object> map) {
+		return dao.login(map);
 	}
 
 }

@@ -34,4 +34,37 @@
 		</div>
 	</main>
 </body>
+<script type="text/javascript">
+document.forms[0].addEventListener('submit',(event) => {
+	event.preventDefault();
+	let eno = document.getElementsByName('empno')[0].value;
+	if(isNaN(eno)){
+		Swal.fire('사원번호는 숫자만 입력하세요');
+	} else{
+		let empno = document.getElementsByName('empno')[0].value;
+		let ename = document.getElementsByName('ename')[0].value;
+		console.log(empno,ename);
+		fetch("./loginChk.do", {
+			method:"POST",
+			headers:{'Content-Type':'application/x-www-form-urlencoded'},
+			body: new URLSearchParams({
+				empno : empno,
+				ename : ename
+			})
+		})
+		.then((response) => response.json())
+		.then((result) => {
+			console.log(result.isc);
+			if(result.isc === "true"){
+				Swal.fire("로그인 성공").then(()=>{
+					location.href='./';
+				});
+			} else{
+				Swal.fire("로그인 실패");
+			}
+			})
+		.catch((error) => console.log('Error:', error));				
+	}
+});
+</script>
 </html>
