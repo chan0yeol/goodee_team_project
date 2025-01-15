@@ -15,7 +15,7 @@
 	</h1>
 	<main class="form-signin w-100 m-auto">
 		<div class="container">
-			<form action="./loginServlet.do" method="post">
+			<form action="./login.do" method="post">
 				<h1 class="h3 mb-3 fw-normal">Login</h1>
 
 				<div class="form-floating mb-1">
@@ -44,7 +44,7 @@ document.forms[0].addEventListener('submit',(event) => {
 		let empno = document.getElementsByName('empno')[0].value;
 		let ename = document.getElementsByName('ename')[0].value;
 		console.log(empno,ename);
-		fetch("./loginChk.do", {
+		fetch("./login.do", {
 			method:"POST",
 			headers:{'Content-Type':'application/x-www-form-urlencoded'},
 			body: new URLSearchParams({
@@ -55,9 +55,10 @@ document.forms[0].addEventListener('submit',(event) => {
 		.then((response) => response.json())
 		.then((result) => {
 			console.log(result.isc);
+			console.log(result);
 			if(result.isc === "true"){
 				Swal.fire("로그인 성공").then(()=>{
-					location.href='./';
+					location.href=result.url;
 				});
 			} else{
 				Swal.fire("로그인 실패");

@@ -32,6 +32,11 @@ public class LoginController {
 		session.invalidate();
 		return "login";
 	}
+	@GetMapping("/logout.do")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "login";
+	}
 	
 	@PostMapping("/loginServlet.do")
 	public String login(@RequestParam Map<String, Object> map, Model model , HttpSession session,HttpServletResponse resp) throws IOException {

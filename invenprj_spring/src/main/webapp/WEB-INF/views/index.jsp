@@ -20,7 +20,7 @@
     	</h1>
         <main class="form-signin w-100 m-auto">
             <div class="container">
-                <form action="./loginServlet.do" method="post">
+                <form action="./login.do" method="post">
                     <h1 class="h3 mb-3 fw-normal">Login</h1>
     
                     <div class="form-floating mb-1" >
