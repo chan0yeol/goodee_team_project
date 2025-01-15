@@ -20,7 +20,7 @@
 
 			<div class="position-absolute top-0 end-0">
 				<c:if test="${emp.deptno eq 60}">
-					<a href="./stockInServlet.do" class="btn btn-danger">입고 등록</a>
+					<a href="./stockInForm.do" class="btn btn-danger">입고 등록</a>
 				</c:if>
 
 				<input type="number" name="mgr" id="mgr" placeholder="사원번호입력"
