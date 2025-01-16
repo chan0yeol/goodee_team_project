@@ -39,7 +39,15 @@ public class StockInController {
 		model.addAttribute("StockInList", lists);
 		return "stockAllInfo";
 	}
-
+	@GetMapping("/stockAllInfoMgr.do")
+	public String stockInAllInfoMgr(int mgr, Model model, HttpSession session) {
+		log.info("StockInController /stockInAllInfo.do GET 요청");
+		EmpDto loginDto = (EmpDto) session.getAttribute("emp");
+		List<StockDto> lists = stockInService.selectStockInByMgr(mgr);
+		model.addAttribute("StockInList", lists);
+		return "stockAllInfo";
+	}
+	
 //	/stockInInfo.do 
 	@GetMapping("/stockInInfo.do")
 	public String stockInInfo(Model model, int id, HttpSession session) {
@@ -101,6 +109,5 @@ public class StockInController {
 		} else {
 			return "redirect:/stockInUpdate.do?id="+id;
 		}
-		
 	}
 }
