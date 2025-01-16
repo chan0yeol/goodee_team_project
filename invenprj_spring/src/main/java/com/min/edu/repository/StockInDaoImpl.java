@@ -53,7 +53,7 @@ public class StockInDaoImpl implements IStockInDao {
 
 	@Override
 	public List<StockDto> selectDateRange(Map<String, Object> map) {
-		return sqlSession.selectList(NS+"selectDynamicDate", map);
+		return sqlSession.selectList(NS+"selectDateRange", map);
 	}
 
 	@Override
