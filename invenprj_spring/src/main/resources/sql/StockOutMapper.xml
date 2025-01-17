@@ -14,10 +14,10 @@
 	<select id="selectStockOutAll" resultType="StockDto">
 		SELECT STOCK_ID, GUBUN, STOCK_DATE,
                STOCK_AMOUNT, STOCK_MGR, STOCK_COST,
-               IS_ACCEPTED ,PRODUCT_ID, DEL_ID 배송ID ,STOCK_ADDR 
-        FROM STOCK LEFT JOIN STOCK_DELIVERY 
-        USING(STOCK_ID) 
-        WHERE GUBUN = 'O' AND IS_ACCEPTED = 'Y'
+               t1.IS_ACCEPTED ,t1.PRODUCT_ID, DEL_ID 배송ID ,STOCK_ADDR 
+        FROM STOCK t1 LEFT JOIN STOCK_DELIVERY a 
+        USING(STOCK_ID) JOIN PRODUCT_INFO t2 ON t1.PRODUCT_ID = t2.PRODUCT_ID 
+        WHERE GUBUN = 'O' AND t1.IS_ACCEPTED = 'Y' AND t2.IS_ACCEPTED = 'Y'
 	</select>
 	
 	<!-- 	selectOutDateRange -->
@@ -59,7 +59,7 @@
                                   FROM STOCK
                                 WHERE IS_ACCEPTED = 'Y' AND GUBUN = 'I'
                                 GROUP BY PRODUCT_ID) t1 
-	FULL OUTER JOIN (SELECT PRODUCT_ID , SUM(STOCK_AMOUNT) AS 출고수량 
+		FULL OUTER JOIN (SELECT PRODUCT_ID , SUM(STOCK_AMOUNT) AS 출고수량 
 	                FROM STOCK s 
 	                WHERE IS_ACCEPTED = 'Y' AND GUBUN = 'O'
 	                    GROUP BY PRODUCT_ID) t2

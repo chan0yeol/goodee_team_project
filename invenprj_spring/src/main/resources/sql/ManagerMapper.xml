@@ -19,12 +19,19 @@
 	
 	<!-- 	selectStockInList -->
 	<select id="selectStockInList" resultType="com.min.edu.dto.StockDto">
-		SELECT STOCK_ID, GUBUN, STOCK_DATE,
+<!-- 		SELECT STOCK_ID, GUBUN, STOCK_DATE, -->
+<!--                STOCK_AMOUNT, STOCK_MGR, STOCK_COST, -->
+<!--                IS_ACCEPTED ,PRODUCT_ID -->
+<!--         FROM STOCK -->
+<!--         WHERE GUBUN = 'I' -->
+<!--         AND IS_ACCEPTED = 'N' -->
+        SELECT STOCK_ID, GUBUN, STOCK_DATE,
                STOCK_AMOUNT, STOCK_MGR, STOCK_COST,
-               IS_ACCEPTED ,PRODUCT_ID
-        FROM STOCK
+               t1.IS_ACCEPTED ,PRODUCT_ID
+        FROM STOCK t1 JOIN PRODUCT_INFO t2
+        USING(PRODUCT_ID)
         WHERE GUBUN = 'I'
-        AND IS_ACCEPTED = 'N'
+        AND t1.IS_ACCEPTED = 'N' AND t2.IS_ACCEPTED = 'Y'
 	</select>
 	
 	<!-- 	updateStockInRequest -->
@@ -39,10 +46,11 @@
 	<select id="selectStockOutList" resultType="com.min.edu.dto.StockDto">
 		SELECT STOCK_ID, GUBUN, STOCK_DATE,
                STOCK_AMOUNT, STOCK_MGR, STOCK_COST,
-               IS_ACCEPTED ,PRODUCT_ID
-        FROM STOCK
+               t1.IS_ACCEPTED ,PRODUCT_ID
+        FROM STOCK t1 JOIN PRODUCT_INFO t2
+        USING(PRODUCT_ID)
         WHERE GUBUN = 'O'
-        AND IS_ACCEPTED = 'N'
+        AND t1.IS_ACCEPTED = 'N' AND t2.IS_ACCEPTED = 'Y'
 	</select>
 	
 	<!-- 	updateStockOutRequest -->
