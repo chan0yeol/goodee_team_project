@@ -41,7 +41,7 @@
 		Number(amount);
 		console.log(isNaN(amount));
 		
-		if(isNaN(amount) || amount==='') {
+		if(isNaN(amount) ||  amount.trim().length == 0) {
 			Swal.fire('수량에는 숫자만 입력 가능합니다.');
 		} else{
 			if(amount < 0) {

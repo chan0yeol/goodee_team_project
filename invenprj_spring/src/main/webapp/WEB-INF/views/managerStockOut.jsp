@@ -13,12 +13,6 @@
 	<main>
 		<div class="container">
 			<h1>관리자페이지</h1>
-			<div class="position-absolute top-0 end-0">
-
-				<input type="number" name="mgr" id="mgr" placeholder="사원번호입력"
-					required="required">
-				<button>검색</button>
-			</div>
 			<c:choose>
 				<c:when test="${fn:length(StockOutList) eq 0 }">
 					<h2>정보가 없습니다.</h2>
@@ -27,7 +21,6 @@
 					<h2>승인대기목록</h2>
 					<table>
 						<tr>
-							<th></th>
 							<th>ID</th>
 							<th>제품아이디</th>
 							<th>담당자</th>
@@ -37,8 +30,7 @@
 						</tr>
 						<c:forEach var="dto" items="${StockOutList}" varStatus="vs">
 							<tr>
-								<td><input type="checkbox" name="" id=""></td>
-									<a href="./stockOutInfo.do?id=${dto.stock_id}">l</a>
+<%-- 									<a href="./stockOutInfo.do?id=${dto.stock_id}">l</a> --%>
 								<td
 									onclick="location.href='./stockOutInfo.do?id='+${dto.stock_id}">${dto.stock_id}</td>
 								<td>${dto.product_id}</td>
@@ -46,10 +38,10 @@
 								<td>${dto.stock_amount}</td>
 								<td>${dto.stock_date}</td>
 								<td>
-									<form action="./ManagerAccept.do" method="post">
+<!-- 									<form action="./managerAccept.do" method="post"> -->
 										<input type="hidden" value="${dto.stock_id}" name="id">
-										<button type="submit" value="${dto.stock_id}">승인</button>
-									</form>
+										<button type="button" onclick="acceptBtn(this)"value="${dto.stock_id}">승인</button>
+<!-- 									</form> -->
 								</td>
 							</tr>
 						</c:forEach>
@@ -60,4 +52,24 @@
 		</div>
 	</main>
 </body>
+<script type="text/javascript">
+// 	document.forms[0].addEventListener('submit',(event) => {
+// 		event.preventDefault();
+// 	});
+	function acceptBtn(val){
+		console.log(val.value);
+		var id = val.value;
+		console.log(id);
+		fetch('./managerAccept.do?id='+id)
+		.then((response) => response.text())
+		.then((data) => {
+			console.log(data);
+			console.log(val.closest('tr'));
+			if(data === 'true') {
+				val.closest('tr').remove();
+			}
+		})
+		.catch(error => alert('잘못된 요청'));
+	}
+</script>
 </html>

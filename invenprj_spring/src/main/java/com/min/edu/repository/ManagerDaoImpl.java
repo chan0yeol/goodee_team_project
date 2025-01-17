@@ -19,6 +19,7 @@ public class ManagerDaoImpl implements IManagerDao{
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	private final String NS ="com.min.edu.repository.ManagerDaoImpl.";
+	
 	@Override
 	public List<ProductInfoDto> selectProductList() {
 		return sqlSession.selectList(NS+"selectProductList");

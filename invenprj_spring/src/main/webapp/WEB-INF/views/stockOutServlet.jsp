@@ -24,13 +24,34 @@
 						<option value="${dto.product_id}">${dto.product_name}</option>
 					</c:forEach>
 				</select>
-				<!--  <input type="text" name="stock_mgr" placeholder="담당자사원번호"> <br /> -->
-				<input class="form-control" type="number" name="stock_amount" placeholder="수량" required="required"><br />
-				<input type="submit" value="insert">
+				 <input class="form-control mb-3"  type="text" name="stock_cost" placeholder="출고가격">
+				<input class="form-control mb-3" type="text" name="stock_amount" placeholder="수량">
+				<input class="btn btn-success" type="submit" value="insert">
 			</form>
 		</div>
 	</div>
-	
 </main>
+<script type="text/javascript">
+	console.log(document.forms[0]);
+	document.forms[0].addEventListener('submit', (event) => {
+		event.preventDefault();
+		let amount = document.getElementsByName('stock_amount')[0].value;
+		let cost = document.getElementsByName('stock_cost')[0].value;
+		Number(amount);
+		console.log(isNaN(amount));
+		
+		if(isNaN(amount) || amount.trim().length == 0 || isNaN(cost) || cost.trim().length == 0) {
+			Swal.fire('수량에는 숫자만 입력 가능합니다.');
+		} else{
+			if(amount < 0) {
+				Swal.fire('수량을 확인하세요');
+			} else{
+				document.forms[0].method ="POST";
+				document.forms[0].action ="./stockOutInsert.do";
+				document.forms[0].submit();
+			}
+		}
+	});
+</script>
 </body>
 </html>

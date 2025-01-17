@@ -42,7 +42,7 @@
 		event.preventDefault();
 		let amount =frm[4].value;
 		console.log(amount);
-		if(isNaN(amount) || amount==='') {
+		if(isNaN(amount) || amount.trim().length == 0) {
 			Swal.fire('수량을 입력하세요');
 		} else if (amount < 0){
 				Swal.fire('수량은 0보다 작을 수 없습니다.');			
