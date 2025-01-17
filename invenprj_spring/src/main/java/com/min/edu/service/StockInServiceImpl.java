@@ -59,4 +59,14 @@ public class StockInServiceImpl implements IStockInService {
 		return inDao.selectStockInByMgr(i);
 	}
 
+	@Override
+	public List<StockDto> selectPageAll(Map<String, Object> map) {
+		return inDao.selectPageAll(map);
+	}
+
+	@Override
+	public int cntStockIn() {
+		return inDao.cntStockIn();
+	}
+
 }
