@@ -11,12 +11,12 @@
   <script>
   $( function() {
     $( "#datepicker1" ).datepicker({
-    	dateFormat :'yy-mm-dd'
+    	dateFormat :'yy-mm-dd',
     });
     $( "#datepicker2" ).datepicker({
-    	dateFormat :'yy-mm-dd'
+    	dateFormat :'yy-mm-dd',
     });
-  } );
+  });
   
   </script>
 <%@ include file="./header.jsp" %>
@@ -31,22 +31,33 @@
 				</h2>
 			</c:if>
 
-			<!-- Button trigger modal -->
-			<button type="button" class="btn border" data-bs-toggle="modal" data-bs-target="#exampleModal">
+			<!-- modal Button -->
+			<button type="button" id="rangeBtn" class="btn border" data-bs-toggle="modal" data-bs-target="#exampleModal">
 			  기간조회
 			</button>
 			
-			<!-- Modal -->
+			<!-- modal -->
 			<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			  <div class="modal-dialog">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+			        <h1 class="modal-title fs-5" id="exampleModalLabel">기간 조회</h1>
 			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			      </div>
 			      <div class="modal-body">
-			        <p>조회 시작일: <input type="text" id="datepicker1" name="start"></p>
-			        <p>조회 종료일: <input type="text" id="datepicker2" name="end"></p>
+			      	<div>
+				      	<button id="week" class="btn btn-light">1주일</button>
+				      	<button id="month" class="btn btn-light">한달</button>
+				      	<button id="year" class="btn btn-light">1년</button>
+			      	</div>
+			      	<div>
+	      				<label for="datepicker1">조회 시작일 :</label> 
+	      				<input type="text" id="datepicker1" class="form-control" name="start">
+			      	</div>
+			      	<div>
+			      		<label for="datepicker2">조회 시작일 :</label>
+			      		<input type="text" id="datepicker2" class="form-control" name="end">
+			      	</div>
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
@@ -110,6 +121,9 @@
 	</main>
 </body>
 <script type="text/javascript">
+	window.onload = function() {
+		nowDate();
+	}
 	document.querySelector("div.position-absolute>button").addEventListener('click', () => {
 		var mgr = document.getElementById("mgr").value;
 		console.log(mgr);
@@ -121,11 +135,61 @@
 		}
 		
 	});
+	
+	function nowDate() {
+		// 오늘 날짜 'yyyy-mm-dd'  
+		let date = new Date();
+		let year = date.getFullYear();
+		let month = (date.getMonth()+1).toString().padStart(2,'0');
+		let day = date.getDate();
+		var nowDate = year+'-'+month+'-'+day;
+		document.getElementById('datepicker1').value = nowDate;
+		document.getElementById('datepicker2').value = nowDate;
+		console.log('nowDate() 실행');
+		return nowDate;
+	}
+	function formatDate(year, mon, date){
+		mon = mon.toString().padStart(2,'0');
+		date = date.toString().padStart(2,'0');
+		return  year+'-'+mon+'-'+date;
+	}
+	// 1주일 전 
+	document.getElementById('week').addEventListener('click',() => {
+		var d = new Date();
+		document.getElementById('datepicker1').value = formatDate(d.getFullYear(), d.getMonth()+1,d.getDate()-7);
+		console.log('week event');
+	});
+	
+	// 1개월 전
+	document.getElementById('month').addEventListener('click',() => {
+		var d = new Date();
+		let mon = d.getMonth() == 0 ? 12:d.getMonth();
+		let year = mon == 12?d.getFullYear()-1:d.getFullYear();
+		document.getElementById('datepicker1').value = formatDate(year, mon,d.getDate());
+	});
+	// 1년 전
+	
+	document.getElementById('year').addEventListener('click',() => {
+		var d = new Date();
+		document.getElementById('datepicker1').value = formatDate(d.getFullYear()-1, d.getMonth()+1,d.getDate());
+	});
+
+	
+	
 	document.getElementById('dateRangeSelect').addEventListener('click', (event) => {
 		event.preventDefault();
 		var start = document.querySelector('input[name=start]').value;
 		var end = document.querySelector('input[name=end]').value;
 		console.log("클릭", start, end);
+		console.log("클릭", start.replaceAll('-',''), end.replaceAll('-',''));
+		if(start.replaceAll('-','') > end.replaceAll('-','')){
+			Swal.fire('시작값이 더 클 수 없어요');
+			return;
+		} 
+		if(start.length == 0 || end.length == 0) {
+			Swal.fire('날짜를 선택하세요');
+			return;			
+		}
 		fetch('./selectDateRange.do',{
 			method:"POST",
 			headers: {
@@ -139,32 +203,60 @@
 		.then((response) =>response.json())
 		.then((msg) => {
 			console.log(typeof msg, msg);
-			let rDiv = document.getElementById('rDiv');
-			let table = document.createElement("table");
-			table.className = "table";
-			msg.forEach((value,index) =>{
-				var tr = document.createElement("tr");
-				var stockIdTd = document.createElement("td");
-				stockIdTd.textContent = value.stock_id;
-				tr.appendChild(stockIdTd);
-				var productIdTd = document.createElement("td");
-				productIdTd.textContent = value.product_id;
-				tr.appendChild(productIdTd);
-				var mgrTd = document.createElement("td");
-				mgrTd.textContent = value.stock_mgr;
-				tr.appendChild(mgrTd);
-				var costTd = document.createElement("td");
-				costTd.textContent = value.stock_cost;
-				tr.appendChild(costTd);
-				var dateTd = document.createElement("td");
-				dateTd.textContent = value.stock_date;
-				tr.appendChild(dateTd);
+			var rDiv = document.getElementById('rDiv');
+			rDiv.innerHTML ="";
+			if(msg.length == 0) {
+				Swal.fire('조회값이 없어요');
+				return;
+			} else{
+				// 받은 json 값 Create Dom -----
 				
-				table.appendChild(tr);
-			});
-			rDiv.appendChild(table);
-// 			rDiv.textContent = msg[0].stock_id;
-// 			rDiv.textContent = JSON.stringify(msg);
+				let table = document.createElement("table");
+				table.className = "table";
+				let theadTr = document.createElement('tr');
+				let theadTd = document.createElement('td');
+				theadTd.textContent = "ID";
+				theadTr.appendChild(theadTd);
+				theadTd = document.createElement('td');
+				theadTd.textContent = "제품아이디";
+				theadTr.appendChild(theadTd);
+				theadTd = document.createElement('td');
+				theadTd.textContent = "담당자";
+				theadTr.appendChild(theadTd);
+				theadTd = document.createElement('td');
+				theadTd.textContent = "수량";
+				theadTr.appendChild(theadTd);
+				theadTd = document.createElement('td');
+				theadTd.textContent = "날짜";
+				theadTr.appendChild(theadTd);
+				table.appendChild(theadTr);
+				
+				msg.forEach((value,index) =>{
+					var tr = document.createElement("tr");
+					var stockIdTd = document.createElement("td");
+					stockIdTd.textContent = value.stock_id;
+					tr.appendChild(stockIdTd);
+					var productIdTd = document.createElement("td");
+					productIdTd.textContent = value.product_id;
+					tr.appendChild(productIdTd);
+					var mgrTd = document.createElement("td");
+					mgrTd.textContent = value.stock_mgr;
+					tr.appendChild(mgrTd);
+					var amountTd = document.createElement("td");
+					amountTd.textContent = value.stock_amount;
+					tr.appendChild(amountTd);
+					var dateTd = document.createElement("td");
+					dateTd.textContent = value.stock_date;
+					tr.appendChild(dateTd);
+					
+					table.appendChild(tr);
+				});
+				
+				rDiv.appendChild(table);
+				// 받은 json 값 Create Dom ----- END -----------------------------
+//	 			rDiv.textContent = msg[0].stock_id;
+//	 			rDiv.textContent = JSON.stringify(msg);
+			}
 		})
 		.catch((error) => { alert("잘못된 요청")});
 	})
