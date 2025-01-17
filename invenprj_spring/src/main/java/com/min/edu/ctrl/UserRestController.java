@@ -5,7 +5,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,6 +16,7 @@ import com.google.gson.GsonBuilder;
 import com.min.edu.dto.EmpDto;
 import com.min.edu.dto.StockDto;
 import com.min.edu.service.IEmpService;
+import com.min.edu.service.IManagerService;
 import com.min.edu.service.IStockInService;
 
 import lombok.RequiredArgsConstructor;
@@ -26,6 +29,8 @@ public class UserRestController {
 	private final IEmpService empService;
 	
 	private final IStockInService iStockInService;
+	
+	private final IManagerService managerService; 
 	@PostMapping("/login.do")
 	public String loginChk(@RequestParam Map<String, Object> map, HttpSession session) {
 		log.info("{}", map);
@@ -55,4 +60,15 @@ public class UserRestController {
 		log.info("{}",stockListJson);
 		return stockListJson;
 	}
+	
+	@GetMapping("/managerAccept.do")
+	public String ManagerAccept(@RequestParam String id) {
+		System.out.println(id);
+		StockDto updateDto = managerService.findByStockId(id);
+		updateDto.setIs_accepted("Y");
+		int row = managerService.updateStockOutRequest(updateDto);
+//		return "true";
+		return row>0?"true":"false";
+	}
+
 }

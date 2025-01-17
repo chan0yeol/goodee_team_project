@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ManagerServiceImpl implements IManagerService{
 	
-	private IManagerDao dao;
+	private final IManagerDao dao;
 	
 	@Override
 	public List<ProductInfoDto> selectProductList() {

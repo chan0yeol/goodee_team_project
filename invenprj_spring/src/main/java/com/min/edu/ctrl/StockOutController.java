@@ -87,12 +87,15 @@ public class StockOutController {
 		
 	}
 	@GetMapping("/stockAmount.do")
-	public String stockAmountRank() {
-		
-		return "";
+	public String stockAmountRank(Model model) {
+		List<ProductInfoDto> lists = stockOutService.selectStockAmount();
+		model.addAttribute("lists",lists);
+		return "stockAmount";
 	}
 	@GetMapping("/stockSales.do")
-	public String stockSalesRank() {
-		return "";
+	public String stockSalesRank(Model model) {
+		List<ProductInfoDto> lists = stockOutService.selectStockSales();
+		model.addAttribute("lists",lists);
+		return "stockSales";
 	}
 }
