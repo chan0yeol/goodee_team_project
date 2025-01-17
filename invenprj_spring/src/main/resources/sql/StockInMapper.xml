@@ -33,6 +33,7 @@
         FROM STOCK 
         WHERE TRUNC(STOCK_DATE) BETWEEN TO_DATE(#{start}, 'YYYY-MM-DD')AND TO_DATE(#{end}, 'YYYY-MM-DD')
         AND IS_ACCEPTED = 'Y' AND GUBUN = 'I'
+        ORDER BY STOCK_DATE DESC
   	</select>
   	
   	<select id="selectStockInByMgr" resultType="StockDto" parameterType="int">
