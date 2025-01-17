@@ -48,9 +48,9 @@ public class StockOutController {
 		return "stockOutServlet";
 	}
 	
-	@PostMapping("/stockOutForm.do")
+	@PostMapping("/stockOutInsert.do")
 	public String stockOutInsert(StockDto dto, HttpSession session) {
-		log.info("StockOutController /stockOutForm.do POST 출고등록요청");
+		log.info("StockOutController /stockOutInsert.do POST 출고등록요청");
 		EmpDto loginDto = (EmpDto) session.getAttribute("emp");
 		int row;  
 		if(loginDto.getJob().equals("팀장")) {
@@ -62,12 +62,16 @@ public class StockOutController {
 			dto.setIs_accepted("N");
 			row = stockOutService.insertStockOut(dto);
 		}
-		return "stockOutAllInfo";
+		if(row == 1) {
+			return "redirect:/stockOutAllInfo.do";
+		}
+		return "";
 	}
 	@GetMapping("/stockOutUpdate.do")
-	public String stockOutUpdate(int id) {
+	public String stockOutUpdate(int id, Model model) {
 		log.info("StockOutController /stockOutUpdate.do GET 출고수량업데이트Form");
 		StockDto dto = stockOutService.selectStockOutDetail(id);
+		model.addAttribute("stock",dto);
 		return "stockOutUpdate";
 	}
 	@PostMapping("/stockOutUpdate.do")
@@ -81,5 +85,14 @@ public class StockOutController {
 		}
 		return "";
 		
+	}
+	@GetMapping("/stockAmount.do")
+	public String stockAmountRank() {
+		
+		return "";
+	}
+	@GetMapping("/stockSales.do")
+	public String stockSalesRank() {
+		return "";
 	}
 }

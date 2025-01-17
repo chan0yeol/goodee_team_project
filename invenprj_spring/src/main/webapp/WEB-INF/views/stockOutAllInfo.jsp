@@ -21,7 +21,7 @@
 				<a href="./stockSales.do">매출순위</a>
 			<div class="position-absolute top-0 end-0">
 				<c:if test="${emp.deptno eq 70}">
-					<a href="./stockOutServlet.do" class="btn btn-danger">출고 등록</a>
+					<a href="./stockOutForm.do" class="btn btn-danger">출고 등록</a>
 				</c:if>
 
 				<input type="number" name="mgr" id="mgr" placeholder="사원번호입력"

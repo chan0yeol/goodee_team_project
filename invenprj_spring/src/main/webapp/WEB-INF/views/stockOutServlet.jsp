@@ -25,12 +25,32 @@
 					</c:forEach>
 				</select>
 				<!--  <input type="text" name="stock_mgr" placeholder="담당자사원번호"> <br /> -->
-				<input class="form-control" type="number" name="stock_amount" placeholder="수량" required="required"><br />
+				<input class="form-control" type="text" name="stock_amount" placeholder="수량"><br />
 				<input type="submit" value="insert">
 			</form>
 		</div>
 	</div>
-	
 </main>
+<script type="text/javascript">
+	console.log(document.forms[0]);
+	document.forms[0].addEventListener('submit', (event) => {
+		event.preventDefault();
+		let amount = document.getElementsByName('stock_amount')[0].value;
+		Number(amount);
+		console.log(isNaN(amount));
+		
+		if(isNaN(amount) || amount.trim().length == 0) {
+			Swal.fire('수량에는 숫자만 입력 가능합니다.');
+		} else{
+			if(amount < 0) {
+				Swal.fire('수량을 확인하세요');
+			} else{
+				document.forms[0].method ="POST";
+				document.forms[0].action ="./stockOutInsert.do";
+				document.forms[0].submit();
+			}
+		}
+	});
+</script>
 </body>
 </html>
