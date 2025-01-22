@@ -38,9 +38,11 @@ public class StockInController {
 	@GetMapping("/stockInAllpage.do")
 	public String pagingStockInAll(@RequestParam(value="page", defaultValue = "1" ) String page, Model model) {
 		int selPage = Integer.parseInt(page);
+		if(selPage <= 0) {
+			selPage = 1;
+		}
 		p.setTotalCount(stockInService.cntStockIn());
-		p.setCountList(3);
-		
+		p.setCountList(10);
 		p.setCountPage(5);
 		p.setTotalPage(0);
 		

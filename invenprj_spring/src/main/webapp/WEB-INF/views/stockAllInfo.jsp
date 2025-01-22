@@ -13,6 +13,7 @@
 
 <body>
 <div class="container">
+	<h2>재고조회 게시판</h2>
 	<table class="table table-hover text-center">
 		<thead class="header">
 			<tr>
