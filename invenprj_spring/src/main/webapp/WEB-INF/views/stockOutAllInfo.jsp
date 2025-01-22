@@ -35,7 +35,7 @@
 				</c:when>
 				<c:otherwise>
 					<h2>출고목록</h2>
-					<table>
+					<table class="table table-hover text-center">
 						<tr>
 							<!--  <th></th>-->
 							<th>ID</th>

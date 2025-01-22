@@ -16,7 +16,7 @@
 <main>
 	<div class="container">
 		<h2>입고 상세조회</h2>
-		<table class="table">
+		<table class="table table-hover text-center">
 			<tr>
 				<th>제품ID</th>
 				<th>제품명</th>

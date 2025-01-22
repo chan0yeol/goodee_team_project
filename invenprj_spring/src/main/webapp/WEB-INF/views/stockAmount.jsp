@@ -22,7 +22,7 @@
 				</c:when>
 				<c:otherwise>
 					<h2>출고량 순위</h2>
-					<table>
+					<table class="table table-hover text-center">
 						<tr>
 							<!--  <th></th>-->
 							<th>순위</th>

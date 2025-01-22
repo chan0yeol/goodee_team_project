@@ -83,19 +83,19 @@ a {
 	color: rgb(31, 30, 30);
 }
 
-table {
-	border: 2px solid black;
-}
+/* table { */
+/* 	border: 2px solid black; */
+/* } */
 
-tr, td, th {
-	border: 2px solid black;
-}
+/* tr, td, th { */
+/* 	border: 2px solid black; */
+/* } */
 
-td {
-	width: 200px;
-	text-align: center;
-	border-collapse: collapse;
-}
+/* td { */
+/* 	width: 200px; */
+/* 	text-align: center; */
+/* 	border-collapse: collapse; */
+/* } */
 </style>
 </head>
 <body>
@@ -140,7 +140,7 @@ td {
 				</a>
 			</div>
 			<div class="link">
-				<a href="./stockInAllInfo.do"> <svg
+				<a href="./stockInAllpage.do"> <svg
 						xmlns="http://www.w3.org/2000/svg" width="24" height="24"
 						fill="currentColor" class="bi bi-box-arrow-right"
 						viewBox="0 0 16 16">

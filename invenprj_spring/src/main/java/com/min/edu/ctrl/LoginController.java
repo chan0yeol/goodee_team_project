@@ -48,9 +48,9 @@ public class LoginController {
 			session.setAttribute("emp", loginDto);
 			session.setMaxInactiveInterval(60*10*6);
 			if(loginDto.getDeptno() == 50 ) {
-				return "redirect:/stockInAllInfo.do";
+				return "redirect:/stockInAllpage.do";
 			} else if(loginDto.getDeptno() == 60) {
-				return "redirect:/stockInAllInfo.do";
+				return "redirect:/stockInAllpage.do";
 			} else if(loginDto.getDeptno() == 70) {
 				return "redirect:./stockOutAllInfo.do";
 			}

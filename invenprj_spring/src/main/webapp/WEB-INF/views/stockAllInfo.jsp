@@ -13,7 +13,7 @@
 
 <body>
 <div class="container">
-	<table>
+	<table class="table table-hover text-center">
 		<thead class="header">
 			<tr>
 				<th>제품코드</th>

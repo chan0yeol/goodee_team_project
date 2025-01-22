@@ -89,7 +89,7 @@
 				</c:when>
 				<c:otherwise>
 					<h2>입고목록</h2>
-					<table class="table">
+					<table class="table table-hover text-center">
 						<tr>
 							<!--  <th></th>-->
 							<th>ID</th>
@@ -212,7 +212,7 @@
 				// 받은 json 값 Create Dom -----
 				
 				let table = document.createElement("table");
-				table.className = "table";
+				table.className = "table table-hover text-center";
 				let theadTr = document.createElement('tr');
 				let theadTd = document.createElement('td');
 				theadTd.textContent = "ID";
