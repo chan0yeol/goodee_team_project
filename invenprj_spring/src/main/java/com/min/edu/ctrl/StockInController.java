@@ -32,8 +32,8 @@ public class StockInController {
 
 	private final IStockInService stockInService;
 	private final IProductService productService;
-	@Autowired
-	PageBean p;
+	
+	private final PageBean p;
 
 	@GetMapping("/stockInAllpage.do")
 	public String pagingStockInAll(@RequestParam(value="page", defaultValue = "1" ) String page, Model model) {
@@ -66,7 +66,7 @@ public class StockInController {
 		EmpDto loginDto = (EmpDto) session.getAttribute("emp");
 		List<StockDto> lists = stockInService.selectAll();
 		model.addAttribute("StockInList", lists);
-		return "stockAllInfo";
+		return "stockInAllInfo";
 	}
 	@GetMapping("/stockAllInfoMgr.do")
 	public String stockInAllInfoMgr(int mgr, Model model, HttpSession session) {
@@ -74,7 +74,7 @@ public class StockInController {
 		EmpDto loginDto = (EmpDto) session.getAttribute("emp");
 		List<StockDto> lists = stockInService.selectStockInByMgr(mgr);
 		model.addAttribute("StockInList", lists);
-		return "stockAllInfo";
+		return "stockInAllInfo";
 	}
 	
 //	/stockInInfo.do 
@@ -139,4 +139,6 @@ public class StockInController {
 			return "redirect:/stockInUpdate.do?id="+id;
 		}
 	}
+	
+	
 }

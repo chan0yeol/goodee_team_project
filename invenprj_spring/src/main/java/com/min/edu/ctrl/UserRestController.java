@@ -70,5 +70,13 @@ public class UserRestController {
 //		return "true";
 		return row>0?"true":"false";
 	}
+	
+	@GetMapping("/managerAcceptList.do")
+	public String managerAcceptList(@RequestParam List<String> chkid) {
+		
+		return "";
+	}
+	
+	
 
 }

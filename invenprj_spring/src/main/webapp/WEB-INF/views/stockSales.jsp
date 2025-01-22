@@ -13,7 +13,7 @@
 		<div class="container">
 			<c:if test="${emp.deptno eq 70 && emp.job eq '팀장' }">
 				<h2>
-					<a href="./ManagerStockOut.do">관리자페이지 이동</a>
+					<a href="./managerStockOut.do">관리자페이지 이동</a>
 				</h2>
 			</c:if>
 			<c:choose>
@@ -21,7 +21,7 @@
 					<h2>정보가 없습니다.</h2>
 				</c:when>
 				<c:otherwise>
-					<h2>출고목록</h2>
+					<h2>매출순위</h2>
 					<table>
 						<tr>
 							<!--  <th></th>-->

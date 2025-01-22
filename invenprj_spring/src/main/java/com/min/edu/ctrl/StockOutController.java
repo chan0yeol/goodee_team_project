@@ -98,4 +98,12 @@ public class StockOutController {
 		model.addAttribute("lists",lists);
 		return "stockSales";
 	}
+	
+	@GetMapping("/stockAllInfo.do")
+	public String stockAllInfo(Model model) {
+		log.info("재고전체조회");
+		List<StockDto> lists = stockOutService.selectStockInventory();
+		model.addAttribute("stockDto",lists);
+		return "stockAllInfo";
+	}
 }
