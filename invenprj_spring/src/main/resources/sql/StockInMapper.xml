@@ -19,10 +19,15 @@
 	  			WHERE GUBUN = 'I' AND IS_ACCEPTED = 'Y'
         ) WHERE RN BETWEEN #{first} AND #{last}
 	</select>
-	<select id="cntStockIn">
+	<select id="cntStockInAll" resultType="int">
 		SELECT COUNT(*) 
   		FROM STOCK 
   		WHERE GUBUN = 'I' AND IS_ACCEPTED = 'Y'
+	</select>
+	<select id="cntStockInAllMgr" resultType="int">
+	SELECT COUNT(*) 
+  		FROM STOCK 
+  		WHERE GUBUN = 'I' AND IS_ACCEPTED = 'Y' AND STOCK_MGR = #{mgr}
 	</select>
 	
 	
@@ -55,13 +60,13 @@
         ORDER BY STOCK_DATE DESC
   	</select>
   	
-  	<select id="selectStockInByMgr" resultType="StockDto" parameterType="int">
+  	<select id="selectStockInByMgr" resultType="StockDto">
   		SELECT STOCK_ID, GUBUN, STOCK_DATE,
             STOCK_AMOUNT, STOCK_MGR, STOCK_COST,
             IS_ACCEPTED ,PRODUCT_ID 
         FROM STOCK 
         WHERE GUBUN = 'I' AND IS_ACCEPTED = 'Y'
-        AND STOCK_MGR = #{empno}
+        AND STOCK_MGR = #{mgr}
   	</select>
   	
   	<select id="selectDynamicDate" resultType="StockDto" parameterType="Map">

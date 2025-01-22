@@ -56,8 +56,8 @@ public class StockInController {
 		
 		List<StockDto> StockInList = stockInService.selectPageAll(map);
 		System.out.println(StockInList);
-		model.addAttribute("StockInList", StockInList);
 		model.addAttribute("page", p);
+		model.addAttribute("StockInList", StockInList);
 		return "stockInAllpage";
 	}
 	
@@ -71,11 +71,30 @@ public class StockInController {
 		return "stockInAllpage";
 	}
 	@GetMapping("/stockAllInfoMgr.do")
-	public String stockInAllInfoMgr(int mgr, Model model, HttpSession session) {
+	public String stockInAllInfoMgr(@RequestParam(value="page", defaultValue = "1" ) String page, @RequestParam(name = "mgr") String mgr, Model model, HttpSession session) {
 		log.info("StockInController /stockInAllInfo.do GET 요청");
 		EmpDto loginDto = (EmpDto) session.getAttribute("emp");
+		log.info("mgr : {}", mgr);
 		List<StockDto> lists = stockInService.selectStockInByMgr(mgr);
+		int selPage = Integer.parseInt(page);
+		if(selPage <= 0) {
+			selPage = 1;
+		}
+		p.setTotalCount(stockInService.cntStockInAllMgr(mgr));
+		p.setCountList(10);
+		p.setCountPage(5);
+		p.setTotalPage(0);
+		
+		p.setPage(selPage);
+		p.setStagePage(0);
+		p.setEndPage(0);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("first", p.getPage()*p.getCountList() - (p.getCountList()-1) ); // (2*10) - (10-1) = 11
+		map.put("last", p.getPage()*p.getCountList());
+		model.addAttribute("page", p);
 		model.addAttribute("StockInList", lists);
+		model.addAttribute("mgr",mgr);
 		return "stockInAllpage";
 	}
 	

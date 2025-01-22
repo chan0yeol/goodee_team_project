@@ -27,8 +27,8 @@ public class StockInDaoImpl implements IStockInDao {
 	}
 
 	@Override
-	public List<StockDto> selectAll(int empno) {
-		return sqlSession.selectList(NS+"selectStockInByMgr",empno);
+	public List<StockDto> selectAll(String mgr) {
+		return sqlSession.selectList(NS+"selectStockInByMgr",mgr);
 	}
 
 	@Override
@@ -57,8 +57,8 @@ public class StockInDaoImpl implements IStockInDao {
 	}
 
 	@Override
-	public List<StockDto> selectStockInByMgr(int i) {
-		return sqlSession.selectList(NS+"selectStockInByMgr",i);
+	public List<StockDto> selectStockInByMgr(String mgr) {
+		return sqlSession.selectList(NS+"selectStockInByMgr",mgr);
 	}
 
 	@Override
@@ -68,7 +68,12 @@ public class StockInDaoImpl implements IStockInDao {
 
 	@Override
 	public int cntStockIn() {
-		return sqlSession.selectOne(NS+"cntStockIn");
+		return sqlSession.selectOne(NS+"cntStockInAll");
+	}
+
+	@Override
+	public int cntStockInAllMgr(String mgr) {
+		return sqlSession.selectOne(NS+"cntStockInAllMgr",mgr);
 	}
 
 

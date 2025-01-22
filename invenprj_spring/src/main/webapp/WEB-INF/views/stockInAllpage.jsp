@@ -121,19 +121,40 @@
 				<!-- 앞에 조건에 따른 이동 표시 << <   -->
 				<c:if test="${page.page > page.countPage}">
 					<li class="page-item">
-						<a class="page-link" href="./stockInAllpage.do?page=1">&lt;&lt;</a>
+						<c:choose>
+							<c:when test="${mgr eq null}">
+								<a class="page-link" href="./stockInAllpage.do?page=1">&lt;&lt;</a>
+							</c:when>
+							<c:otherwise>
+								<a class="page-link" href="./stockAllInfoMgr.do?page=1&mgr=${mgr}">&lt;&lt;</a>
+							</c:otherwise>
+						</c:choose>
 					</li>
 				</c:if>
 				<c:if test="${page.page > 1 }">
 					<c:choose>
 						<c:when test="${(page.stagePage - page.countPage) < 0}">
 							<li class="page-item">
-								<a class="page-link" href="./stockInAllpage.do?page=1">&lt;</a>
+								<c:choose>
+									<c:when test="${mgr eq null}">
+										<a class="page-link" href="./stockInAllpage.do?page=1">&lt;</a>
+									</c:when>
+									<c:otherwise>
+										<a class="page-link" href="./stockAllInfoMgr.do?page=1&mgr=${mgr}">&lt;</a>
+									</c:otherwise>
+								</c:choose>
 							</li>	
 						</c:when>
 						<c:otherwise>
 							<li class="page-item">
- 								<a class="page-link" href="./stockInAllpage.do?page=${(page.stagePage - page.countPage)}">&lt;</a>
+							<c:choose>
+								<c:when test="${mgr eq null}">
+									<a class="page-link" href="./stockInAllpage.do?page=${(page.stagePage - page.countPage)}">&lt;</a>
+								</c:when>
+								<c:otherwise>
+									<a class="page-link" href="./stockAllInfoMgr.do?page=${(page.stagePage - page.countPage)}&mgr=${mgr}">&lt;</a>
+								</c:otherwise>
+							</c:choose>
 							</li>	
 						</c:otherwise>
 					</c:choose>
@@ -141,7 +162,14 @@
 				<!-- 페이지 이동 숫자 -->
 				  <c:forEach var="i" begin="${page.stagePage}" end="${page.endPage}" step="1">
 				  	<li  ${i == page.page ?"class='page-item active'":"class='page-item'" }>
-				  		<a class="page-link" href="./stockInAllpage.do?page=${i}">${i}</a>
+				  		<c:choose>
+							<c:when test="${mgr eq null}">
+								<a class="page-link" href="./stockInAllpage.do?page=${i}${mgr ne null?'&mgr='+mgr:''}">${i}</a>
+							</c:when>
+							<c:otherwise>
+								<a class="page-link" href="./stockAllInfoMgr.do?page=${i}&mgr=${mgr}">${i}</a>
+							</c:otherwise>
+						</c:choose>
 				  	</li>	
 				  </c:forEach>
 				<!-- 뒤에 조건에 따른 이동 표시 > >>   -->
@@ -149,12 +177,27 @@
 				<fmt:parseNumber var="num2" integerOnly="true" value="${(page.page-1)/page.countPage}"  />
 				<c:if test="${num1>num2 }">
 					<li class="page-item">
-				  		<a class="page-link" href="./stockInAllpage.do?page=${page.stagePage+page.countPage}">&gt;</a>
+						<c:choose>
+							<c:when test="${mgr eq null}">
+								<a class="page-link" href="./stockInAllpage.do?page=${page.stagePage+page.countPage}">&gt;</a>
+							</c:when>
+							<c:otherwise>
+								<a class="page-link" href="./stockAllInfoMgr.do?page=${page.stagePage+page.countPage}&mgr=${mgr}">&gt;</a>
+							</c:otherwise>
+						</c:choose>
 				  	</li>	
 				</c:if>
 				<c:if test="${page.endPage<page.totalPage}">
 					<li class="page-item">
-				  		<a class="page-link" href="./stockInAllpage.do?page=${page.totalPage}">&gt;&gt;</a>
+						<c:choose>
+							<c:when test="${mgr eq null}">
+								<a class="page-link" href="./stockInAllpage.do?page=${page.totalPage}">&gt;&gt;</a>
+							</c:when>
+							<c:otherwise>
+								<a class="page-link" href="./stockAllInfoMgr.do?page=${page.totalPage}&mgr=${mgr}">&gt;&gt;</a>
+							</c:otherwise>
+						</c:choose>
+				  		
 				  	</li>	
 				</c:if>
 			</ul>

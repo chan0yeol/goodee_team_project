@@ -24,8 +24,8 @@ public class StockInServiceImpl implements IStockInService {
 	}
 
 	@Override
-	public List<StockDto> selectAll(int empno) {
-		return inDao.selectAll(empno);
+	public List<StockDto> selectAll(String mgr) {
+		return inDao.selectAll(mgr);
 	}
 
 	@Override
@@ -55,8 +55,8 @@ public class StockInServiceImpl implements IStockInService {
 	}
 
 	@Override
-	public List<StockDto> selectStockInByMgr(int i) {
-		return inDao.selectStockInByMgr(i);
+	public List<StockDto> selectStockInByMgr(String mgr) {
+		return inDao.selectStockInByMgr(mgr);
 	}
 
 	@Override
@@ -67,6 +67,11 @@ public class StockInServiceImpl implements IStockInService {
 	@Override
 	public int cntStockIn() {
 		return inDao.cntStockIn();
+	}
+
+	@Override
+	public int cntStockInAllMgr(String mgr) {
+		return inDao.cntStockInAllMgr(mgr);
 	}
 
 }
