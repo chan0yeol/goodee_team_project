@@ -15,4 +15,10 @@ public interface IStockInDao {
 	public int updateStockInAmount(StockDto dto);
 	public List<StockDto> selectDateRange(Map<String, Object> map);
 	public List<StockDto> selectStockInByMgr(int i);
+	
+	// 페이징
+	List<StockDto> selectPageAll(Map<String, Object> map);
+	// 전체글 갯수
+	int cntStockIn();
+	 
 }

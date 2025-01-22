@@ -116,7 +116,52 @@
 					</table>
 				</c:otherwise>
 			</c:choose>
-	
+	<div style="text-align:center; margin:0 auto;">
+			<ul class="pagination pagination-lg">
+				<!-- 앞에 조건에 따른 이동 표시 << <   -->
+				<c:if test="${page.page > page.countPage}">
+					<li>
+						<a href="./stockInAllpage.do?page=1">&lt;&lt;</a>
+					</li>
+				</c:if>
+				<c:if test="${page.page > 1 }">
+					<c:choose>
+						<c:when test="${(page.stagePage - page.countPage) < 0}">
+							<li>
+								<a href="./stockInAllpage.do?page=1">&lt;</a>
+							</li>	
+						</c:when>
+						<c:otherwise>
+							<li>
+ 								<a href="./stockInAllpage.do?page=${(page.stagePage - page.countPage)}">&lt;</a>
+							</li>	
+						</c:otherwise>
+					</c:choose>
+				</c:if>
+				<!-- 페이지 이동 숫자 -->
+				  <c:forEach var="i" begin="${page.stagePage}" end="${page.endPage}" step="1">
+				  	<li ${i == page.page ?"class='active'":"" }>
+				  		<a href="./stockInAllpage.do?page=${i}">${i}</a>
+				  	</li>	
+				  </c:forEach>
+				<!-- 뒤에 조건에 따른 이동 표시 > >>   -->
+				<fmt:parseNumber var="num1" integerOnly="true" value="${(page.totalPage-1)/page.countPage}" />
+				<fmt:parseNumber var="num2" integerOnly="true" value="${(page.page-1)/page.countPage}"  />
+				<c:if test="${num1>num2 }">
+					<li>
+				  		<a href="./stockInAllpage.do?page=${page.stagePage+page.countPage}">&gt;</a>
+				  	</li>	
+				</c:if>
+				<c:if test="${page.endPage<page.totalPage}">
+					<li>
+				  		<a href="./stockInAllpage.do?page=${page.totalPage}">&gt;&gt;</a>
+				  	</li>	
+				</c:if>
+			</ul>
+		</div>
+		<div>
+		totalCount:	${page.totalCount}
+		</div>
 		</div>
 	</main>
 </body>

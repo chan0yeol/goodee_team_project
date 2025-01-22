@@ -167,13 +167,13 @@ td {
 				<div class="link">
 					<c:choose>
 						<c:when test="${emp.deptno eq 50 }">
-							<a href="./ManagerProduct.do">
+							<a href="./managerProduct.do">
 						</c:when>
 						<c:when test="${emp.deptno eq 60 }">
-							<a href="./ManagerStockIn.do">
+							<a href="./managerStockIn.do">
 						</c:when>
 						<c:when test="${emp.deptno eq 70 }">
-							<a href="./ManagerStockOut.do">
+							<a href="./managerStockOut.do">
 						</c:when>
 					</c:choose>
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"

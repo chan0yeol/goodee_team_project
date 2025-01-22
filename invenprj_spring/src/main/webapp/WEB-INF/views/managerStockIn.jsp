@@ -20,7 +20,7 @@
 			<h1>관리자페이지</h1>
 			<c:if test="${emp.deptno eq 60 && emp.job eq '팀장' }">
 				<h2>
-					<a href="./ManagerStockIn.do">관리자페이지 이동</a>
+					<a href="./managerStockIn.do">관리자페이지 이동</a>
 				</h2>
 			</c:if>
 			<c:choose>

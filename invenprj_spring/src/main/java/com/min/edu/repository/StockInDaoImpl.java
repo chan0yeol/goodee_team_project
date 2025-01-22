@@ -61,5 +61,15 @@ public class StockInDaoImpl implements IStockInDao {
 		return sqlSession.selectList(NS+"selectStockInByMgr",i);
 	}
 
+	@Override
+	public List<StockDto> selectPageAll(Map<String, Object> map) {
+		return sqlSession.selectList(NS+"selectPageAll",map);
+	}
+
+	@Override
+	public int cntStockIn() {
+		return sqlSession.selectOne(NS+"cntStockIn");
+	}
+
 
 }

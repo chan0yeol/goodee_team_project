@@ -1,24 +1,27 @@
 package com.min.edu.ctrl;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.min.edu.bean.PageBean;
 import com.min.edu.dto.EmpDto;
 import com.min.edu.dto.ProductInfoDto;
 import com.min.edu.dto.StockDto;
 import com.min.edu.service.IProductService;
 import com.min.edu.service.IStockInService;
 
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -29,7 +32,33 @@ public class StockInController {
 
 	private final IStockInService stockInService;
 	private final IProductService productService;
+	
+	private final PageBean p;
 
+	@GetMapping("/stockInAllpage.do")
+	public String pagingStockInAll(@RequestParam(value="page", defaultValue = "1" ) String page, Model model) {
+		int selPage = Integer.parseInt(page);
+		p.setTotalCount(stockInService.cntStockIn());
+		p.setCountList(3);
+		
+		p.setCountPage(5);
+		p.setTotalPage(0);
+		
+		p.setPage(selPage);
+		p.setStagePage(0);
+		p.setEndPage(0);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("first", p.getPage()*p.getCountList() - (p.getCountList()-1) ); // (2*10) - (10-1) = 11
+		map.put("last", p.getPage()*p.getCountList());
+		
+		List<StockDto> StockInList = stockInService.selectPageAll(map);
+		System.out.println(StockInList);
+		model.addAttribute("StockInList", StockInList);
+		model.addAttribute("page", p);
+		return "stockInAllpage";
+	}
+	
 //	/stockInAllInfo.do
 	@GetMapping("/stockInAllInfo.do") // 전체 조회
 	public String stockInAllInfo(Model model, HttpSession session) {
@@ -37,7 +66,7 @@ public class StockInController {
 		EmpDto loginDto = (EmpDto) session.getAttribute("emp");
 		List<StockDto> lists = stockInService.selectAll();
 		model.addAttribute("StockInList", lists);
-		return "stockAllInfo";
+		return "stockInAllInfo";
 	}
 	@GetMapping("/stockAllInfoMgr.do")
 	public String stockInAllInfoMgr(int mgr, Model model, HttpSession session) {
@@ -45,7 +74,7 @@ public class StockInController {
 		EmpDto loginDto = (EmpDto) session.getAttribute("emp");
 		List<StockDto> lists = stockInService.selectStockInByMgr(mgr);
 		model.addAttribute("StockInList", lists);
-		return "stockAllInfo";
+		return "stockInAllInfo";
 	}
 	
 //	/stockInInfo.do 
@@ -110,4 +139,6 @@ public class StockInController {
 			return "redirect:/stockInUpdate.do?id="+id;
 		}
 	}
+	
+	
 }
