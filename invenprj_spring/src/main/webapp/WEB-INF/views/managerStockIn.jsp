@@ -31,7 +31,7 @@
 					<h2>승인대기목록</h2>
 <!-- 					<form> -->
 <!-- 						<button id="allAcceptBtn">전체</button> -->
-						<table>
+						<table class="table table-hover text-center">
 							<tr>
 <!-- 								<th></th> -->
 								<th>ID</th>

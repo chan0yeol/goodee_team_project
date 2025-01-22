@@ -40,9 +40,9 @@ public class UserRestController {
 			session.setAttribute("emp", loginDto);
 			session.setMaxInactiveInterval(60*10*6);
 			if(loginDto.getDeptno() == 50 ) {
-				rtnURL += "./stockInAllInfo.do";
+				rtnURL += "./stockInAllpage.do";
 			} else if(loginDto.getDeptno() == 60) {
-				rtnURL += "./stockInAllInfo.do";
+				rtnURL += "./stockInAllpage.do";
 			} else if(loginDto.getDeptno() == 70) {
 				rtnURL += "./stockOutAllInfo.do";
 			}

@@ -89,72 +89,72 @@
 				</c:when>
 				<c:otherwise>
 					<h2>입고목록</h2>
-					<table class="table">
-						<tr>
+					<table class="table table-hover">
+						<tr class="text-center">
 							<!--  <th></th>-->
 							<th>ID</th>
 							<th>제품아이디</th>
 							<th>담당자</th>
 							<th>수량</th>
 							<th>날짜</th>
-							<th></th>
+<!-- 							<th></th> -->
 						</tr>
 						<c:forEach items="${StockInList}" var="dto" varStatus="vs">
-							<tr>
+							<tr class="text-center">
 								<td><a href="./stockInInfo.do?id=${dto.stock_id}">${dto.stock_id}</a></td>
 								<td>${dto.product_id}</td>
 								<td>${dto.stock_mgr}</td>
 								<td>${dto.stock_amount}</td>
 								<td>${dto.stock_date}</td>
-								<td>
-									<form action="./stockInDelete" method="get">
-										<input type="submit" value="${dto.stock_id}">
-									</form>
-								</td>
+<!-- 								<td> -->
+<!-- 									<form action="./stockInDelete" method="get"> -->
+<%-- 										<input type="submit" value="${dto.stock_id}"> --%>
+<!-- 									</form> -->
+<!-- 								</td> -->
 							</tr>
 						</c:forEach>
 					</table>
 				</c:otherwise>
 			</c:choose>
-	<div style="text-align:center; margin:0 auto;">
-			<ul class="pagination pagination-lg">
+	<div>
+			<ul class="pagination justify-content-center">
 				<!-- 앞에 조건에 따른 이동 표시 << <   -->
 				<c:if test="${page.page > page.countPage}">
-					<li>
-						<a href="./stockInAllpage.do?page=1">&lt;&lt;</a>
+					<li class="page-item">
+						<a class="page-link" href="./stockInAllpage.do?page=1">&lt;&lt;</a>
 					</li>
 				</c:if>
 				<c:if test="${page.page > 1 }">
 					<c:choose>
 						<c:when test="${(page.stagePage - page.countPage) < 0}">
-							<li>
-								<a href="./stockInAllpage.do?page=1">&lt;</a>
+							<li class="page-item">
+								<a class="page-link" href="./stockInAllpage.do?page=1">&lt;</a>
 							</li>	
 						</c:when>
 						<c:otherwise>
-							<li>
- 								<a href="./stockInAllpage.do?page=${(page.stagePage - page.countPage)}">&lt;</a>
+							<li class="page-item">
+ 								<a class="page-link" href="./stockInAllpage.do?page=${(page.stagePage - page.countPage)}">&lt;</a>
 							</li>	
 						</c:otherwise>
 					</c:choose>
 				</c:if>
 				<!-- 페이지 이동 숫자 -->
 				  <c:forEach var="i" begin="${page.stagePage}" end="${page.endPage}" step="1">
-				  	<li ${i == page.page ?"class='active'":"" }>
-				  		<a href="./stockInAllpage.do?page=${i}">${i}</a>
+				  	<li  ${i == page.page ?"class='page-item active'":"class='page-item'" }>
+				  		<a class="page-link" href="./stockInAllpage.do?page=${i}">${i}</a>
 				  	</li>	
 				  </c:forEach>
 				<!-- 뒤에 조건에 따른 이동 표시 > >>   -->
 				<fmt:parseNumber var="num1" integerOnly="true" value="${(page.totalPage-1)/page.countPage}" />
 				<fmt:parseNumber var="num2" integerOnly="true" value="${(page.page-1)/page.countPage}"  />
 				<c:if test="${num1>num2 }">
-					<li>
-				  		<a href="./stockInAllpage.do?page=${page.stagePage+page.countPage}">&gt;</a>
+					<li class="page-item">
+				  		<a class="page-link" href="./stockInAllpage.do?page=${page.stagePage+page.countPage}">&gt;</a>
 				  	</li>	
 				</c:if>
 				<c:if test="${page.endPage<page.totalPage}">
-					<li>
-				  		<a href="./stockInAllpage.do?page=${page.totalPage}">&gt;&gt;</a>
+					<li class="page-item">
+				  		<a class="page-link" href="./stockInAllpage.do?page=${page.totalPage}">&gt;&gt;</a>
 				  	</li>	
 				</c:if>
 			</ul>
@@ -257,7 +257,7 @@
 				// 받은 json 값 Create Dom -----
 				
 				let table = document.createElement("table");
-				table.className = "table";
+				table.className = "table table-hover text-center";
 				let theadTr = document.createElement('tr');
 				let theadTd = document.createElement('td');
 				theadTd.textContent = "ID";

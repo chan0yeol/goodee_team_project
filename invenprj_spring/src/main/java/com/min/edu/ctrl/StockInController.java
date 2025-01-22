@@ -38,9 +38,11 @@ public class StockInController {
 	@GetMapping("/stockInAllpage.do")
 	public String pagingStockInAll(@RequestParam(value="page", defaultValue = "1" ) String page, Model model) {
 		int selPage = Integer.parseInt(page);
+		if(selPage <= 0) {
+			selPage = 1;
+		}
 		p.setTotalCount(stockInService.cntStockIn());
-		p.setCountList(3);
-		
+		p.setCountList(10);
 		p.setCountPage(5);
 		p.setTotalPage(0);
 		
@@ -66,7 +68,7 @@ public class StockInController {
 		EmpDto loginDto = (EmpDto) session.getAttribute("emp");
 		List<StockDto> lists = stockInService.selectAll();
 		model.addAttribute("StockInList", lists);
-		return "stockInAllInfo";
+		return "stockInAllpage";
 	}
 	@GetMapping("/stockAllInfoMgr.do")
 	public String stockInAllInfoMgr(int mgr, Model model, HttpSession session) {
@@ -74,7 +76,7 @@ public class StockInController {
 		EmpDto loginDto = (EmpDto) session.getAttribute("emp");
 		List<StockDto> lists = stockInService.selectStockInByMgr(mgr);
 		model.addAttribute("StockInList", lists);
-		return "stockInAllInfo";
+		return "stockInAllpage";
 	}
 	
 //	/stockInInfo.do 
@@ -115,7 +117,7 @@ public class StockInController {
 			row = stockInService.insert(inDto);
 		}
 		if (row == 1) {
-			return "redirect:/stockInAllInfo.do";
+			return "redirect:/stockInAllpage.do";
 		}
 		return "";
 	}

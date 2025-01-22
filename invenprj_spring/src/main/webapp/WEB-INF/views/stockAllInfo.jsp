@@ -13,7 +13,8 @@
 
 <body>
 <div class="container">
-	<table>
+	<h2>재고조회 게시판</h2>
+	<table class="table table-hover text-center">
 		<thead class="header">
 			<tr>
 				<th>제품코드</th>

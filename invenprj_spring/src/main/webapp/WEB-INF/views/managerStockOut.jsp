@@ -19,7 +19,7 @@
 				</c:when>
 				<c:otherwise>
 					<h2>승인대기목록</h2>
-					<table>
+					<table class="table table-hover text-center">
 						<tr>
 							<th>ID</th>
 							<th>제품아이디</th>
