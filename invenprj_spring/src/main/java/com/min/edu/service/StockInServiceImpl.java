@@ -35,7 +35,6 @@ public class StockInServiceImpl implements IStockInService {
 
 	@Override
 	public StockDto stockInDetail(int id) {
-		// TODO Auto-generated method stub
 		return inDao.stockInDetail(id);
 	}
 
