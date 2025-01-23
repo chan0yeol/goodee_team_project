@@ -13,4 +13,17 @@
 		<property name="prefix" value="/WEB-INF/views/"/>
 		<property name="suffix" value=".jsp"/>
 	</bean>
+	<!-- TODO 인터셉터  -->
+<!-- 	<mvc:interceptors> -->
+<!-- 		<mvc:interceptor> -->
+<!-- 			<mvc:mapping path="/*.do"/> -->
+<!-- 			<mvc:exclude-mapping path="/login.do"/> -->
+<!-- 			<mvc:exclude-mapping path="/manager*.do"/> -->
+<!-- 			<bean class="com.min.edu.intercepter.LoginIntercepter" /> -->
+<!-- 		</mvc:interceptor> -->
+<!-- 		<mvc:interceptor> -->
+<!-- 			<mvc:mapping path="/manager*.do"/> -->
+<!-- 			<bean class="com.min.edu.intercepter.ManagerIntercepter" /> -->
+<!-- 		</mvc:interceptor> -->
+<!-- 	</mvc:interceptors> -->
 </beans>

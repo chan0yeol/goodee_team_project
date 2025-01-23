@@ -35,7 +35,7 @@ public class LoginController {
 	@GetMapping("/logout.do")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "login";
+		return "redirect:./login.do";
 	}
 	
 	@PostMapping("/loginServlet.do")
