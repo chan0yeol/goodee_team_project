@@ -32,16 +32,16 @@
 			</c:if>
 
 			<!-- modal Button -->
-			<button type="button" id="rangeBtn" class="btn border" data-bs-toggle="modal" data-bs-target="#exampleModal">
+			<button type="button" id="rangeBtn" class="btn border" data-bs-toggle="modal" data-bs-target="#modal" >
 			  기간조회
 			</button>
 			
 			<!-- modal -->
-			<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal fade" id="modal">
 			  <div class="modal-dialog">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h1 class="modal-title fs-5" id="exampleModalLabel">기간 조회</h1>
+			        <h1 class="modal-title fs-5" id="modalLabel">기간 조회</h1>
 			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			      </div>
 			      <div class="modal-body">
@@ -344,6 +344,11 @@
 				// 받은 json 값 Create Dom ----- END -----------------------------
 //	 			rDiv.textContent = msg[0].stock_id;
 //	 			rDiv.textContent = JSON.stringify(msg);
+// 				let modal = document.getElementById('modal');
+// 				modal.className = "modal fade";
+// 				modal.style.display ="none";
+				$("#modal").modal("hide");
+				
 			}
 		})
 		.catch((error) => { alert("잘못된 요청")});
