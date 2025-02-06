@@ -72,4 +72,14 @@ public class StockOutDaoImpl implements IStockOutDao {
 		return sqlSession.selectOne(NS+"stockOutDetail",stock_id);
 	}
 
+	@Override
+	public List<StockDto> selectPageAll(Map<String, Object> map) {
+		return sqlSession.selectList(NS+"selectPageAll",map);
+	}
+
+	@Override
+	public int cntStockOut() {
+		return sqlSession.selectOne(NS+"cntStockOutAll");
+	}
+
 }

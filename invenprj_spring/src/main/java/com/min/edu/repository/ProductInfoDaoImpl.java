@@ -32,7 +32,6 @@ public class ProductInfoDaoImpl implements IProductDao {
 
 	@Override
 	public ProductInfoDto product_select2(String string) {
-		// TODO Auto-generated method stub
 		return session.selectOne(NS+"product_select2",string);
 	}
 

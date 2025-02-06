@@ -4,11 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>입고정보</title>
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
-  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-  <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
-  <script>
+<title>출고</title>
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+<script>
   $( function() {
     $( "#datepicker1" ).datepicker({
     	dateFormat :'yy-mm-dd',
@@ -19,72 +20,32 @@
   });
   
   </script>
-<%@ include file="./header.jsp" %>
+<%@ include file="./header.jsp"%>
 </head>
+
 <body>
 	<h1>${emp.ename }</h1>
 	<main>
 		<div class="container">
-			<c:if test="${emp.deptno eq 60 && emp.job eq '팀장'}">
+			<c:if test="${emp.deptno eq 70 && emp.job eq '팀장' }">
 				<h2>
-					<a href="./managerStockIn.do">관리자페이지 이동</a>
+					<a href="./managerStockOut.do">관리자페이지 이동</a>
 				</h2>
 			</c:if>
 
-			<!-- modal Button -->
-			<button type="button" id="rangeBtn" class="btn border" data-bs-toggle="modal" data-bs-target="#modal" >
-			  기간조회
-			</button>
-			
-			<!-- modal -->
-			<div class="modal fade" id="modal">
-			  <div class="modal-dialog">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <h1 class="modal-title fs-5" id="modalLabel">기간 조회</h1>
-			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			      </div>
-			      <div class="modal-body">
-			      	<div>
-				      	<button id="week" class="btn btn-light">1주일</button>
-				      	<button id="month" class="btn btn-light">한달</button>
-				      	<button id="year" class="btn btn-light">1년</button>
-			      	</div>
-			      	<div>
-	      				<label for="datepicker1">조회 시작일 :</label> 
-	      				<input type="text" id="datepicker1" class="form-control" name="start">
-			      	</div>
-			      	<div>
-			      		<label for="datepicker2">조회 시작일 :</label>
-			      		<input type="text" id="datepicker2" class="form-control" name="end">
-			      	</div>
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-			        <button id="dateRangeSelect" type="button" class="btn btn-primary">조회하기</button>
-			      </div>
-			    </div>
-			  </div>
-			</div>
-			
-			
+			<a href="./stockAmount.do">출고량순위</a> <a href="./stockSales.do">매출순위</a>
 			<div class="position-absolute top-0 end-0">
-				<c:if test="${emp.deptno eq 60}">
-					<a href="./stockInForm.do" class="btn btn-danger">입고 등록</a>
+				<c:if test="${emp.deptno eq 70}">
+					<a href="./stockOutForm.do" class="btn btn-danger">출고 등록</a>
 				</c:if>
 
-				<input type="text" name="mgr" id="mgr" placeholder="사원번호입력"
+				<input type="number" name="mgr" id="mgr" placeholder="사원번호입력"
 					required="required">
-				<button>검색</button>
+				<button id="mgrSearch">검색</button>
 
 			</div>
-			<fieldset>
-				<legend>기간조회</legend>
-				<div id="rDiv">
-				</div>
-			</fieldset>
 			<c:choose>
-				<c:when test="${fn:length(StockInList) eq 0 }">
+				<c:when test="${fn:length(StockOutList) eq 0 }">
 					<h2>정보가 없습니다.</h2>
 				</c:when>
 				<c:otherwise>
@@ -97,114 +58,115 @@
 							<th>담당자</th>
 							<th>수량</th>
 							<th>날짜</th>
-<!-- 							<th></th> -->
+							<!-- 							<th></th> -->
 						</tr>
-						<c:forEach items="${StockInList}" var="dto" varStatus="vs">
+						<c:forEach items="${StockOutList}" var="dto" varStatus="vs">
 							<tr class="text-center">
 								<td><a href="./stockInInfo.do?id=${dto.stock_id}">${dto.stock_id}</a></td>
 								<td>${dto.product_id}</td>
 								<td>${dto.stock_mgr}</td>
 								<td>${dto.stock_amount}</td>
 								<td>${dto.stock_date}</td>
-<!-- 								<td> -->
-<!-- 									<form action="./stockInDelete" method="get"> -->
-<%-- 										<input type="submit" value="${dto.stock_id}"> --%>
-<!-- 									</form> -->
-<!-- 								</td> -->
+								<!-- 								<td> -->
+								<!-- 									<form action="./stockInDelete" method="get"> -->
+								<%-- 										<input type="submit" value="${dto.stock_id}"> --%>
+								<!-- 									</form> -->
+								<!-- 								</td> -->
 							</tr>
 						</c:forEach>
 					</table>
 				</c:otherwise>
 			</c:choose>
-	<div>
-			<ul class="pagination justify-content-center">
-				<!-- 앞에 조건에 따른 이동 표시 << <   -->
-				<c:if test="${page.page > page.countPage}">
-					<li class="page-item">
-						<c:choose>
-							<c:when test="${mgr eq null}">
-								<a class="page-link" href="./stockInAllpage.do?page=1">&lt;&lt;</a>
-							</c:when>
-							<c:otherwise>
-								<a class="page-link" href="./stockAllInfoMgr.do?page=1&mgr=${mgr}">&lt;&lt;</a>
-							</c:otherwise>
-						</c:choose>
-					</li>
-				</c:if>
-				<c:if test="${page.page > 1 }">
-					<c:choose>
-						<c:when test="${(page.stagePage - page.countPage) < 0}">
-							<li class="page-item">
-								<c:choose>
-									<c:when test="${mgr eq null}">
-										<a class="page-link" href="./stockInAllpage.do?page=1">&lt;</a>
-									</c:when>
-									<c:otherwise>
-										<a class="page-link" href="./stockAllInfoMgr.do?page=1&mgr=${mgr}">&lt;</a>
-									</c:otherwise>
-								</c:choose>
-							</li>	
-						</c:when>
-						<c:otherwise>
-							<li class="page-item">
-							<c:choose>
+			<div>
+				<ul class="pagination justify-content-center">
+					<!-- 앞에 조건에 따른 이동 표시 << <   -->
+					<c:if test="${page.page > page.countPage}">
+						<li class="page-item"><c:choose>
 								<c:when test="${mgr eq null}">
-									<a class="page-link" href="./stockInAllpage.do?page=${(page.stagePage - page.countPage)}">&lt;</a>
+									<a class="page-link" href="./stockOutAllPage.do?page=1">&lt;&lt;</a>
 								</c:when>
 								<c:otherwise>
-									<a class="page-link" href="./stockAllInfoMgr.do?page=${(page.stagePage - page.countPage)}&mgr=${mgr}">&lt;</a>
+									<a class="page-link"
+										href="./stockAllInfoMgr.do?page=1&mgr=${mgr}">&lt;&lt;</a>
+								</c:otherwise>
+							</c:choose></li>
+					</c:if>
+					<c:if test="${page.page > 1 }">
+						<c:choose>
+							<c:when test="${(page.stagePage - page.countPage) < 0}">
+								<li class="page-item"><c:choose>
+										<c:when test="${mgr eq null}">
+											<a class="page-link" href="./stockOutAllPage.do?page=1">&lt;</a>
+										</c:when>
+										<c:otherwise>
+											<a class="page-link"
+												href="./stockAllInfoMgr.do?page=1&mgr=${mgr}">&lt;</a>
+										</c:otherwise>
+									</c:choose></li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item"><c:choose>
+										<c:when test="${mgr eq null}">
+											<a class="page-link"
+												href="./stockOutAllPage.do?page=${(page.stagePage - page.countPage)}">&lt;</a>
+										</c:when>
+										<c:otherwise>
+											<a class="page-link"
+												href="./stockAllInfoMgr.do?page=${(page.stagePage - page.countPage)}&mgr=${mgr}">&lt;</a>
+										</c:otherwise>
+									</c:choose></li>
+							</c:otherwise>
+						</c:choose>
+					</c:if>
+					<!-- 페이지 이동 숫자 -->
+					<c:forEach var="i" begin="${page.stagePage}" end="${page.endPage}"
+						step="1">
+						<li
+							${i == page.page ?"class='page-item active'":"class='page-item'" }>
+							<c:choose>
+								<c:when test="${mgr eq null}">
+									<a class="page-link"
+										href="./stockOutAllPage.do?page=${i}${mgr ne null?'&mgr='+mgr:''}">${i}</a>
+								</c:when>
+								<c:otherwise>
+									<a class="page-link"
+										href="./stockAllInfoMgr.do?page=${i}&mgr=${mgr}">${i}</a>
 								</c:otherwise>
 							</c:choose>
-							</li>	
-						</c:otherwise>
-					</c:choose>
-				</c:if>
-				<!-- 페이지 이동 숫자 -->
-				  <c:forEach var="i" begin="${page.stagePage}" end="${page.endPage}" step="1">
-				  	<li  ${i == page.page ?"class='page-item active'":"class='page-item'" }>
-				  		<c:choose>
-							<c:when test="${mgr eq null}">
-								<a class="page-link" href="./stockInAllpage.do?page=${i}${mgr ne null?'&mgr='+mgr:''}">${i}</a>
-							</c:when>
-							<c:otherwise>
-								<a class="page-link" href="./stockAllInfoMgr.do?page=${i}&mgr=${mgr}">${i}</a>
-							</c:otherwise>
-						</c:choose>
-				  	</li>	
-				  </c:forEach>
-				<!-- 뒤에 조건에 따른 이동 표시 > >>   -->
-				<fmt:parseNumber var="num1" integerOnly="true" value="${(page.totalPage-1)/page.countPage}" />
-				<fmt:parseNumber var="num2" integerOnly="true" value="${(page.page-1)/page.countPage}"  />
-				<c:if test="${num1>num2 }">
-					<li class="page-item">
-						<c:choose>
-							<c:when test="${mgr eq null}">
-								<a class="page-link" href="./stockInAllpage.do?page=${page.stagePage+page.countPage}">&gt;</a>
-							</c:when>
-							<c:otherwise>
-								<a class="page-link" href="./stockAllInfoMgr.do?page=${page.stagePage+page.countPage}&mgr=${mgr}">&gt;</a>
-							</c:otherwise>
-						</c:choose>
-				  	</li>	
-				</c:if>
-				<c:if test="${page.endPage<page.totalPage}">
-					<li class="page-item">
-						<c:choose>
-							<c:when test="${mgr eq null}">
-								<a class="page-link" href="./stockInAllpage.do?page=${page.totalPage}">&gt;&gt;</a>
-							</c:when>
-							<c:otherwise>
-								<a class="page-link" href="./stockAllInfoMgr.do?page=${page.totalPage}&mgr=${mgr}">&gt;&gt;</a>
-							</c:otherwise>
-						</c:choose>
-				  		
-				  	</li>	
-				</c:if>
-			</ul>
-		</div>
-		<div>
-		totalCount:	${page.totalCount}
-		</div>
+						</li>
+					</c:forEach>
+					<!-- 뒤에 조건에 따른 이동 표시 > >>   -->
+					<fmt:parseNumber var="num1" integerOnly="true"
+						value="${(page.totalPage-1)/page.countPage}" />
+					<fmt:parseNumber var="num2" integerOnly="true"
+						value="${(page.page-1)/page.countPage}" />
+					<c:if test="${num1>num2 }">
+						<li class="page-item"><c:choose>
+								<c:when test="${mgr eq null}">
+									<a class="page-link"
+										href="./stockOutAllPage.do?page=${page.stagePage+page.countPage}">&gt;</a>
+								</c:when>
+								<c:otherwise>
+									<a class="page-link"
+										href="./stockAllInfoMgr.do?page=${page.stagePage+page.countPage}&mgr=${mgr}">&gt;</a>
+								</c:otherwise>
+							</c:choose></li>
+					</c:if>
+					<c:if test="${page.endPage<page.totalPage}">
+						<li class="page-item"><c:choose>
+								<c:when test="${mgr eq null}">
+									<a class="page-link"
+										href="./stockOutAllPage.do?page=${page.totalPage}">&gt;&gt;</a>
+								</c:when>
+								<c:otherwise>
+									<a class="page-link"
+										href="./stockAllInfoMgr.do?page=${page.totalPage}&mgr=${mgr}">&gt;&gt;</a>
+								</c:otherwise>
+							</c:choose></li>
+					</c:if>
+				</ul>
+			</div>
+			<div>totalCount: ${page.totalCount}</div>
 		</div>
 	</main>
 </body>
@@ -219,7 +181,7 @@
 		if(isNaN(mgr)|| mgr.length == 0) {
 			isNaN(mgr)?Swal.fire('사원번호는 숫자입니다.'):Swal.fire('사원번호를 입력하세요');
 		}else{
-			location.href='./stockAllInfoMgr.do?mgr='+mgr;	
+			location.href='./stockOutAllInfoMgr.do?mgr='+mgr;	
 		}
 		
 	});
@@ -344,11 +306,6 @@
 				// 받은 json 값 Create Dom ----- END -----------------------------
 //	 			rDiv.textContent = msg[0].stock_id;
 //	 			rDiv.textContent = JSON.stringify(msg);
-// 				let modal = document.getElementById('modal');
-// 				modal.className = "modal fade";
-// 				modal.style.display ="none";
-				$("#modal").modal("hide");
-				
 			}
 		})
 		.catch((error) => { alert("잘못된 요청")});

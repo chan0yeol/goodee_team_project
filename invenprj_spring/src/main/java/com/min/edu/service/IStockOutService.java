@@ -29,4 +29,9 @@ public interface IStockOutService {
 	
 	//출고 상세정보
 	public StockDto selectStockOutDetail(int stock_id);
+	
+	// 페이징 selectAll
+	List<StockDto> selectPageAll(Map<String, Object> map);
+	// 전체 글 갯수
+	int cntStockOut();
 }

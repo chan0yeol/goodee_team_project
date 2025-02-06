@@ -66,6 +66,16 @@ public class StockOutServiceImpl implements IStockOutService {
 	@Override
 	public StockDto selectStockOutDetail(int stock_id) {
 		return outDao.selectStockOutDetail(stock_id);
+	}
+
+	@Override
+	public List<StockDto> selectPageAll(Map<String, Object> map) {
+		return outDao.selectPageAll(map);
+	}
+
+	@Override
+	public int cntStockOut() {
+		return outDao.cntStockOut();
 	} 
 	
 	

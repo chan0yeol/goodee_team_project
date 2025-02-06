@@ -1,6 +1,8 @@
 package com.min.edu.ctrl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -8,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.min.edu.bean.PageBean;
 import com.min.edu.dto.EmpDto;
 import com.min.edu.dto.ProductInfoDto;
 import com.min.edu.dto.StockDto;
@@ -24,6 +28,35 @@ import lombok.extern.slf4j.Slf4j;
 public class StockOutController {
 	private final IStockOutService stockOutService;
 	private final IProductService productService;
+	private final PageBean p;
+	
+	@GetMapping("/stockOutAllPage.do")
+	public String stockOutAllPage(@RequestParam(value = "page", defaultValue = "1") String page,
+			Model model) {
+		int selPage = Integer.parseInt(page);
+		if(selPage <= 0) {
+			selPage = 1;
+		}
+		p.setTotalCount(stockOutService.cntStockOut());
+		p.setCountList(10);
+		p.setCountPage(5);
+		p.setTotalPage(0);
+		
+		p.setPage(selPage);
+		p.setStagePage(0);
+		p.setEndPage(0);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("first", p.getPage()*p.getCountList() - (p.getCountList()-1) ); // (2*10) - (10-1) = 11
+		map.put("last", p.getPage()*p.getCountList());
+		
+		List<StockDto> StockOutList = stockOutService.selectPageAll(map);
+		model.addAttribute("StockOutList",StockOutList);
+		model.addAttribute("page",p);
+		
+		return "stockOutAllPage";
+	}
+	
 	@GetMapping("/stockOutAllInfo.do")
 	public String stockOutAllInfo(Model model, HttpSession session) {
 		log.info("StockOutController /stockOutAllInfo.do GET 출고목록조회");
